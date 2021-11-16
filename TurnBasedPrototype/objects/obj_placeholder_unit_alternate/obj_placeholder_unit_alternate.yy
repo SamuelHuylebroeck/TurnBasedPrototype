@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_placeholder_idle_tc_armour_upscaled",
-    "path": "sprites/spr_placeholder_idle_tc_armour_upscaled/spr_placeholder_idle_tc_armour_upscaled.yy",
+    "name": "spr_placeholder_idle_tc_clothing",
+    "path": "sprites/spr_placeholder_idle_tc_clothing/spr_placeholder_idle_tc_clothing.yy",
   },
   "solid": false,
   "visible": true,
@@ -31,7 +31,7 @@
     "path": "folders/Objects/units.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_placeholder_unit",
+  "name": "obj_placeholder_unit_alternate",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -2,6 +2,7 @@ function init_globals(){
 	//global defaults
 	global.default_map = rm_sandbox;
 
+	#region grid and pathing
 	// Grid globals and default values
 	global.grid_left_startpos = 0;
 	global.grid_top_startpos = 0;
@@ -17,7 +18,16 @@ function init_globals(){
 
 	//Debug globals
 	global.debug_draw_grid = false;
-
+	#endregion
+	
+	#region player permissions
+		//camera control
+		global.camera_controllable = true;
+		
+		global.player_permission_selection = true;
+		global.player_permission_execute_orders = true;
+		
+	#endregion
 
 	//Querty Azerty stuff
 	global.azerty = true;
@@ -26,8 +36,7 @@ function init_globals(){
 	global.down = "S";
 	global.right = "D";
 
-	//camera control
-	global.camera_controllable = true;
+
 
 	//animation globals
 	global.unit_fade_step = 1/(room_speed);

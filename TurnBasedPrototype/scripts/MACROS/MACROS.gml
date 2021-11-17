@@ -7,3 +7,22 @@
 #macro c_soft_yellow make_colour_rgb(217,149,58)
 
 #endregion
+
+#region enums
+
+enum ATTACK_SHAPES {
+	as_line,
+	as_burst,
+	as_cone,
+	as_blast
+}
+
+enum UNIT_STATES {
+	idle,
+	moving,
+	attacking,
+	hurt
+
+}
+
+#endregion

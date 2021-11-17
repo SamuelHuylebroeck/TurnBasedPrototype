@@ -46,7 +46,7 @@ function pan(){
 	var camera_height = camera_get_view_height(camera);
 	var up_pressed = keyboard_check(ord(global.up)) or keyboard_check(vk_up)
 	var down_pressed = keyboard_check(ord(global.down)) or keyboard_check(vk_down)
-	var left_pressed = keyboard_check(ord(global.right)) or keyboard_check(vk_left)
+	var left_pressed = keyboard_check(ord(global.left)) or keyboard_check(vk_left)
 	var right_pressed = keyboard_check(ord(global.right)) or keyboard_check(vk_right)
 
 	

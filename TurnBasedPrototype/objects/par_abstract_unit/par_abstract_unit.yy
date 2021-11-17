@@ -29,6 +29,10 @@
   "properties": [
     {"varType":1,"value":"5","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_move_points_grid","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"controlling_player","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":5,"value":"spr_placeholder_idle","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"animation_movement_sprite","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":5,"value":"spr_placeholder_attack","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"animation_attack_sprite","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":5,"value":"spr_placeholder_hurt","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"animation_hurt_sprite","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":5,"value":"spr_placeholder_idle","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"animation_idle_sprite","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],
   "parent": {

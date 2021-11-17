@@ -25,7 +25,11 @@
   "physicsShapePoints": [],
   "eventList": [],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"stats_move_points_grid","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"animation_movement_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_placeholder_idle_tc_armour","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"animation_idle_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_placeholder_idle_tc_armour","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "units",
     "path": "folders/Objects/units.yy",

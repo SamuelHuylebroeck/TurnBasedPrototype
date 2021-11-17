@@ -19,7 +19,12 @@ function draw_possible_moves_selected(){
 				{
 					//Check if this space is occupied
 					if(!position_meeting(i_x,i_y, par_abstract_unit)){
-						instance_create_layer(i_x - w/2,i_y - h/2 ,"Pathing", obj_move_possible);
+						move_possible = instance_create_layer(i_x - w/2,i_y - h/2 ,"Pathing", obj_move_possible);
+						with(move_possible){
+							linked_attack_profile = global.selected.attack_profile;
+							linked_player = global.selected.controlling_player;
+							alarm[0]=1
+						}
 					}
 				}else{
 					instance_create_layer(i_x - w/2,i_y-h/2,"Pathing", obj_move_impossible);
@@ -28,10 +33,8 @@ function draw_possible_moves_selected(){
 		
 		}
 	}
-
-	with(global.selected){
-		instance_create_layer(global.selected.x,global.selected.y,"Pathing", obj_move_currently_selected);
-	}
+	//Add possible attacks from current position
+	draw_attack_targets(global.selected.x, global.selected.y, global.selected.attack_profile, global.selected.controlling_player)
 	move_grid_drawn = true;	
 }
 
@@ -48,6 +51,12 @@ function clean_possible_moves() {
 	{
 		instance_destroy();
 	}
+	with(obj_move_attack_possible){
+		instance_destroy();
+	}
+	with(obj_placeholder_attack_command){
+		instance_destroy();
+	}
 	move_grid_drawn = false;
 }
 
@@ -57,7 +66,6 @@ function add_impassible_tiles_to_grid(this_unit){
 	{
 		mp_grid_add_instances(global.map_grid,self,false);
 	}
-	//var par_enemy = scr_get_enemy_side_par();
 	with(par_abstract_unit){
 		if self.id != this_unit.id{
 			mp_grid_add_instances(global.map_grid,self,false);

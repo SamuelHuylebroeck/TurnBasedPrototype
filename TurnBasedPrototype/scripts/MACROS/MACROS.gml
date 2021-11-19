@@ -25,4 +25,9 @@ enum UNIT_STATES {
 
 }
 
+enum WEATHER_STATES {
+	present,
+	fading
+}
+
 #endregion

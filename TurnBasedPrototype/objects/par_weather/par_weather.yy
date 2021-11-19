@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_placeholder_weather",
+    "path": "sprites/spr_placeholder_weather/spr_placeholder_weather.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -17,12 +20,19 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
-  "properties": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
+  "properties": [
+    {"varType":0,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"initial_duration","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"initial_duration","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"current_duration","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"WEATHER_STATES.present","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"current_state","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"spr_placeholder_weather_vanish","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"fading_sprite","tags":[],"resourceType":"GMObjectProperty",},
+  ],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "weather",
+    "path": "folders/Objects/weather.yy",
   },
   "resourceVersion": "1.0",
   "name": "par_weather",

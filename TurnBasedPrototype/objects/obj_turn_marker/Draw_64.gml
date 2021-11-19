@@ -1,6 +1,6 @@
 /// @description ??
 if(global.map_running){
-	var turn = control.current_turn
+	var current_round = control.current_round
 	var current_index = control.current_active_player_index % ds_list_size(control.ds_turn_order)
 	var player = control.ds_turn_order[| current_index]
 	var player_name = player.player_name
@@ -16,7 +16,7 @@ if(global.map_running){
 	draw_set_font(text_font);
 	draw_set_color(text_color);
 	draw_set_alpha(1);
-	var turn_text = "Turn: " + string(turn) + " - Player: " + string(player_name) ;
+	var turn_text = "Round: " + string(current_round) + " - Player: " + string(player_name) ;
 	draw_text(current_pos_x+5,current_pos_y+5,turn_text);
 
 	draw_set_font(old_font);

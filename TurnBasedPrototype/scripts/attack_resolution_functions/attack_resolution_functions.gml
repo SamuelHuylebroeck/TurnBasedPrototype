@@ -18,6 +18,9 @@ function create_attack_effect_object_at_location(i, _x, _y, origin_unit, attack_
 		//Calculate when the attack should trigger
 		var time_to_hit_frame = attack_profile.animation_profile.hit_frame * origin_unit.image_speed / attack_profile.animation_profile.base_sprite_animation_speed * game_get_speed(gamespeed_fps)
 		alarm[0] = time_to_hit_frame
+		// Set the required data
+		linked_attack_profile = attack_profile
+		linked_attacker = origin_unit
 	}
 }
 
@@ -29,8 +32,11 @@ function end_attack(origin_unit){
 }
 
 function check_for_attack_end(origin_unit, ds_attack_effect_objects){
-	attack_effects_done = true;
-	origin_unit_done = origin_unit.current_state != UNIT_STATES.attacking
+	var attack_effects_done = true;
+	for(var i=0; i<ds_list_size(ds_attack_effect_objects); i++){
+		attack_effects_done = attack_effects_done and ds_attack_effect_objects[| i].done
+	}
+	var origin_unit_done = origin_unit.current_state != UNIT_STATES.attacking
 	return attack_effects_done and origin_unit_done
 
 }

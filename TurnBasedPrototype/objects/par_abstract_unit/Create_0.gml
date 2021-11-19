@@ -21,6 +21,6 @@ _tc_mix = shader_get_uniform(sha_team_colour_blend, "u_mix")
 
 #region stat constructors
 var attack_animation_profile = new AttackAnimationProfile(7, sprite_get_speed(animation_sprites[UNIT_STATES.attacking]))
-attack_profile = new AttackProfile(5,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile)
+attack_profile = new AttackProfile(5,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, obj_placeholder_weather, 3)
 unit_profile = new UnitProfile(50, stats_move_points_grid,10,2)
 #endregion

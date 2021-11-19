@@ -19,6 +19,7 @@ function resolve_turn_end(player){
 				has_acted_this_round = false;
 				//Resolve boons and hexes
 				//Restore Movement Points
+				move_points_pixels_curr = move_points_pixels;
 			}
 	
 		}

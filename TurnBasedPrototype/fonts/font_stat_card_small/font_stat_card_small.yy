@@ -131,7 +131,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "font_turn_marker",
+  "name": "font_stat_card_small",
   "tags": [],
   "resourceType": "GMFont",
 }

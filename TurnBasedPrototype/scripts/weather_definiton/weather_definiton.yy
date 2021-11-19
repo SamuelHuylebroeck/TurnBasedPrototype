@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "attack",
-    "path": "folders/Scripts/units/unit_actions/attack.yy",
+    "name": "weather",
+    "path": "folders/Scripts/weather.yy",
   },
   "resourceVersion": "1.0",
-  "name": "attack_definition",
+  "name": "weather_definiton",
   "tags": [],
   "resourceType": "GMScript",
 }

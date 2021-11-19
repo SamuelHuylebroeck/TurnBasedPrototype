@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "attack",
-    "path": "folders/Scripts/unit_actions/attack.yy",
+    "name": "units",
+    "path": "folders/Scripts/units.yy",
   },
   "resourceVersion": "1.0",
   "name": "unit_profile_definition",

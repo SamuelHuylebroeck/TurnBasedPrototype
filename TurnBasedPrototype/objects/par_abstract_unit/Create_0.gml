@@ -3,8 +3,16 @@ has_acted_this_round = false;
 current_state = UNIT_STATES.idle
 #endregion
 
+#region stat constructors
+var attack_animation_profile = new AttackAnimationProfile(7, sprite_get_speed(animation_attack_sprite))
+attack_profile = new AttackProfile(5,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, new WeatherProfile())
+unit_profile = new UnitProfile(stats_name, 50, stats_move_points_grid,10,2)
+#endregion
+
 #region derived stats
-//Derived stats
+
+current_hp = unit_profile.max_hp
+
 move_points_pixels = stats_move_points_grid * global.grid_cell_width;
 move_points_pixels_curr = move_points_pixels;
 
@@ -17,10 +25,4 @@ animation_sprites[UNIT_STATES.moving]=animation_movement_sprite
 #region shaders
 _team_colour = shader_get_uniform(sha_team_colour_blend, "u_team_colour");
 _tc_mix = shader_get_uniform(sha_team_colour_blend, "u_mix")
-#endregion
-
-#region stat constructors
-var attack_animation_profile = new AttackAnimationProfile(7, sprite_get_speed(animation_sprites[UNIT_STATES.attacking]))
-attack_profile = new AttackProfile(5,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, obj_placeholder_weather, 3)
-unit_profile = new UnitProfile(50, stats_move_points_grid,10,2)
 #endregion

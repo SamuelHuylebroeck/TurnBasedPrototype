@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "attack",
-    "path": "folders/Scripts/units/unit_actions/attack.yy",
+    "name": "ui",
+    "path": "folders/Scripts/ui.yy",
   },
   "resourceVersion": "1.0",
-  "name": "attack_definition",
+  "name": "stat_card_functions",
   "tags": [],
   "resourceType": "GMScript",
 }

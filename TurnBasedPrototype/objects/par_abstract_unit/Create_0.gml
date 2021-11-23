@@ -5,7 +5,7 @@ current_state = UNIT_STATES.idle
 
 #region stat constructors
 var attack_animation_profile = new AttackAnimationProfile(7, sprite_get_speed(animation_attack_sprite))
-attack_profile = new AttackProfile(5,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, new WeatherProfile())
+attack_profile = new AttackProfile(100,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, new WeatherProfile())
 unit_profile = new UnitProfile(stats_name, 50, stats_move_points_grid,10,2)
 #endregion
 
@@ -20,6 +20,7 @@ animation_sprites[UNIT_STATES.idle]= animation_idle_sprite
 animation_sprites[UNIT_STATES.attacking]= animation_attack_sprite
 animation_sprites[UNIT_STATES.hurt]=animation_hurt_sprite
 animation_sprites[UNIT_STATES.moving]=animation_movement_sprite
+animation_sprites[UNIT_STATES.dying]=animation_dying_sprite
 #endregion
 
 #region shaders

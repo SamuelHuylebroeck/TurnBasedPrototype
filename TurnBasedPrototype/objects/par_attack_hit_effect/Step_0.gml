@@ -3,6 +3,10 @@ if not done and image_speed >0 {
 	if (not effect_applied and floor(image_index) == hit_frame){
 		//Apply effect
 		show_debug_message("Apply attack effect here")
+		var defender = instance_nearest(x,y, par_abstract_unit)
+		if (defender != noone){
+			resolve_attack_hit_effect(linked_attack_profile, linked_attacker, defender)
+		}
 		effect_applied = true
 	}
 	

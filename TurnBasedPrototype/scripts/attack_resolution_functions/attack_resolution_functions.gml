@@ -40,3 +40,42 @@ function check_for_attack_end(origin_unit, ds_attack_effect_objects){
 	return attack_effects_done and origin_unit_done
 
 }
+
+function resolve_attack_hit_effect(attack_profile, attacker, defender){
+	//Gather derived stats
+	//Todo: placeholder for calculating boon, bane, terrain and weather info
+	var hit_rate = max(attack_profile.base_accuracy - defender.unit_profile.base_avoid, 0)
+	var damage = max(attack_profile.base_damage - max(defender.unit_profile.base_armour - attack_profile.base_piercing, 0), 0)
+	//make the hit roll
+	var hit_roll = irandom(100);
+	var is_hit = hit_roll <= hit_rate;
+	//apply damage and play hit/miss animation
+	if (is_hit){
+		//Hit
+		defender.current_hp -= damage
+		var floating_damage = instance_create_layer(defender.x,defender.y,"UI", obj_floating_damage_message)
+		with(floating_damage){
+			self.message_text = string(damage)
+		}
+		
+		if(defender.current_hp >= 0){
+			with(defender){
+				sprite_index = animation_sprites[UNIT_STATES.hurt]
+				image_index = 0
+				current_state = UNIT_STATES.hurt
+			}
+		}else{
+			with(defender){
+				sprite_index = animation_sprites[UNIT_STATES.dying]
+				image_index = 0
+				current_state = UNIT_STATES.dying
+			}
+		}
+	
+	}else{
+		//Miss
+		var floating_miss = instance_create_layer(defender.x,defender.y,"UI", obj_floating_miss_message)
+	}
+
+
+}

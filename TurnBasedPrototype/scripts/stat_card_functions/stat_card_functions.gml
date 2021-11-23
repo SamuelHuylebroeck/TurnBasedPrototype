@@ -66,6 +66,6 @@ function draw_unit_stats(_x, _y, unit){
 	
 function draw_attack_stats(_x, _y, attack_profile){
 	
-	show_debug_message("Draw attack stats on card")
+	//show_debug_message("Draw attack stats on card")
 
 }

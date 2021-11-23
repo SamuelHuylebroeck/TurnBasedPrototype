@@ -1,8 +1,9 @@
 {
   "resources": [
     {"id":{"name":"unit_profile_definition","path":"scripts/unit_profile_definition/unit_profile_definition.yy",},"order":2,},
-    {"id":{"name":"attack_state_functions","path":"scripts/attack_state_functions/attack_state_functions.yy",},"order":0,},
+    {"id":{"name":"unit_state_functions","path":"scripts/unit_state_functions/unit_state_functions.yy",},"order":0,},
     {"id":{"name":"Globals","path":"scripts/Globals/Globals.yy",},"order":1,},
+    {"id":{"name":"obj_floating_damage_message","path":"objects/obj_floating_damage_message/obj_floating_damage_message.yy",},"order":8,},
     {"id":{"name":"attack_line_shape_functions","path":"scripts/attack_line_shape_functions/attack_line_shape_functions.yy",},"order":1,},
     {"id":{"name":"spr_move_possible","path":"sprites/spr_move_possible/spr_move_possible.yy",},"order":2,},
     {"id":{"name":"obj_move_currently_selected","path":"objects/obj_move_currently_selected/obj_move_currently_selected.yy",},"order":4,},
@@ -26,6 +27,7 @@
     {"id":{"name":"pathing_control_functions","path":"scripts/pathing_control_functions/pathing_control_functions.yy",},"order":1,},
     {"id":{"name":"par_attack_hit_effect","path":"objects/par_attack_hit_effect/par_attack_hit_effect.yy",},"order":3,},
     {"id":{"name":"spr_placeholder_hit_effect","path":"sprites/spr_placeholder_hit_effect/spr_placeholder_hit_effect.yy",},"order":7,},
+    {"id":{"name":"obj_floating_miss_message","path":"objects/obj_floating_miss_message/obj_floating_miss_message.yy",},"order":7,},
     {"id":{"name":"spr_placeholder_idle_tc_armour_upscaled","path":"sprites/spr_placeholder_idle_tc_armour_upscaled/spr_placeholder_idle_tc_armour_upscaled.yy",},"order":4,},
     {"id":{"name":"spr_placeholder_staff_idle","path":"sprites/spr_placeholder_staff_idle/spr_placeholder_staff_idle.yy",},"order":1,},
     {"id":{"name":"ts_placeholder","path":"tilesets/ts_placeholder/ts_placeholder.yy",},"order":0,},
@@ -59,6 +61,7 @@
     {"id":{"name":"sha_grayscale","path":"shaders/sha_grayscale/sha_grayscale.yy",},"order":0,},
     {"id":{"name":"mouse_util_functions","path":"scripts/mouse_util_functions/mouse_util_functions.yy",},"order":0,},
     {"id":{"name":"spr_placeholder_weather_vanish","path":"sprites/spr_placeholder_weather_vanish/spr_placeholder_weather_vanish.yy",},"order":1,},
+    {"id":{"name":"par_floating_message","path":"objects/par_floating_message/par_floating_message.yy",},"order":6,},
     {"id":{"name":"spr_move_currently_selected","path":"sprites/spr_move_currently_selected/spr_move_currently_selected.yy",},"order":1,},
     {"id":{"name":"obj_placeholder_attack_hit_effect","path":"objects/obj_placeholder_attack_hit_effect/obj_placeholder_attack_hit_effect.yy",},"order":5,},
     {"id":{"name":"spr_move_impossible","path":"sprites/spr_move_impossible/spr_move_impossible.yy",},"order":0,},

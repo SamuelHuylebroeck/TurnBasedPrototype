@@ -21,7 +21,9 @@ enum UNIT_STATES {
 	idle,
 	moving,
 	attacking,
-	hurt
+	hurt,
+	dodging,
+	dying
 
 }
 

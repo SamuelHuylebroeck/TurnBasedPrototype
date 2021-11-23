@@ -6,7 +6,7 @@
     "path": "folders/Scripts/units/unit_states.yy",
   },
   "resourceVersion": "1.0",
-  "name": "attack_state_functions",
+  "name": "unit_state_functions",
   "tags": [],
   "resourceType": "GMScript",
 }

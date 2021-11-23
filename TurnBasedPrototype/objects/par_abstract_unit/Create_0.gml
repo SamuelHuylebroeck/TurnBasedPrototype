@@ -1,11 +1,13 @@
 #region state variables
 has_acted_this_round = false;
-current_state = UNIT_STATES.idle
+current_state = UNIT_STATES.idle;
+
+ds_terrain_crossed = ds_map_create()
 #endregion
 
 #region stat constructors
 var attack_animation_profile = new AttackAnimationProfile(7, sprite_get_speed(animation_attack_sprite))
-attack_profile = new AttackProfile(100,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, new WeatherProfile())
+attack_profile = new AttackProfile(10,1,90,ATTACK_SHAPES.as_line, 3,1,1,attack_animation_profile, new WeatherProfile())
 unit_profile = new UnitProfile(stats_name, 50, stats_move_points_grid,10,2)
 #endregion
 

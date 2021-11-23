@@ -44,18 +44,23 @@ function check_for_attack_end(origin_unit, ds_attack_effect_objects){
 function resolve_attack_hit_effect(attack_profile, attacker, defender){
 	//Gather derived stats
 	//Todo: placeholder for calculating boon, bane, terrain and weather info
-	var hit_rate = max(attack_profile.base_accuracy - defender.unit_profile.base_avoid, 0)
-	var damage = max(attack_profile.base_damage - max(defender.unit_profile.base_armour - attack_profile.base_piercing, 0), 0)
+	var refined_profile = get_refined_stats(attack_profile, attacker, defender)
+	
+	var hit_rate = refined_profile.hr
+	var damage = refined_profile.d
 	//make the hit roll
 	var hit_roll = irandom(100);
 	var is_hit = hit_roll <= hit_rate;
+	show_debug_message("From " + string(attacker.id)+" to " + string(defender.id))
+	show_debug_message("Hit rate " +string(hit_rate) + " / Damage: " + string(damage) + " Roll: " + string(hit_roll))
 	//apply damage and play hit/miss animation
 	if (is_hit){
 		//Hit
 		defender.current_hp -= damage
 		var floating_damage = instance_create_layer(defender.x,defender.y,"UI", obj_floating_damage_message)
 		with(floating_damage){
-			self.message_text = string(damage)
+			self.message_text = string(abs(damage))
+			self.damage = damage
 		}
 		
 		if(defender.current_hp >= 0){
@@ -77,5 +82,37 @@ function resolve_attack_hit_effect(attack_profile, attacker, defender){
 		var floating_miss = instance_create_layer(defender.x,defender.y,"UI", obj_floating_miss_message)
 	}
 
+
+}
+	
+function get_refined_stats(attack_profile, attacker, defender){
+	// Get the base rates
+	var hit_rate = attack_profile.base_accuracy - defender.unit_profile.base_avoid
+	var damage = attack_profile.base_damage
+	var piercing = attack_profile.base_piercing
+	var armour = defender.unit_profile.base_armour
+	
+	//Incorporate terrain information
+	var occupied_terrain = instance_position( defender.x, defender.y, par_terrain );
+
+	if (occupied_terrain != noone){
+		hit_rate -= occupied_terrain.avoid_modifier
+		armour += occupied_terrain.armour_modifier
+	}
+	
+	//Incorporate boon and bane information of attacker
+	
+	//Incorporate boon and bane information of defender
+	
+	//Clamp to min and maxes and resolve piercing
+	var hit_rate = max(hit_rate , 0)
+	if (armour > 0)  {
+		armour = max(armour - piercing ,0)
+	}
+	var damage = max(damage - armour, 0)
+	return {
+		hr: hit_rate,
+		d: damage
+	}
 
 }

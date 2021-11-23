@@ -32,3 +32,23 @@ function recover_to_idle(){
 function end_of_animation_reached(){
 	return image_index + (sprite_get_speed(sprite_index)/game_get_speed(gamespeed_fps)) >= image_number
 }
+	
+	
+function resolve_moving_terrain_contact(unit, terrain){
+	//Apply contact damage/healing
+	if(terrain.contact_hp_change != 0){
+		var damage = terrain.contact_hp_change
+		
+		var floating_damage = instance_create_layer(unit.x,unit.y,"UI", obj_floating_damage_message)
+		with(floating_damage){
+			self.message_text = string(abs(damage))
+			self.damage = damage
+		}
+	}
+	//Aply contact boon and banes
+}
+
+function resolve_terrain_start_of_turn(unit,terrain){
+
+
+}

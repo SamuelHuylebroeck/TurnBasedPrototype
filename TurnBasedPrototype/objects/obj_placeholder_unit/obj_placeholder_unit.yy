@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_placeholder_idle_tc_armour_upscaled",
-    "path": "sprites/spr_placeholder_idle_tc_armour_upscaled/spr_placeholder_idle_tc_armour_upscaled.yy",
+    "name": "spr_placeholder_idle_tc_armour",
+    "path": "sprites/spr_placeholder_idle_tc_armour/spr_placeholder_idle_tc_armour.yy",
   },
   "solid": false,
   "visible": true,

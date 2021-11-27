@@ -6,7 +6,7 @@ function draw_possible_moves_selected(){
 	var center = get_center_of_occupied_tile(global.selected);
 	var center_x = center[0];
 	var center_y = center[1];
-	var range = global.selected.stats_move_points_grid;
+	var range = global.selected.move_points_total_current;
 	var w = global.grid_cell_width;
 	var h = global.grid_cell_height
 	for(var i=-range; i<=range; i+=1){

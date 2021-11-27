@@ -4,7 +4,7 @@
     "path": "sprites/spr_move_impossible/spr_move_impossible.yy",
   },
   "solid": false,
-  "visible": true,
+  "visible": false,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {

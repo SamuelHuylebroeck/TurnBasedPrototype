@@ -56,27 +56,7 @@ function resolve_attack_hit_effect(attack_profile, attacker, defender){
 	//apply damage and play hit/miss animation
 	if (is_hit){
 		//Hit
-		defender.current_hp -= damage
-		var floating_damage = instance_create_layer(defender.x,defender.y,"UI", obj_floating_damage_message)
-		with(floating_damage){
-			self.message_text = string(abs(damage))
-			self.damage = damage
-		}
-		
-		if(defender.current_hp >= 0){
-			with(defender){
-				sprite_index = animation_sprites[UNIT_STATES.hurt]
-				image_index = 0
-				current_state = UNIT_STATES.hurt
-			}
-		}else{
-			with(defender){
-				sprite_index = animation_sprites[UNIT_STATES.dying]
-				image_index = 0
-				current_state = UNIT_STATES.dying
-			}
-		}
-	
+		do_hp_change(defender, -1* damage)
 	}else{
 		//Miss
 		var floating_miss = instance_create_layer(defender.x,defender.y,"UI", obj_floating_miss_message)

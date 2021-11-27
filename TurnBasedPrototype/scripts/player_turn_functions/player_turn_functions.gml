@@ -66,6 +66,7 @@ function take_player_turn(){
 				{
 					move_points_pixels_curr -= path_get_length(global.navigate);
 				}
+				current_state = UNIT_STATES.moving
 			}
 			clean_possible_moves();
 		}else{
@@ -85,6 +86,7 @@ function take_player_turn(){
 			{
 				global.moving = false;
 				is_moving = false;
+				current_state = UNIT_STATES.idle
 				if(move_points_pixels_curr >= global.grid_cell_width && !has_acted_this_round){
 					draw_possible_moves_selected();
 				}

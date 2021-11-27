@@ -28,6 +28,7 @@
     {"varType":4,"value":"initial_duration","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"current_duration","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"WEATHER_STATES.present","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"current_state","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"spr_placeholder_weather_vanish","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"fading_sprite","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"start_of_turn_weather_boon_bane","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],
   "parent": {

@@ -45,6 +45,10 @@ function init_globals(){
 
 	//Control
 	global.map_running = false;
+	
+	#region debug
+	global.debug_gui = false;
+	#endregion
 }
 
 function set_up_camera_controls(){

@@ -5,6 +5,7 @@
 #macro c_soft_red make_colour_rgb(143,37,46)
 #macro c_soft_green make_colour_rgb(45,120,47)
 #macro c_soft_yellow make_colour_rgb(217,149,58)
+#macro c_soft_yellow_dark make_colour_rgb(154,120,73)
 
 #endregion
 
@@ -30,6 +31,12 @@ enum UNIT_STATES {
 enum WEATHER_STATES {
 	present,
 	fading
+}
+
+enum BUILDING_STATES {
+	ready,
+	exhausted
+
 }
 
 #endregion

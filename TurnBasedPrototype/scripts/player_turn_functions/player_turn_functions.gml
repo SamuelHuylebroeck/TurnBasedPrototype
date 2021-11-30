@@ -1,7 +1,7 @@
 //@description ??
 function take_player_turn(){
 	//Get the active player
-	var active_player = ds_turn_order[| current_active_player_index]
+	var active_player = get_current_active_player()
 	
 	//Select player unit
 	if(instance_position(mouse_x, mouse_y,par_abstract_unit) and mouse_check_button_pressed(mb_left) and global.player_permission_selection)

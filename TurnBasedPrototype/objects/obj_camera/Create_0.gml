@@ -20,8 +20,5 @@ min_camera_width = 400
 camera_zoom_step = 16;
 aspect_ratio = camera_width/camera_height;
 
-//combat camera setup
-combat_camera_width = 800;
-
 //Starting position
 camera_set_view_pos(camera,0,0);

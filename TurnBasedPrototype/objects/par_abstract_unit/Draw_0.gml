@@ -1,5 +1,4 @@
 /// @description Shaders
-
 if (controlling_player != noone) {
 	shader_set(sha_team_colour_blend)
 	var player_colour= controlling_player.player_colour;

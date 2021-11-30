@@ -80,21 +80,51 @@ function resolve_turn_start_unit(unit){
 
 	//Stat refresh
 	refresh_movement(unit)
-
 }
+
+
 
 function resolve_turn_end(player){
 	if (player != noone){
 		//Loop over every unit
 		with(par_abstract_unit){
 			if(controlling_player != noone and controlling_player.id == player.id){
-				//Remove activation marker
-				has_acted_this_round = false;
+				resolve_turn_end_unit(self)
 			}
 		}
+		//Loop over every recruitment building
+		with(par_recruitment_building)
+		{
+			if(controlling_player != noone and controlling_player.id == player.id){
+				current_state = BUILDING_STATES.ready
+			}
+		
+		}
+		
+		//Add income
+		var turn_income = player.player_base_income
+		
+		with(par_income_building){
+			if(controlling_player != noone and controlling_player.id == player.id){
+				turn_income += income_per_turn
+			}
+		}
+		player.player_current_resources += turn_income
 	}
-
 }
+
+
+function resolve_turn_end_unit(unit){
+	#region Building control
+	var building = instance_place(unit.x, unit.y ,par_building)
+	if building != noone {
+		building.controlling_player = unit.controlling_player
+	}
+	#endregion
+	//Remove activation marker
+	has_acted_this_round = false;
+}
+
 
 function refresh_movement(unit){
 	unit.move_points_pixels_curr = unit.move_points_total_current*global.grid_cell_width

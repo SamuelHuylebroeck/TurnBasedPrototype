@@ -8,7 +8,7 @@ with(obj_control)
 highlighted = false;
 width = sprite_get_width(spr_next_turn_button);
 height = sprite_get_height(spr_next_turn_button);
-margin = 128;
+margin = 16;
 
-pos_x = view_get_wport(view_current) + view_get_xport(view_current) - width - margin;
-pos_y = view_get_hport(view_current) + view_get_yport(view_current) - height - margin;
+pos_x = display_get_gui_width() - width - margin;
+pos_y = display_get_gui_height() - height - margin;

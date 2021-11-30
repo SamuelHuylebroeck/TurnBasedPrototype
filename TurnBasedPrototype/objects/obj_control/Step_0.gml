@@ -2,7 +2,7 @@
 if(global.map_running)
 {
 	//Get the player
-	var active_player = ds_turn_order[| current_active_player_index]
+	var active_player = get_current_active_player()
 	if (active_player.object_index == obj_player_human){
 		take_player_turn()
 	}else if (active_player.object_index == obj_player_ai) {

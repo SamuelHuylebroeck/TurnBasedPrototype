@@ -1,0 +1,2 @@
+/// @description ??
+init_globals()

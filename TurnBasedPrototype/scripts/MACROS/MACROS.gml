@@ -39,4 +39,13 @@ enum BUILDING_STATES {
 
 }
 
+enum DD_PICKER_TYPES{
+	colour_picker,
+	player_type_picker,
+	map_picker
+
+
+}
+
+
 #endregion

@@ -46,6 +46,12 @@ function init_globals(){
 	//Control
 	global.map_running = false;
 	
+	#region menu globals
+	create_colour_picker_options()
+	create_player_type_picker_options()
+	create_map_picker_options()
+	#endregion
+	
 	#region debug
 	global.debug_gui = false;
 	#endregion
@@ -61,4 +67,31 @@ function set_up_camera_controls(){
 function toggle_azerty_qwerty(){
 	global.azerty = !global.azerty
 	set_up_camera_controls()
+}
+
+
+function create_colour_picker_options(){
+	var type = DD_PICKER_TYPES.colour_picker
+	var size = 32
+	global.all_colour_options = [
+	 {col: c_soft_blue, w: size, h: size,dd_type: type },
+	 {col: c_soft_green, w: size, h: size,dd_type: type},
+	 {col: c_soft_red, w: size, h: size,dd_type: type},
+	 {col: c_soft_yellow, w: size, h: size,dd_type: type}
+	];
+}
+function create_player_type_picker_options(){
+	var type = DD_PICKER_TYPES.player_type_picker
+	global.all_player_type_options = [
+		{text: "Human", template: obj_player_human,dd_type: type},
+		{text: "Dummy AI", template: obj_player_ai,dd_type: type}
+	]
+}
+
+function create_map_picker_options(){
+	var type = DD_PICKER_TYPES.map_picker
+	global.all_map_options = [
+		{text: "Sandbox", rm: rm_sandbox,dd_type: type},
+	]
+
 }

@@ -26,8 +26,8 @@
     {"propertyId":{"name":"message_text","path":"objects/par_floating_message/par_floating_message.yy",},"objectId":{"name":"par_floating_message","path":"objects/par_floating_message/par_floating_message.yy",},"value":"Miss!","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "unit_actions",
-    "path": "folders/Objects/units/unit_actions.yy",
+    "name": "attack",
+    "path": "folders/Objects/units/unit_actions/attack.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_floating_miss_message",

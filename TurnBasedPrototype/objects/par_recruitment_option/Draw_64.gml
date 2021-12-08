@@ -19,7 +19,7 @@ if initialized {
 
 	draw_set_color(rect_color)
 	draw_rectangle(ui_x, ui_y, ui_x+button_width, ui_y+button_height, true)
-	var recruitment_text = string(recruitment_option_detail.unit.unit_profile.verbose_name) + ": " + string(recruitment_option_detail.cost)
+	var recruitment_text = string(recruitment_option_detail.verbose_name) + ": " + string(recruitment_option_detail.cost)
 	draw_text(ui_x, ui_y, recruitment_text)
 
 	draw_set_color(old_color)

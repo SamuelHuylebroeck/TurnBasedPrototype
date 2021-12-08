@@ -18,3 +18,8 @@ function goto_options(){
 function goto_title_screen(){
 	camera_set_view_pos(view_camera[0], 0, 0)
 }
+
+function goto_victory_screen(){
+	show_debug_message("Go to map select")
+	camera_set_view_pos(view_camera[0], 3200, 0)
+}

@@ -49,6 +49,8 @@ function execute_recruitment(recruitment_building, unit_template, player, cost){
 	player.player_current_resources -= cost
 	//mark building as exhausted
 	recruitment_building.current_state = BUILDING_STATES.exhausted
+	//Add to list of units player controls
+	ds_list_add(player.ds_active_units, unit)
 	
 	cancel_recruitment()
 	

@@ -14,8 +14,7 @@ function goto_next_turn(){
 
 function resolve_turn_start(player){
 	if (player != noone){
-		//Loop over weather and have them take effect
-		
+		count_flags(player)
 		//Loop over every unit
 		with(par_abstract_unit){
 			if(controlling_player != noone and controlling_player.id == player.id){
@@ -82,8 +81,6 @@ function resolve_turn_start_unit(unit){
 	refresh_movement(unit)
 }
 
-
-
 function resolve_turn_end(player){
 	if (player != noone){
 		//Loop over every unit
@@ -110,9 +107,12 @@ function resolve_turn_end(player){
 			}
 		}
 		player.player_current_resources += turn_income
+		
+		//check for victory
+		count_flags(player)
+		check_for_flag_victory(player)
 	}
 }
-
 
 function resolve_turn_end_unit(unit){
 	#region Building control
@@ -125,7 +125,25 @@ function resolve_turn_end_unit(unit){
 	has_acted_this_round = false;
 }
 
+function check_for_flag_victory(player){
+	if player.player_current_flag_total >= flags_to_win
+	{
+		show_debug_message("Flag victory")
+		end_game_flag_victory(player)
+	}
+}
 
+function count_flags(player){
+	var nr_controlled_flags = 0
+	with(obj_flag){
+		if (controlling_player != noone and controlling_player.id == player.id){
+			nr_controlled_flags++
+		
+		}
+	}
+	player.player_current_flag_total = nr_controlled_flags
+
+}
 function refresh_movement(unit){
 	unit.move_points_pixels_curr = unit.move_points_total_current*global.grid_cell_width
 }
@@ -139,6 +157,4 @@ function resolve_round_end(){
 		}
 	
 	}
-	//Check for EoG scoring
-
 }

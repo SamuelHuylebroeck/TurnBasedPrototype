@@ -26,15 +26,19 @@ function init_globals(){
 		global.player_permission_execute_orders = true;
 		
 	#endregion
-
+	
+	#region keybindings
 	//Querty Azerty stuff
 	global.azerty = true;
 	global.up = global.azerty?"Z":"W";
 	global.left = global.azerty?"Q":"A";
 	global.down = "S";
 	global.right = "D";
+	#endregion
 
-
+	#region victory_config
+	global.flag_control_fraction = 0.75
+	#endregion
 
 	//animation globals
 	global.unit_fade_step = 1/(room_speed);

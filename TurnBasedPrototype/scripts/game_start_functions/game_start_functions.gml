@@ -13,6 +13,9 @@ function start_game(setup_multiplayer){
 		destroy_pathfinding_grid()
 		recreate_pathfinding_grid()
 		
+		//Set up victory conditions
+		init_victory_conditions(game_control)
+		
 		//set game to running
 		global.game_in_progress = true
 		global.map_running = true;
@@ -153,7 +156,7 @@ function consume_spawn(){
 }
 function consume_linked_spawn(linked_spawn){
 	with(linked_spawn){
-		switch(object_get_parent(spawn_template)){
+		switch(object_get_parent(linked_spawn.object_index)){
 			case par_player_spawn_unit:
 				if player != noone {
 					var instance = instance_create_layer(x,y,spawn_layer,spawn_template)
@@ -175,4 +178,18 @@ function cleanup_spawns(){
 	with(obj_player_spawn){
 		instance_destroy()
 	}
+}
+
+function init_victory_conditions(game_control){
+	var total_nr_of_flags=0
+	//Total up nr of flags
+	with(obj_flag){
+		total_nr_of_flags++
+		if controlling_player != noone {
+			controlling_player.player_current_flag_total++
+		}
+	
+	}
+	game_control.flags_to_win = ceil(global.flag_control_fraction * total_nr_of_flags)
+
 }

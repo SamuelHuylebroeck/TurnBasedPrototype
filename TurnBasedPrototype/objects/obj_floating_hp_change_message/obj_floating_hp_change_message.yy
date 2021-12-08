@@ -28,8 +28,8 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "unit_actions",
-    "path": "folders/Objects/units/unit_actions.yy",
+    "name": "attack",
+    "path": "folders/Objects/units/unit_actions/attack.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_floating_hp_change_message",

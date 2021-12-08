@@ -35,6 +35,7 @@ function draw_possible_moves_selected(){
 	}
 	//Add possible attacks from current position
 	draw_attack_targets(global.selected.x, global.selected.y, global.selected.attack_profile, global.selected.controlling_player)
+	draw_create_weather(global.selected.x, global.selected.y, global.selected, global.selected.weather_profile )
 	move_grid_drawn = true;	
 }
 
@@ -55,6 +56,9 @@ function clean_possible_moves() {
 		instance_destroy();
 	}
 	with(obj_placeholder_attack_command){
+		instance_destroy();
+	}
+	with(obj_placeholder_create_weather_command){
 		instance_destroy();
 	}
 	move_grid_drawn = false;

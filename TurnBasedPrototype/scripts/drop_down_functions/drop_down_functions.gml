@@ -97,6 +97,7 @@ function expand_picker(){
 	}
 	
 	expanded=true
+	global.menu_locks[lock_index] = true
 
 }
 
@@ -110,6 +111,7 @@ function collapse_picker(){
 	}
 	ds_list_clear(ds_active_options)
 	expanded = false;
+	global.menu_locks[lock_index] = false;
 
 }
 

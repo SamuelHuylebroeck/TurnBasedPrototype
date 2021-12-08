@@ -32,11 +32,12 @@
     {"varType":0,"value":"96","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"option_width","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":0,"value":"32","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"option_height","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"-1","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"option_draw_function","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"menu_locks.ps_colour","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"lock_index","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],
   "parent": {
     "name": "drop_down_picker",
-    "path": "folders/Objects/ui/title_menus/drop_down_picker.yy",
+    "path": "folders/Objects/ui/title_menus/game_setup/drop_down_picker.yy",
   },
   "resourceVersion": "1.0",
   "name": "par_drop_down_picker",

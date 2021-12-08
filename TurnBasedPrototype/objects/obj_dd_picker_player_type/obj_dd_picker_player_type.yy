@@ -36,7 +36,7 @@
   ],
   "parent": {
     "name": "drop_down_picker",
-    "path": "folders/Objects/ui/title_menus/drop_down_picker.yy",
+    "path": "folders/Objects/ui/title_menus/game_setup/drop_down_picker.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_dd_picker_player_type",

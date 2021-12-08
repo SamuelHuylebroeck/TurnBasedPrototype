@@ -33,10 +33,11 @@
   ],
   "overriddenProperties": [
     {"propertyId":{"name":"option_draw_function","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"objectId":{"name":"par_drop_down_picker","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"value":"draw_dd_option_string","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"option_width","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"objectId":{"name":"par_drop_down_picker","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"value":"192","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "drop_down_picker",
-    "path": "folders/Objects/ui/title_menus/drop_down_picker.yy",
+    "path": "folders/Objects/ui/title_menus/game_setup/drop_down_picker.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_dd_picker_map",

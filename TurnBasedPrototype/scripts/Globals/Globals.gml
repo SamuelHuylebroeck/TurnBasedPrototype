@@ -1,7 +1,5 @@
 function init_globals(){
 	//global defaults
-	global.default_map = rm_sandbox;
-
 	#region grid and pathing
 	// Grid globals and default values
 	global.grid_left_startpos = 0;
@@ -50,6 +48,13 @@ function init_globals(){
 	create_colour_picker_options()
 	create_player_type_picker_options()
 	create_map_picker_options()
+	enum menu_locks {
+		ps_type,
+		ps_colour
+	
+	}
+	global.menu_locks[menu_locks.ps_type] = false
+	global.menu_locks[menu_locks.ps_colour] = false
 	#endregion
 	
 	#region debug
@@ -91,7 +96,9 @@ function create_player_type_picker_options(){
 function create_map_picker_options(){
 	var type = DD_PICKER_TYPES.map_picker
 	global.all_map_options = [
-		{text: "Sandbox", rm: rm_sandbox,dd_type: type},
+		{ text: "Four Corners", rm: rm_four_corners ,
+		  dd_type: type, minimap: spr_minimap_four_corners,
+		  dim: 25, grid_offset:1, max_players:4},
 	]
 
 }

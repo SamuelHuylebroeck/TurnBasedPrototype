@@ -1,3 +1,5 @@
 /// @description ??
-image_index = 2
-alarm[0] = button_press_recovery * game_get_speed(gamespeed_fps)
+if active {
+	image_index = 2
+	alarm[0] = button_press_recovery * game_get_speed(gamespeed_fps)
+}

@@ -6,7 +6,7 @@ var hover = is_mouse_hovering_over_rectangle(x, y, width, option_height)
 var click = hover && mouse_check_button_pressed(mb_left)
 
 if click{
-	if not expanded {
+	if not expanded and not global.menu_locks[lock_index] {
 		expand_picker()
 	}
 	else {

@@ -1,5 +1,4 @@
 /// @description ??
-init_globals()
 global.selected = noone;
 global.enemy_selected = noone;
 global.moving = false;

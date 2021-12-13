@@ -48,10 +48,13 @@ function init_globals(){
 	//Control
 	global.map_running = false;
 	
+	create_recruitment_options()
+	
 	#region menu globals
 	create_colour_picker_options()
 	create_player_type_picker_options()
 	create_map_picker_options()
+
 	enum menu_locks {
 		ps_type,
 		ps_colour
@@ -100,9 +103,30 @@ function create_player_type_picker_options(){
 function create_map_picker_options(){
 	var type = DD_PICKER_TYPES.map_picker
 	global.all_map_options = [
-		{ text: "Four Corners", rm: rm_four_corners ,
+		{ text: "Four Corners", rm: rm_four_corners_experimental ,
 		  dd_type: type, minimap: spr_minimap_four_corners,
 		  dim: 25, grid_offset:1, max_players:4},
+		{ text: "Forest Showdown", rm: rm_forest_showdown ,
+		  dd_type: type, minimap: spr_minimap_forest_showdown,
+		  dim: 25, grid_offset:0, max_players:2}
 	]
+
+}
+
+function create_recruitment_options(){
+	global.ds_basic_recruitment_options = ds_list_create()
+	
+	var flamesword = new recruitment_option("Flamesword", obj_unit_flamesword, 175)
+	ds_list_add(global.ds_basic_recruitment_options, flamesword)
+
+	var windsword = new recruitment_option("Windsword", obj_unit_windsword, 155)
+	ds_list_add(global.ds_basic_recruitment_options, windsword)
+	
+	var waveaxe = new recruitment_option("Wave Axe", obj_unit_waveaxe, 150)
+	ds_list_add(global.ds_basic_recruitment_options, waveaxe)
+	
+	var groundpounder = new recruitment_option("Groundpounder", obj_unit_groundpounder, 195)
+	ds_list_add(global.ds_basic_recruitment_options, groundpounder)
+
 
 }

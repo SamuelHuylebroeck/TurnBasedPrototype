@@ -112,6 +112,13 @@ function resolve_turn_end(player){
 		count_flags(player)
 		check_for_flag_victory(player)
 	}
+	//Resolve weather effects
+	with(par_weather){
+		current_duration--
+		if(current_duration <=0){
+			fade_weather()
+		}
+	}
 }
 
 function resolve_turn_end_unit(unit){
@@ -149,12 +156,12 @@ function refresh_movement(unit){
 }
 
 function resolve_round_end(){
+	show_debug_message("Resolving round end")
 	//Resolve weather effects
-	with(par_weather){
-		current_duration--
-		if(current_duration <=0){
-			fade_weather()
-		}
-	
-	}
+	//with(par_weather){
+	//	current_duration--
+	//	if(current_duration <=0){
+	//		fade_weather()
+	//	}
+	//}
 }

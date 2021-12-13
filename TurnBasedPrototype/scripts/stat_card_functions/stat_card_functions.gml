@@ -23,9 +23,17 @@ function draw_unit_stat_card(_x,_y, unit){
 	current_pos_x = tl_anchor_x
 	current_pos_y += internal_offset_y *2
 	
+	draw_line(current_pos_x,current_pos_y, current_pos_x+(frame_width-2*(internal_offset_x+initial_internal_offset_x)), current_pos_y)
+
 	#region attack stats
 	
 	current_pos_y = draw_attack_stats(current_pos_x, current_pos_y, unit.attack_profile)
+	#endregion
+	draw_line(current_pos_x,current_pos_y, current_pos_x+(frame_width-2*(internal_offset_x+initial_internal_offset_x)), current_pos_y)
+	current_pos_y += internal_offset_y *2
+	
+	#region draw boon and bane info
+	current_pos_y=draw_boon_and_bane(current_pos_x, current_pos_y, unit.ds_boons_and_banes)
 	#endregion
 
 }
@@ -65,7 +73,67 @@ function draw_unit_stats(_x, _y, unit){
 }
 	
 function draw_attack_stats(_x, _y, attack_profile){
+		
+	var current_pos_y = _y + internal_offset_y
+	var damage_line ="Damage: " + string(attack_profile.base_damage)
+	draw_text(_x,current_pos_y,damage_line);
 	
-	//show_debug_message("Draw attack stats on card")
+	current_pos_y += string_height(damage_line) + internal_offset_y
+	var piercing_line = "Piercing: " + string(attack_profile.base_piercing)
+	draw_text(_x,current_pos_y,piercing_line);
+	
+	current_pos_y += string_height(piercing_line) + internal_offset_y
+	var accuracy_line = "Accuracy: " + string(attack_profile.base_accuracy)
+	draw_text(_x,current_pos_y,accuracy_line);
+	
+	current_pos_y += string_height(accuracy_line) + internal_offset_y
+	var shapeline = "Shape: "+ get_shape_name(attack_profile)+ " ("+ string(attack_profile.base_size)+")"
+	draw_text(_x,current_pos_y,shapeline);
+	
+	current_pos_y += string_height(shapeline)+internal_offset_y
+	return current_pos_y
+
+}
+
+function get_shape_name(attack_profile){
+	switch(attack_profile.base_shape){
+		case ATTACK_SHAPES.as_line:
+			return "Line"
+		case ATTACK_SHAPES.as_cone:
+			return "Cone"
+		case ATTACK_SHAPES.as_blast:
+			return "Blast"
+		case ATTACK_SHAPES.as_wall:
+			return "Wall"
+		case ATTACK_SHAPES.as_burst:
+			return "Burst"
+		default:
+			return "Not Found"
+	
+	}
+
+}
+	
+function draw_boon_and_bane(_x,_y, ds_boons_and_banes){
+	var boon_bane_icon_scale = 2
+	var current_pos_x = _x
+	var current_pos_y = _y
+	if (ds_map_size(unit.ds_boons_and_banes) > 0)
+	{
+		var boons_and_banes = ds_map_values_to_array(unit.ds_boons_and_banes)
+		var current_pos_x = _x
+		var current_pos_y = _y
+		for(var i = 0; i <array_length(boons_and_banes);i++){
+			var icon_sprite = boons_and_banes[i].icon_sprite
+			draw_sprite_ext(icon_sprite,0,current_pos_x, current_pos_y,boon_bane_icon_scale,boon_bane_icon_scale,0,c_white,1)
+			current_pos_x += sprite_get_width(icon_sprite)*boon_bane_icon_scale
+			if current_pos_x > _x+(frame_width-2*(internal_offset_x+initial_internal_offset_x)){
+				current_pos_x = _x
+				current_pos_y += sprite_get_width(icon_sprite)*boon_bane_icon_scale
+			}
+		
+		}
+	}
+	return current_pos_y
 
 }

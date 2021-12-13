@@ -26,7 +26,7 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"spawn_template","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"objectId":{"name":"par_player_spawn_object","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"value":"obj_placeholder_unit","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"spawn_template","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"objectId":{"name":"par_player_spawn_object","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"value":"obj_unit_flamesword","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "setup",

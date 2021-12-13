@@ -39,22 +39,33 @@ function create_attack_icons(origin_unit, attack_profile){
 }
 	
 function draw_attack_preview(origin_unit, attack_profile){
+	var targets
 	//switch based on shape
 	switch (attack_profile.base_shape){
+		case ATTACK_SHAPES.as_blast:
+			targets = get_attack_blast_target_positions(x,y,origin_unit, attack_profile)
+			break;
+		case ATTACK_SHAPES.as_burst:
+			targets = get_attack_burst_target_positions(origin_unit.x,origin_unit.y,origin_unit, attack_profile)
+			break;
+		case ATTACK_SHAPES.as_cone:
+			targets = get_attack_cone_target_positions(x,y,origin_unit, attack_profile)
+			break;
 		case ATTACK_SHAPES.as_line:
 		default:
-			draw_attack_preview_line(origin_unit, attack_profile);
+			targets = get_attack_line_target_positions(x,y,origin_unit, attack_profile)
 	}
+	draw_attack_preview_targets(origin_unit, attack_profile, targets)
 	
 }
 
-function draw_attack_preview_line(origin_unit, attack_profile){
-	var targets = get_attack_line_target_positions(x,y,origin_unit, attack_profile)
+
+function draw_attack_preview_targets(origin_unit, attack_profile, targets){
 	for(var i=0; i< ds_list_size(targets);i++){
 		var target_pos = targets[| i]
 		instance_create_layer(target_pos._x, target_pos._y, "UI", obj_attack_preview)
 	}
-
+	ds_list_destroy(targets)
 }
 
 function clean_up_attack_preview(){

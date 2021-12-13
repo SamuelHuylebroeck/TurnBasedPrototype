@@ -15,7 +15,8 @@ enum ATTACK_SHAPES {
 	as_line,
 	as_burst,
 	as_cone,
-	as_blast
+	as_blast,
+	as_wall
 }
 
 enum UNIT_STATES {

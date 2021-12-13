@@ -1,9 +1,10 @@
 //@description ??
-function AbstractBoonBane(verbose_name, bb_type, duration) constructor{
+function AbstractBoonBane(verbose_name, bb_type, duration, icon_sprite) constructor{
 	self.verbose_name = verbose_name
 	self.bb_type = bb_type
 	self.duration = duration
 	self.current_duration = duration
+	self.icon_sprite = icon_sprite
 	
 	static Apply = function(unit){
 		show_debug_message("Applying abstract boon or bane")
@@ -17,6 +18,7 @@ function AbstractBoonBaneCopy(boon_bane) constructor {
 	self.bb_type = boon_bane.bb_type
 	self.duration = boon_bane.duration
 	self.current_duration = boon_bane.current_duration
+	self.icon_sprite = boon_bane.icon_sprite
 	
 	static Apply = function(unit){
 		show_debug_message("Applying abstract boon or bane")
@@ -25,7 +27,7 @@ function AbstractBoonBaneCopy(boon_bane) constructor {
 	}
 }
 
-function HealingBoonDamageBane(verbose_name,bb_type, duration, hp_change) : AbstractBoonBane(verbose_name, bb_type, duration) constructor{
+function HealingBoonDamageBane(verbose_name,bb_type, duration,icon_sprite, hp_change) : AbstractBoonBane(verbose_name, bb_type, duration,icon_sprite) constructor{
 	self.hp_change = hp_change
 	
 	static Apply = function(unit){
@@ -47,7 +49,7 @@ function HealingBoonDamageBaneCopy(boon_bane) : AbstractBoonBaneCopy(boon_bane) 
 	}	
 }
 
-function SpeedBoonSlowBane(verbose_name, bb_type, duration, speed_change) : AbstractBoonBane(verbose_name, bb_type, duration) constructor{
+function SpeedBoonSlowBane(verbose_name, bb_type, duration, icon_sprite, speed_change) : AbstractBoonBane(verbose_name, bb_type, duration,icon_sprite) constructor{
 	self.speed_change = speed_change
 	
 	static Apply = function(unit){

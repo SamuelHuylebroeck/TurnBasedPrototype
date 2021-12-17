@@ -48,5 +48,19 @@ enum DD_PICKER_TYPES{
 
 }
 
+enum WEATHER_ELEMENTS {
+	fire,
+	water,
+	wind,
+	earth
+	
+}
+
+enum WEATHER_RELATIONS {
+	fizzle,
+	overpower,
+	detonate,
+	refresh
+}
 
 #endregion

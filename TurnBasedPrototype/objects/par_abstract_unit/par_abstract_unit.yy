@@ -49,6 +49,7 @@
     {"varType":2,"value":"Placeholder","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_weather_name","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":5,"value":"obj_placeholder_weather","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_weather_template","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":1,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_weather_duration","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"WEATHER_ELEMENTS.wind","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_weather_element","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":0,"value":"1.5","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_weather_burst_size","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":1,"value":"7","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"stats_animation_hit_frame","tags":[],"resourceType":"GMObjectProperty",},
   ],

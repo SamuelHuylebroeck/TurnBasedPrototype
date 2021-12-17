@@ -64,6 +64,10 @@ function init_globals(){
 	global.menu_locks[menu_locks.ps_colour] = false
 	#endregion
 	
+	#region weather
+	define_weather_relations()
+	#endregion
+	
 	#region debug
 	global.debug_gui = false;
 	#endregion
@@ -128,5 +132,29 @@ function create_recruitment_options(){
 	var groundpounder = new recruitment_option("Groundpounder", obj_unit_groundpounder, 195)
 	ds_list_add(global.ds_basic_recruitment_options, groundpounder)
 
+
+}
+
+function define_weather_relations(){
+	global.weather_relations[WEATHER_ELEMENTS.fire][WEATHER_ELEMENTS.fire] = WEATHER_RELATIONS.refresh
+	global.weather_relations[WEATHER_ELEMENTS.fire][WEATHER_ELEMENTS.water] = WEATHER_RELATIONS.fizzle
+	global.weather_relations[WEATHER_ELEMENTS.fire][WEATHER_ELEMENTS.earth] = WEATHER_RELATIONS.detonate
+	global.weather_relations[WEATHER_ELEMENTS.fire][WEATHER_ELEMENTS.wind] = WEATHER_RELATIONS.overpower
+
+
+	global.weather_relations[WEATHER_ELEMENTS.water][WEATHER_ELEMENTS.fire] = WEATHER_RELATIONS.overpower
+	global.weather_relations[WEATHER_ELEMENTS.water][WEATHER_ELEMENTS.water] = WEATHER_RELATIONS.refresh
+	global.weather_relations[WEATHER_ELEMENTS.water][WEATHER_ELEMENTS.earth] = WEATHER_RELATIONS.fizzle
+	global.weather_relations[WEATHER_ELEMENTS.water][WEATHER_ELEMENTS.wind] = WEATHER_RELATIONS.detonate
+	
+	global.weather_relations[WEATHER_ELEMENTS.earth][WEATHER_ELEMENTS.fire] = WEATHER_RELATIONS.detonate
+	global.weather_relations[WEATHER_ELEMENTS.earth][WEATHER_ELEMENTS.water] = WEATHER_RELATIONS.overpower
+	global.weather_relations[WEATHER_ELEMENTS.earth][WEATHER_ELEMENTS.earth] = WEATHER_RELATIONS.refresh
+	global.weather_relations[WEATHER_ELEMENTS.earth][WEATHER_ELEMENTS.wind] = WEATHER_RELATIONS.fizzle
+	
+	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.fire] = WEATHER_RELATIONS.fizzle
+	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.water] = WEATHER_RELATIONS.detonate
+	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.earth] = WEATHER_RELATIONS.overpower
+	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.wind] = WEATHER_RELATIONS.refresh
 
 }

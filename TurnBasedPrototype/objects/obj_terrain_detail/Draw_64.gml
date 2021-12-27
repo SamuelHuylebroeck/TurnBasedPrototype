@@ -35,7 +35,10 @@ if(global.map_running){
 
 	var avoid_text = "AVO: " + string(terrain_avoid_modifier)
 	draw_text(current_pos_x,current_pos_y, avoid_text);
+	current_pos_y += string_height(avoid_text)
 	
+	var position_text=string(floor(mouse_x/global.grid_cell_width))+","+string(floor(mouse_y/global.grid_cell_height))
+	draw_text(current_pos_x,current_pos_y, position_text);
 	draw_set_font(old_font);
 	draw_set_color(old_color);
 	draw_set_halign(old_align);

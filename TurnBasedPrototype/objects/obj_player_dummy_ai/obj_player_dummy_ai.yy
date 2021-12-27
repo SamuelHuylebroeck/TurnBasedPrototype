@@ -1,15 +1,12 @@
 {
-  "spriteId": {
-    "name": "spr_recruiting_tower",
-    "path": "sprites/spr_recruiting_tower/spr_recruiting_tower.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "par_recruitment_building",
-    "path": "objects/par_recruitment_building/par_recruitment_building.yy",
+    "name": "par_player",
+    "path": "objects/par_player/par_player.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -23,17 +20,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "buildings",
-    "path": "folders/Objects/terrain/buildings.yy",
+    "name": "flow",
+    "path": "folders/Objects/control/flow.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_recruiting_tower",
+  "name": "obj_player_dummy_ai",
   "tags": [],
   "resourceType": "GMObject",
 }

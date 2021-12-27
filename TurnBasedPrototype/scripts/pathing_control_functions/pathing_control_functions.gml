@@ -95,6 +95,12 @@ function get_center_of_cell(cell_x, cell_y){
 	result[1] = cell_y * global.grid_cell_height + global.grid_cell_height/2;
 	return result;
 }
+
+function get_center_of_tile_for_pixel_position(pixel_x, pixel_y){
+	var cell_x = floor(pixel_x/global.grid_cell_width)
+	var cell_y  =floor(pixel_y/global.grid_cell_height)
+	return get_center_of_cell(cell_x,cell_y);
+}
 	
 	
 function navigate(unit, start_x, start_y, end_x, end_y){

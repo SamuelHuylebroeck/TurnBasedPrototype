@@ -29,8 +29,8 @@
     {"propertyId":{"name":"income_per_turn","path":"objects/par_income_building/par_income_building.yy",},"objectId":{"name":"par_income_building","path":"objects/par_income_building/par_income_building.yy",},"value":"50","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "terrain",
-    "path": "folders/Objects/terrain.yy",
+    "name": "buildings",
+    "path": "folders/Objects/terrain/buildings.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_village",

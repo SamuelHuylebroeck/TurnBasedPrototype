@@ -56,7 +56,7 @@ function take_player_turn(){
 		if(instance_position(mouse_x,mouse_y,obj_move_possible) and global.player_permission_execute_orders)
 		{
 			global.moving = true;
-		
+			revoke_player_control()
 			with(global.selected){
 				var w = global.grid_cell_width;
 				var h = global.grid_cell_height;
@@ -85,6 +85,7 @@ function take_player_turn(){
 			if(path_index == -1)
 			{
 				global.moving = false;
+				restore_player_control()
 				is_moving = false;
 				current_state = UNIT_STATES.idle
 				if(move_points_pixels_curr >= global.grid_cell_width && !has_acted_this_round){

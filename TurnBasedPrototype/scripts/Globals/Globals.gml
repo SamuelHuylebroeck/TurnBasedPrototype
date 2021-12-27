@@ -19,13 +19,15 @@ function init_globals(){
 	#endregion
 	
 	#region player permissions
-		//camera control
-		global.camera_controllable = true;
+	//camera control
+	global.camera_controllable = true;
 		
-		global.player_permission_selection = true;
-		global.player_permission_execute_orders = true;
+	global.player_permission_selection = true;
+	global.player_permission_execute_orders = true;
 		
 	#endregion
+	
+	define_ai_globals()
 	
 	#region keybindings
 	//Querty Azerty stuff
@@ -70,6 +72,8 @@ function init_globals(){
 	
 	#region debug
 	global.debug_gui = false;
+	global.debug_ai = true;
+	global.debug_ai_raider_taskforces = true;
 	#endregion
 }
 
@@ -100,7 +104,8 @@ function create_player_type_picker_options(){
 	var type = DD_PICKER_TYPES.player_type_picker
 	global.all_player_type_options = [
 		{text: "Human", template: obj_player_human,dd_type: type},
-		{text: "Dummy AI", template: obj_player_ai,dd_type: type}
+		{text: "Dummy AI", template: obj_player_dummy_ai,dd_type: type},
+		{text: "Balanced AI", template: obj_player_ai_balanced,dd_type: type}
 	]
 }
 
@@ -156,5 +161,11 @@ function define_weather_relations(){
 	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.water] = WEATHER_RELATIONS.detonate
 	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.earth] = WEATHER_RELATIONS.overpower
 	global.weather_relations[WEATHER_ELEMENTS.wind][WEATHER_ELEMENTS.wind] = WEATHER_RELATIONS.refresh
+
+}
+	
+function define_ai_globals(){
+	global.ai_turn_in_progress = false
+	global.ai_turn_completed = false
 
 }

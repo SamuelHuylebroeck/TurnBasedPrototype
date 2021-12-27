@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "terrain",
-    "path": "folders/Objects/terrain.yy",
+    "name": "buildings",
+    "path": "folders/Objects/terrain/buildings.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_flag",

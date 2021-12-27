@@ -63,4 +63,36 @@ enum WEATHER_RELATIONS {
 	refresh
 }
 
+enum AI_TURN_CONTROLLER_STATES {
+	task_force_management,
+	recruitment,
+	task_force_execution,
+	done
+
+}
+
+enum TASKFORCE_AI_STANCE {
+	expanding,
+	attacking,
+	defending
+}
+
+enum TASKFORCE_TYPES
+{
+	raider,
+	attacker,
+	defender
+}
+enum TASKFORCE_STANCES {
+	mustering,
+	retreating,
+	advancing
+}
+
+enum OBJECTIVE_TYPES {
+	capture,
+	kill,
+	guard
+}
+
 #endregion

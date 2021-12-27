@@ -5,8 +5,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "par_player",
-    "path": "objects/par_player/par_player.yy",
+    "name": "par_player_taskforce_ai",
+    "path": "objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -20,15 +20,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "flow",
-    "path": "folders/Objects/control/flow.yy",
+    "name": "taskforce_ai",
+    "path": "folders/Objects/control/taskforce_ai.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player_ai",
+  "name": "obj_player_ai_balanced",
   "tags": [],
   "resourceType": "GMObject",
 }

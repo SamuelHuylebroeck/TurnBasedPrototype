@@ -91,6 +91,10 @@ function draw_attack_stats(_x, _y, attack_profile){
 	draw_text(_x,current_pos_y,shapeline);
 	
 	current_pos_y += string_height(shapeline)+internal_offset_y
+	var range_line = "Range: "+ string(attack_profile.min_range) + "-"+ string(attack_profile.max_range)
+	draw_text(_x,current_pos_y,range_line);
+	
+	current_pos_y += string_height(range_line)+internal_offset_y
 	return current_pos_y
 
 }

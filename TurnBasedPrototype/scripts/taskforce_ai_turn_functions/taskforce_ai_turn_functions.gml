@@ -5,7 +5,7 @@ function take_task_force_ai_turn(taskforce_player){
 		show_debug_message("Taking Taskforce AI turn")
 		global.ai_turn_in_progress = true
 		global.ai_turn_completed = false
-		var controller = instance_create_layer(0,0,"Logic", obj_ai_turn_controller)
+		controller = instance_create_layer(0,0,"Logic", obj_ai_turn_controller)
 		with(controller){
 			linked_ai_player = taskforce_player
 			active = true
@@ -21,8 +21,10 @@ function take_task_force_ai_turn(taskforce_player){
 		global.ai_turn_in_progress = false
 		global.ai_turn_completed = false
 		restore_player_control()
-		
-		goto_next_turn()
+		instance_destroy(controller)
+		controller = noone
+		alarm[0]=1
+
 	
 	}
 	#endregion
@@ -34,12 +36,27 @@ function take_task_force_ai_turn(taskforce_player){
 function revoke_player_control(){
 	global.player_permission_selection = false;
 	global.player_permission_execute_orders = false;
+	global.player_permission_click_next_turn = false;
+	with(obj_next_turn_button){
+		visible= false
+	}
+	with(obj_camera){
+		player_in_control = false
+		pan_camera_to_center_on_position(camera_get_view_x(camera)+camera_width/2,camera_get_view_y(camera)+camera_height/2,0.1)
+	}
 
 }
 
 function restore_player_control(){
 	global.player_permission_selection = true;
 	global.player_permission_execute_orders = true;
+	global.player_permission_click_next_turn = true;
+	with(obj_next_turn_button){
+		visible=true
+	}
+	with(obj_camera){
+		player_in_control = true
+	}
 
 }
 
@@ -89,7 +106,28 @@ function execute_task_force_management(taskforce_player){
 }
 
 function execute_taskforce_recruitment(taskforce_player){
-	show_debug_message("Executing recruitment")
+	if(not current_state_initialized){
+		initialize_taskforce_recruitment(taskforce_player)
+		current_state_initialized = true
+	}
+
+	if (current_task_executor.executor_state == TASK_STATES.done){
+		instance_destroy(current_task_executor)
+		current_task_executor = noone
+		current_state_initialized = false
+		current_state = AI_TURN_CONTROLLER_STATES.task_force_execution
+	}	
+	
+
+
+}
+
+function initialize_taskforce_recruitment(taskforce_player){
+	show_debug_message("init recruitment")
+	#region create and configure task executor
+	current_task_executor = instance_create_layer(0,0,"Logic", obj_recruitment_task_executor)
+	var executor_queue = current_task_executor.recruitment_task_queue
+	#endregion
 	#region gather all taskforce requests
 	var request_list = ds_list_create()
 	with(taskforce_player){
@@ -105,7 +143,7 @@ function execute_taskforce_recruitment(taskforce_player){
 	var rec_req_priority = construct_recruitment_priority_queue(request_list, taskforce_player)
 	#endregion
 	#region consume queue and create tasks and add them to the execution queue
-	generate_recruitment_tasks(rec_req_priority, taskforce_player)
+	generate_recruitment_tasks(rec_req_priority, taskforce_player, executor_queue)
 	#endregion
 	#region cleanup
 	for(var i=0; i<ds_list_size(request_list);i++)
@@ -115,15 +153,42 @@ function execute_taskforce_recruitment(taskforce_player){
 	}
 	ds_list_destroy(request_list)
 	ds_priority_destroy(rec_req_priority)
-	
 	#endregion
-	current_state = AI_TURN_CONTROLLER_STATES.task_force_execution
-
-
+	
+	current_task_executor.alarm[0] = 1
 }
 
 function execute_task_force_execution(taskforce_player){
-	show_debug_message("Executing task force execution")
-	current_state = AI_TURN_CONTROLLER_STATES.done
+	
+	if(not current_state_initialized){
+		initialize_taskforce_execution(taskforce_player)
+		current_state_initialized = true
+	}
 
+	if (current_task_executor.executor_state == TASK_STATES.done){
+		instance_destroy(current_task_executor)
+		current_task_executor = noone
+		current_state_initialized = false
+		current_state = AI_TURN_CONTROLLER_STATES.done
+	}	
+
+}
+
+function initialize_taskforce_execution(taskforce_player){
+	show_debug_message("init unit execution")
+	#region create and configure task executor
+	current_task_executor = instance_create_layer(0,0,"Logic", obj_unit_task_executor)
+	var taskforce_queue = current_task_executor.taskforce_queue
+	#endregion
+
+	#region Add all taskforces to the queue
+	with(taskforce_player){
+		for(var i=0; i<ds_list_size(ds_list_taskforces);i++){
+			var tf = ds_list_taskforces[|i]
+			ds_queue_enqueue(taskforce_queue, tf)
+		}
+	}
+	
+	#endregion
+	current_task_executor.alarm[0] = 1
 }

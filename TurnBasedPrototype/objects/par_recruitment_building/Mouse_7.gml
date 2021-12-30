@@ -1,5 +1,5 @@
 /// @description Create Recruitment Opportunity
-if (controlling_player != noone) {
+if (controlling_player != noone and current_state == BUILDING_STATES.ready) {
 
 	var active_player = get_current_active_player()
 	var occupying_unit = instance_position(x,y, par_abstract_unit)

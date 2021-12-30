@@ -10,10 +10,12 @@ if active {
 		case AI_TURN_CONTROLLER_STATES.task_force_execution:
 			execute_task_force_execution(linked_ai_player)
 			break;
-	
 		case AI_TURN_CONTROLLER_STATES.done:
-		default:
 			global.ai_turn_completed = true
+			break;
+		default:
+			show_debug_message("AI controller state is undefined")
+			
 	}
 
 

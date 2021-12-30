@@ -33,6 +33,8 @@
     {"varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"ds_queue_taskforce_objectives","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"current_objective","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":4,"value":"TASKFORCE_STANCES.mustering","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"taskforce_stance","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"dummy_taskforce_action_scoring_function","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"taskforce_action_scoring_function","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":4,"value":"get_taskforce_recruitment_request_placeholder","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"taskforce_recruitment_request_function","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],
   "parent": {

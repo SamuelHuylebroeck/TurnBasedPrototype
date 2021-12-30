@@ -4,6 +4,7 @@ function goto_next_turn(){
 	resolve_turn_end(ds_turn_order[| current_active_player_index])
 	//Advance to next player
 	current_active_player_index++
+	show_debug_message("Player_index "+string(current_active_player_index))
 	if (current_active_player_index>=ds_list_size(ds_turn_order)){
 		current_active_player_index = current_active_player_index%ds_list_size(ds_turn_order)
 		current_round++
@@ -26,7 +27,7 @@ function resolve_turn_start(player){
 }
 
 function resolve_turn_start_unit(unit){
-	show_debug_message("Resolving unit start of turn")
+	//show_debug_message("Resolving unit start of turn")
 	//Prep movement
 	unit.move_points_total_current = unit.unit_profile.base_movement
 	

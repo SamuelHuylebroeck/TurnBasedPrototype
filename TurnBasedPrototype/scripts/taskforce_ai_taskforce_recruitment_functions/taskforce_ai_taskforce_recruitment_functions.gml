@@ -11,15 +11,6 @@ function get_task_force_recruitment_request(taskforce, taskforce_player){
 
 }
 
-function get_taskforce_recruitment_request_placeholder(ds_request_queue, taskforce, taskforce_player){
-	var placeholder_request = {
-		template: obj_unit_flamesword,
-		tf: taskforce
-		}
-	ds_queue_enqueue(ds_request_queue, placeholder_request)
-
-}
-
 function construct_recruitment_priority_queue(ds_requests_list, taskforce_player){
 	var priority_queue = ds_priority_create()
 	//loop over list
@@ -66,11 +57,13 @@ function score_taskforce_type(taskforce, player){
 	return player.recruitment_type_matrix[player.player_stance][taskforce.taskforce_type]
 }
 
-function generate_recruitment_tasks(rec_req_priority, taskforce_player){
+function generate_recruitment_tasks(rec_req_priority, taskforce_player, executor_queue){
 	#region gather up available recruitment buildings
 	var ds_list_recruitment_buildings = ds_list_create()
 	with(par_recruitment_building){
-		if(controlling_player != noone and controlling_player.id == taskforce_player.id and current_state = BUILDING_STATES.ready){
+		if(controlling_player != noone 
+			and controlling_player.id == taskforce_player.id 
+			and current_state = BUILDING_STATES.ready){
 			ds_list_add(ds_list_recruitment_buildings, id)
 		}
 	}
@@ -82,9 +75,14 @@ function generate_recruitment_tasks(rec_req_priority, taskforce_player){
 		if can_recruit(next_opportunity.template,cost, taskforce_player)
 		{
 			var selected_building = select_closest_available_recruitment_building(next_opportunity, ds_list_recruitment_buildings)
-			var index_to_remove = ds_list_find_index(ds_list_recruitment_buildings, selected_building)
-			ds_list_delete(ds_list_recruitment_buildings, index_to_remove)
-			create_recruitment_task_from_opportunity(next_opportunity.template, taskforce_player, next_opportunity.tf, selected_building, cost)
+			if(selected_building != noone)
+			{
+				var selected_position = select_closest_position(selected_building, next_opportunity.tf)
+				var index_to_remove = ds_list_find_index(ds_list_recruitment_buildings, selected_building)
+				ds_list_delete(ds_list_recruitment_buildings, index_to_remove)
+				var rec_task = create_recruitment_task_from_opportunity(next_opportunity.template,selected_position, taskforce_player, next_opportunity.tf, selected_building, cost)
+				ds_queue_enqueue(executor_queue,rec_task)
+			}
 		}
 	}
 	ds_list_destroy(ds_list_recruitment_buildings)
@@ -118,15 +116,50 @@ function select_closest_available_recruitment_building(opportunity, ds_list_buil
 		var building = ds_list_buildings[|i]
 		var distance = point_distance(position_to_consider._x, position_to_consider._y,building.x, building.y)
 		if distance < closest_distance{
-			closest_distance = distance
-			closest_building = building
+			if select_closest_position(building, opportunity.tf)!= noone
+			{
+				closest_distance = distance
+				closest_building = building
+			}
 		}
 	}
 	
 	return closest_building
 }
 
-function create_recruitment_task_from_opportunity(template, player, taskforce, recruitment_building, cost){
-	if (global.debug_ai) log_recruitment_task_creation(template, player, taskforce, recruitment_building, cost)
-
+function select_closest_position(recruitment_building, taskforce){
+	var positions = get_available_recruitment_tiles(recruitment_building)
+		//Closest to the taskforce's current objective, or it's home if the objective is missing
+	var  position_to_consider = {
+		_x: taskforce.home_x,
+		_y: taskforce.home_y
+	}
+	if taskforce.current_objective != noone {
+		position_to_consider ={
+			_x: taskforce.current_objective.target.x,
+			_y: taskforce.current_objective.target.y
+		}
+	}
+	var closest_position = noone
+	var closest_distance = room_width*room_width + room_height*room_height
+	for(var i = 0; i<ds_list_size(positions);i++)
+	{
+		var position = positions[|i]
+		var distance = point_distance(position_to_consider._x, position_to_consider._y,position._x, position._y)
+		if distance < closest_distance{
+			closest_distance = distance
+			closest_position = position
+		}
+	}
+	ds_list_destroy(positions)
+	return closest_position
+	
+}
+function create_recruitment_task_from_opportunity(template, position, player, taskforce, recruitment_building, cost){
+	if (global.debug_ai) log_recruitment_task_creation(template, position, player, taskforce, recruitment_building, cost)
+	var rec_task = instance_create_layer(0,0,"Logic", obj_recruitment_task)
+	with(rec_task){
+		recruitment_details = new RecruitmentTaskDetail(template,position, player, taskforce, recruitment_building, cost)
+	}
+	return rec_task
 }

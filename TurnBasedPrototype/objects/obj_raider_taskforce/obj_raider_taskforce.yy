@@ -29,6 +29,8 @@
   ],
   "overriddenProperties": [
     {"propertyId":{"name":"objective_queue_max_size","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_action_scoring_function","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"raider_taskforce_action_scoring_function","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_max_size","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"3","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "taskforces",

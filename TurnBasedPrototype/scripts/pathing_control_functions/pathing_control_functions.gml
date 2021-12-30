@@ -75,7 +75,6 @@ function add_impassible_tiles_to_grid(this_unit){
 			mp_grid_add_instances(global.map_grid,self,false);
 		}
 	}
-
 }
 
 function get_center_of_occupied_tile(occupier){
@@ -117,4 +116,21 @@ function navigate(unit, start_x, start_y, end_x, end_y){
 			return true;
 		}
 	}
+}
+
+function can_navigate_unit(unit, grid, path, target_x, target_y){
+	return can_navigate(grid,path, unit.x,unit.y,target_x,target_y)
+}
+
+function can_navigate(grid,path, start_x, start_y, target_x,target_y){
+	return mp_grid_path(grid,path, start_x,start_y,target_x,target_y,global.path_allow_diag)
+}
+
+function get_path_length(grid,path,start_x,start_y, target_x,target_y){
+	if can_navigate(grid,path, start_x, start_y, target_x,target_y){
+		return path_get_length(path)	
+	}else{
+		return -1
+	}
+
 }

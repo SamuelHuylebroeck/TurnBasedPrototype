@@ -22,7 +22,9 @@
   "physicsShapePoints": [],
   "eventList": [],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"taskforce_type","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"TASKFORCE_TYPES.defender","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "taskforces",
     "path": "folders/Objects/control/taskforce_ai/taskforces.yy",

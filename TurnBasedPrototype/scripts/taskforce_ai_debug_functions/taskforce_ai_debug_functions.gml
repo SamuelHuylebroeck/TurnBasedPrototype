@@ -5,7 +5,8 @@ function draw_objectives_in_queue(ds_objective_queue){
 	while(not ds_queue_empty(copied_queue))
 	{
 		var objective = ds_queue_dequeue(copied_queue)
-		draw_objective(objective)
+		if objective != undefined
+			draw_objective(objective)
 	}
 	
 	ds_queue_destroy(copied_queue)
@@ -38,12 +39,12 @@ function draw_capture_objective(objective, objective_colour){
 
 }
 	
-function log_recruitment_task_creation(template, player, taskforce, recruitment_building,cost){
+function log_recruitment_task_creation(template, position, player, taskforce, recruitment_building,cost){
 	show_debug_message("---RT("+template.stats_name+"): " +string(cost) +"---")
 	show_debug_message("P:" +string(player.id)+" TF: "+string(taskforce.id))
 	var recruit_pos = {
-		_x: floor(recruitment_building.x/global.grid_cell_width),
-		_y: floor(recruitment_building.y/global.grid_cell_width)
+		_x: floor(position._x/global.grid_cell_width),
+		_y: floor(position._y/global.grid_cell_width)
 	}
 	show_debug_message("("+string(recruit_pos._x)+","+string(recruit_pos._y)+"): " +string(recruitment_building.id))
 	show_debug_message("---/RT---")

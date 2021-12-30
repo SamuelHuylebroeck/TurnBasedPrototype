@@ -9,7 +9,7 @@ if(hover && global.map_running)
 	highlighted = false;
 }
 
-if(visible && click && global.map_running)
+if(visible && click && global.map_running && global.player_permission_click_next_turn)
 {
 	with(obj_control){
 		goto_next_turn();

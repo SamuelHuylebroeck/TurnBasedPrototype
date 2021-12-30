@@ -18,7 +18,7 @@ if global.debug_ai and global.debug_ai_raider_taskforces {
 	var old_alpha = draw_get_alpha()
 	draw_set_alpha(0.2)
 	draw_circle_color(home_x,home_y,global.grid_cell_width/2, c_red, c_yellow, false)
-	draw_line_color(x,y,home_x, home_y, c_red, c_yellow)
+	draw_line_width_color(x,y,home_x, home_y,2, c_green, c_green)
 	//Draw ZOI
 	draw_set_alpha(0.1)
 	draw_circle_color(x,y,zoi_tile_radius * global.grid_cell_width, c_yellow, c_red, false)
@@ -29,5 +29,10 @@ if global.debug_ai and global.debug_ai_raider_taskforces {
 	}
 	//Draw objectives in queue
 	draw_objectives_in_queue(ds_queue_taskforce_objectives)
+	//Draw units
+	for(var i=0; i<ds_list_size(ds_list_taskforce_units);i++){
+		var unit = ds_list_taskforce_units[|i]
+		draw_line_width_color(x,y,unit.x, unit.y,2, c_blue, c_green)
+	}
 	
 }

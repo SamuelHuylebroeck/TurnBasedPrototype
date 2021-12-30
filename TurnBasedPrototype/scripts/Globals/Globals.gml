@@ -24,6 +24,8 @@ function init_globals(){
 		
 	global.player_permission_selection = true;
 	global.player_permission_execute_orders = true;
+	
+	global.player_permission_click_next_turn = true;
 		
 	#endregion
 	
@@ -74,6 +76,7 @@ function init_globals(){
 	global.debug_gui = false;
 	global.debug_ai = true;
 	global.debug_ai_raider_taskforces = true;
+	global.debug_camera = true
 	#endregion
 }
 

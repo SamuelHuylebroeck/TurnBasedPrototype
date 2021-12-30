@@ -58,9 +58,10 @@ function max_out_raider_taskforces_radial_distribution(taskforce_player, max_cou
 
 function raider_task_force_occupies_zone(ds_list_taskforces, zone_x,zone_y){
 	var result = false;
+	var justified_zone_coordinates= get_center_of_tile_for_pixel_position(zone_x,zone_y)
 	for(var i=0; i< ds_list_size(ds_list_taskforces); i++){
 		var tf = ds_list_taskforces[|i]
-		if tf.x == zone_x and tf.y == zone_y
+		if tf.x == justified_zone_coordinates[0] and tf.y == justified_zone_coordinates[1]
 		{
 			return true
 		}

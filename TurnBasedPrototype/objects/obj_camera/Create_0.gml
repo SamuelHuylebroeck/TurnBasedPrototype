@@ -3,9 +3,6 @@
 
 //Variable declaration
 camera = view_camera[0];
-//dragging
-drag_room_x = 0;
-drag_room_y = 0;
 
 //panning
 camera_pan_step = 16;

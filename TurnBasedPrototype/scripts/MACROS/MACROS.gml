@@ -95,4 +95,15 @@ enum OBJECTIVE_TYPES {
 	guard
 }
 
+enum TASK_STATES {
+	waiting,
+	in_progress,
+	done
+}
+
+enum ACTION_TYPES {
+	move,
+	move_and_attack,
+	move_and_skill
+}
 #endregion

@@ -24,8 +24,17 @@ if initialized {
 
 	draw_set_color(old_color)
 
-	if click and can_recruit {
-		execute_recruitment(recruitment_building,recruitment_option_detail.unit, recruiting_player, recruitment_option_detail.cost)
-
+	if visible and click and can_recruit {
+		//Create recruitment placement choices
+		with(par_recruitment_dialog){
+			visible = false
+		}
+		with(par_recruitment_option){
+			visible= false
+		}
+		with(obj_recruitment_dialog_cancel){
+			visible = true
+		}
+		create_recruitment_placement_opportunities(recruitment_building, recruitment_option_detail.unit,recruiting_player,recruitment_option_detail.cost)
 	}
 }

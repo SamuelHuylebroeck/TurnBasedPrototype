@@ -51,6 +51,19 @@ function update_objectives(ai_player, taskforce_type, ds_list_taskforces){
 	}
 
 }
+
+function update_objectives_taskforce(taskforce, ai_player){
+	switch(taskforce.object_index){
+		case obj_raider_taskforce:
+			update_objectives_raider_taskforce(taskforce, ai_player)
+			break;
+		default:
+			show_debug_message("Taskforce of type " + string(taskforce.taskforce_type) + " does not have an objective update function yet")
+			
+	}
+
+}
+
 function update_objectives_raider_taskforce(taskforce, ai_player){
 	//Check if current objective is completed
 	var complete = is_objective_completed(taskforce.current_objective, taskforce, ai_player)
@@ -178,7 +191,13 @@ function is_objective_completed(objective, taskforce, ai_player){
 }
 
 function is_capture_objective_completed(objective, taskforce, ai_player){
-	return objective.target.controlling_player.id == ai_player.id
+	var objective_already_captured = objective.target.controlling_player != noone and objective.target.controlling_player.id == ai_player.id
+	var objective_will_be_captured = false
+	var unit_at_position = instance_position(objective.target.x, objective.target.y , par_abstract_unit)
+	if unit_at_position != noone{
+		objective_will_be_captured = (unit_at_position.controlling_player!=noone and unit_at_position.controlling_player.id == ai_player.id)
+	}	
+	return objective_already_captured or objective_will_be_captured
 
 }
 

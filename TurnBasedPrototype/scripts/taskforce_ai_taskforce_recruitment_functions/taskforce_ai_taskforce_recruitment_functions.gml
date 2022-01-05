@@ -2,6 +2,9 @@
 function get_task_force_recruitment_request(taskforce, taskforce_player){
 	var ds_tf_request_queue = ds_queue_create()
 	switch(taskforce.object_index){
+		case obj_raider_taskforce:
+			get_raider_taskforce_recruitment_request(ds_tf_request_queue,taskforce, taskforce_player)
+			break;
 		default:
 			get_taskforce_recruitment_request_placeholder(ds_tf_request_queue,taskforce, taskforce_player)
 			break;
@@ -89,8 +92,14 @@ function generate_recruitment_tasks(rec_req_priority, taskforce_player, executor
 }
 
 function get_unit_cost(template, player){
-	//Todo replace with cost sourced from player
-	return 100
+	var cost = 100
+	for(var i=0; i<ds_list_size(player.ds_recruitment_options);i++){
+		var ro = player.ds_recruitment_options[|i]
+		if ro.unit == template {
+			cost= ro.cost
+		}
+	}
+	return cost
 
 }
 

@@ -49,3 +49,17 @@ function log_recruitment_task_creation(template, position, player, taskforce, re
 	show_debug_message("("+string(recruit_pos._x)+","+string(recruit_pos._y)+"): " +string(recruitment_building.id))
 	show_debug_message("---/RT---")
 }
+
+function get_stance_verbose_name(stance){
+	switch(stance){
+		case TASKFORCE_STANCES.advancing:
+			return "Advancing"
+		case TASKFORCE_STANCES.mustering:
+			return "Mustering"
+		case TASKFORCE_STANCES.retreating:
+			return "Retreating"
+		default:
+			return "Undefined"
+	}
+	
+}

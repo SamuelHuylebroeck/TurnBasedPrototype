@@ -1,3 +1,30 @@
+function placeholder_max_out_taskforce(ai_player, taskforce_template, max_count){
+	//Current count
+	var count = 0
+	for (var i=0; i< ds_list_size(ai_player.ds_list_taskforces); i++){
+		tf_type = ai_player.ds_list_taskforces[|i].object_index
+		if tf_type == taskforce_template {
+			count++
+		}
+		
+	}
+	//Max up count
+	if count < max_count{
+		repeat(max_count - count){
+			var new_tf = instance_create_layer(0,0,"Taskforces", taskforce_template)
+			with(new_tf){
+				taskforce_player = ai_player 
+			}
+			
+			with(ai_player){
+				ds_list_add(ds_list_taskforces, new_tf)
+			}
+		}
+	}
+
+}
+	
+
 //@description ??
 function create_raider_taskforce(pos_x, pos_y, zoi_radius, taskforce_player){
 	//Get the closest owned recruitment building
@@ -31,7 +58,6 @@ function get_closest_controlled_recruitment_building(pos_x, pos_y, player){
 	}
 	return closest
 }
-
  
 function max_out_raider_taskforces_radial_distribution(taskforce_player, max_count){
 	#region Get positions and zone of interests
@@ -92,9 +118,9 @@ function get_radial_distribution_on_map(offset_angle, nr_sections){
 		var current_angle = offset_angle
 		repeat(nr_sections){
 			var new_circle ={
-				_x: middle._x + lengthdir_x(2*inner_radius/3, current_angle),
-				_y: middle._y + lengthdir_y(2*inner_radius/3, current_angle),
-				r: outer_radius/2
+				_x: middle._x + lengthdir_x(inner_radius/2, current_angle),
+				_y: middle._y + lengthdir_y(inner_radius/2, current_angle),
+				r: inner_radius/2
 			}
 			ds_queue_enqueue(queue_circles, new_circle)
 			current_angle += step

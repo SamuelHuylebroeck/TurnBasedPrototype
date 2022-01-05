@@ -43,6 +43,7 @@
     {"propertyId":{"name":"stats_weather_template","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"obj_weather_unsteady_ground","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_attack_max_range","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_weather_element","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"WEATHER_ELEMENTS.earth","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"stats_weather_benign","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "groundpounder",

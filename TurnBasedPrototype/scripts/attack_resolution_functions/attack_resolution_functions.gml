@@ -1,26 +1,32 @@
 function create_attack_effect_objects(ds_attack_effect_objects, origin_unit, attack_profile){
-	var targets
-	switch (attack_profile.base_shape){
-		case ATTACK_SHAPES.as_blast:
-			targets = get_attack_blast_target_positions(x,y,origin_unit, attack_profile)
-			break;
-		case ATTACK_SHAPES.as_burst:
-			targets = get_attack_burst_target_positions(origin_unit.x,origin_unit.y, origin_unit, attack_profile)
-			break;
-		case ATTACK_SHAPES.as_cone:
-			targets = get_attack_cone_target_positions(x,y, origin_unit, attack_profile);
-			break;
-		case ATTACK_SHAPES.as_line:
-		default:
-			targets = get_attack_line_target_positions(x,y, origin_unit, attack_profile);
-	}
+	var targets = get_attack_target_tiles(origin_unit.x, origin_unit.y,x,y,origin_unit, attack_profile)
 	for(var i=0; i< ds_list_size(targets);i++){
 		var target_pos = targets[| i]
 		create_attack_effect_object_at_location(i, target_pos._x, target_pos._y,  origin_unit, attack_profile);
 		
 	}
 	ds_list_destroy(targets)
-} 
+}
+
+function get_attack_target_tiles(origin_x, origin_y, target_x, target_y, origin_unit, attack_profile){
+	var target_tiles = ds_list_create();
+	switch(attack_profile.base_shape){
+		case ATTACK_SHAPES.as_blast:
+			target_tiles = get_attack_blast_target_positions(target_x,target_y,origin_unit, attack_profile)
+			break;
+		case ATTACK_SHAPES.as_burst:
+			target_tiles = get_attack_burst_target_positions(origin_x,origin_y, target_x, target_y, origin_unit, attack_profile)
+			break;
+		case ATTACK_SHAPES.as_cone:
+			target_tiles = get_attack_cone_target_positions(origin_x, origin_y, target_x,target_y, origin_unit, attack_profile);
+			break;
+		case ATTACK_SHAPES.as_line:
+		default:
+			target_tiles = get_attack_line_target_positions(origin_x, origin_y, target_x,target_y, origin_unit, attack_profile);
+	}
+	return target_tiles
+
+}
 
 function create_attack_effect_object_at_location(i, _x, _y, origin_unit, attack_profile){
 	var instance = instance_create_layer(_x, _y, "Weather", obj_placeholder_attack_hit_effect)

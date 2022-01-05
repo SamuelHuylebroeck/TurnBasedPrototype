@@ -46,8 +46,6 @@ function init_globals(){
 
 	//animation globals
 	global.unit_fade_step = 1/(room_speed);
-	global.ai_combat_startup_delay_seconds = 0.5
-	global.ai_combat_end_sequence_delay_seconds = 0.5
 
 	//Control
 	global.map_running = false;
@@ -75,9 +73,18 @@ function init_globals(){
 	#region debug
 	global.debug_gui = false;
 	global.debug_ai = true;
+	global.debug_ai_generic_taskforces_scoring = true
 	global.debug_ai_raider_taskforces = true;
-	global.debug_camera = true
+	global.debug_ai_raider_taskforces_scoring = true;
+	global.debug_ai_raider_taskforces_execution = false;
+	global.debug_camera = false
 	#endregion
+	
+	#region combat balance
+	define_combat_balance_globals()
+	#endregion
+	
+	
 }
 
 function set_up_camera_controls(){
@@ -171,4 +178,9 @@ function define_ai_globals(){
 	global.ai_turn_in_progress = false
 	global.ai_turn_completed = false
 
+}
+	
+function define_combat_balance_globals(){
+	global.max_armour = 30
+	global.max_avoid = 150
 }

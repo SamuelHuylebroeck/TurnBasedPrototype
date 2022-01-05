@@ -72,8 +72,8 @@ function execute_task_force_management(taskforce_player){
 	}
 	#endregion
 	
-	#region task force objective checking
 	
+	#region task force objective checking
 	//Group task forces together
 	var grouped_map = ds_map_create()
 	for (var i=0; i< ds_list_size(taskforce_player.ds_list_taskforces);i++){

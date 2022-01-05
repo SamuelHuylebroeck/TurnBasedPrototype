@@ -8,3 +8,4 @@ for (var i = 0; i< ds_list_size(ds_active_units);i++)
 	}
 }
 ds_list_destroy(ds_active_units);
+ds_list_destroy(ds_recruitment_options)

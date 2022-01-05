@@ -1,7 +1,7 @@
 //@description ??
 function draw_possible_moves_selected(){
 	mp_grid_clear_all(global.map_grid);
-	add_impassible_tiles_to_grid(global.selected)
+	add_impassible_tiles_to_grid(global.selected,true, false)
 		//Draw
 	var center = get_center_of_occupied_tile(global.selected);
 	var center_x = center[0];
@@ -34,7 +34,7 @@ function draw_possible_moves_selected(){
 		}
 	}
 	//Add possible attacks from current position
-	draw_attack_targets(global.selected.x, global.selected.y, global.selected.attack_profile, global.selected.controlling_player)
+	create_attack_targets(global.selected.x, global.selected.y, global.selected.attack_profile, global.selected.controlling_player)
 	draw_create_weather(global.selected.x, global.selected.y, global.selected, global.selected.weather_profile )
 	move_grid_drawn = true;	
 }
@@ -65,20 +65,25 @@ function clean_possible_moves() {
 }
 
 
-function add_impassible_tiles_to_grid(this_unit){
+function add_impassible_tiles_to_grid(this_unit, include_units, include_allied_units){
 	with(obj_impassible)
 	{
 		mp_grid_add_instances(global.map_grid,self,false);
 	}
-	with(par_abstract_unit){
-		if self.id != this_unit.id{
-			mp_grid_add_instances(global.map_grid,self,false);
+	if include_units {
+		with(par_abstract_unit){
+			if self.id != this_unit.id{
+				var allied = self.controlling_player == this_unit.controlling_player
+				if(include_allied_units or not allied){
+					mp_grid_add_instances(global.map_grid,self,false);
+				}
+			}
 		}
 	}
 }
 
 function get_center_of_occupied_tile(occupier){
-		var cell_x, cell_y;
+	var cell_x, cell_y;
 	with(occupier){
 		cell_x = floor(x/global.grid_cell_width);
 		cell_y = floor(y/global.grid_cell_height);

@@ -12,6 +12,22 @@ function get_taskforce_recruitment_request_placeholder(ds_request_queue, taskfor
 		ds_queue_enqueue(ds_request_queue, placeholder_request)
 	}
 }
+#region management
+function is_objective_completed(objective, taskforce, ai_player){
+	if objective == noone{
+		return true
+	}	
+	switch (objective.objective_type){
+		case OBJECTIVE_TYPES.capture:
+			return is_capture_objective_completed(objective, taskforce, ai_player)
+	}
+}
+
+function is_capture_objective_completed(objective, taskforce, ai_player){
+	return objective.target.controlling_player.id == ai_player.id
+
+}
+#endregion
 #region scoring
 function generic_taskforce_score_retreating(action_type, unit, tile,taskforce,target){
 	#region Score explanation
@@ -40,7 +56,7 @@ function generic_taskforce_score_retreating(action_type, unit, tile,taskforce,ta
 
 	switch(action_type){
 	case ACTION_TYPES.move_and_attack:
-		action_component = generic_taskforce_score_retreating_attack(unit, tile, taskforce,target, action_digits)
+		action_component = generic_taskforce_score_attack(unit, tile, taskforce,target, action_digits)
 		break;
 	case ACTION_TYPES.move_and_skill:
 		action_component = generic_taskforce_score_retreating_skill(unit, tile, taskforce, action_digits)
@@ -91,7 +107,7 @@ function generic_taskforce_score_distance_to_zone(unit,tile,taskforce, zone_cent
 	return rel_objective_distance_score
 }
 
-function generic_taskforce_score_retreating_attack(unit, tile, taskforce,target, nr_digits){
+function generic_taskforce_score_attack(unit, tile, taskforce,target, nr_digits){
 	var maximum_damage = get_attack_damage_ceiling(unit, tile, target,unit.attack_profile)
 	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-1.1)
 	var rel_expected_damage = expected_damage/maximum_damage
@@ -177,10 +193,10 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 
 	switch(action_type){
 	case ACTION_TYPES.move_and_attack:
-		action_component = generic_taskforce_score_retreating_attack(unit, tile, taskforce,target, action_digits)
+		action_component = generic_taskforce_score_attack(unit, tile, taskforce,target, action_digits)
 		break;
 	case ACTION_TYPES.move_and_skill:
-		action_component = generic_taskforce_score_retreating_skill(unit, tile, taskforce, action_digits)
+		action_component = generic_taskforce_score_mustering_skill(unit, tile, taskforce, action_digits)
 		break;
 	default:
 		action_component = 0.2 * power(10,action_digits)
@@ -211,6 +227,32 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 	return final_score
 }
 
+function generic_taskforce_score_mustering_skill(unit, tile, taskforce, nr_digits){
+	#region scoring explanation
+	//A weather effect can have either friendly(boon) or enemy prefered targets
+	//Each preferred target counts as a half a full power attack
+	//Each non-preferred target substracks half a full power attack in score
+	//Only apply score for tiles that have the skill effect terrain linger, refresh or detonate
+	//Favour doing a skill on empty terrain if the skill is adverse
+	#endregion
+	var sum_preferred_targets =  get_sum_preferred_targets(unit,tile,unit.weather_profile)
+	var skill_score = sum_preferred_targets*1/2*unit.attack_profile.base_damage
+	var max_skill_score = get_attack_damage_ceiling(unit,tile,tile,unit.attack_profile)
+	var rel_skill_score = clamp(skill_score/max_skill_score,0,1)
+	if (global.debug_ai_raider_taskforces_scoring) show_debug_message(string(sum_preferred_targets) + "," + string(skill_score)+"/"+string(max_skill_score)+":"+string(rel_skill_score))
+	//Rescale from [0,1] to [0,8*10^digits]
+	if rel_skill_score > 0 
+	{
+		rel_skill_score = rel_skill_score * (0.8)*power(10,nr_digits)
+		rel_skill_score += 0.2*power(10,nr_digits)
+	}else{
+		rel_skill_score = 0.2*power(10,nr_digits)-1
+	}
+	rel_skill_score = clamp(floor(rel_skill_score),0,power(10,nr_digits)-1) 
+	return rel_skill_score
+}
+
+
 function generic_taskforce_score_tile_defense(unit, tile, nr_digits){
 	//Check which defense type is dominant for the unit and get scales
 	var avoid_contribution, armour_contribution
@@ -235,7 +277,7 @@ function generic_taskforce_score_tile_defense(unit, tile, nr_digits){
 		rel_defensive_score = clamp(rel_armour + rel_avoid,0,1)
 	}
 	//Rescale from [0,1] to [0,10^digits[
-	rel_defensive_score = clamp(floor(rel_defensive_score),0,power(10,nr_digits)-2) 
+	rel_defensive_score = clamp(floor(rel_defensive_score*power(10,nr_digits)),0,power(10,nr_digits)-2) 
 	if unit.x ==tile._x and unit.y == tile._y{
 		rel_defensive_score += 1 
 	}

@@ -72,11 +72,17 @@ function init_globals(){
 	
 	#region debug
 	global.debug_gui = false;
+	
 	global.debug_ai = true;
 	global.debug_ai_generic_taskforces_scoring = true
 	global.debug_ai_raider_taskforces = true;
-	global.debug_ai_raider_taskforces_scoring = true;
+	global.debug_ai_raider_taskforces_scoring = false;
 	global.debug_ai_raider_taskforces_execution = false;
+	
+	global.debug_ai_assault_taskforces = true;
+	global.debug_ai_assault_taskforces_scoring = true;
+	global.debug_ai_assault_taskforces_execution = true;
+	
 	global.debug_camera = false
 	#endregion
 	

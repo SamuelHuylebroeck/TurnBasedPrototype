@@ -202,6 +202,7 @@
     {"id":{"name":"obj_move_impossible","path":"objects/obj_move_impossible/obj_move_impossible.yy",},"order":2,},
     {"id":{"name":"obj_floating_text","path":"objects/obj_floating_text/obj_floating_text.yy",},"order":0,},
     {"id":{"name":"obj_recruitment_placement_option","path":"objects/obj_recruitment_placement_option/obj_recruitment_placement_option.yy",},"order":6,},
+    {"id":{"name":"obj_taskforce_debug_controller","path":"objects/obj_taskforce_debug_controller/obj_taskforce_debug_controller.yy",},"order":4,},
     {"id":{"name":"spr_unit_waveaxe_attack","path":"sprites/spr_unit_waveaxe_attack/spr_unit_waveaxe_attack.yy",},"order":1,},
     {"id":{"name":"obj_attack_preview","path":"objects/obj_attack_preview/obj_attack_preview.yy",},"order":1,},
     {"id":{"name":"rm_four_corners_experimental","path":"rooms/rm_four_corners_experimental/rm_four_corners_experimental.yy",},"order":2,},

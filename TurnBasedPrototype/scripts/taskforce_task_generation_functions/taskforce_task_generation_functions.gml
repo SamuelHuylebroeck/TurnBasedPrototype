@@ -34,7 +34,13 @@ function get_unit_tile_context(unit){
 	add_impassible_tiles_to_grid(unit, true, false)
 	//Context contains every tile the unit can reach through movement
 	var unit_movement = get_unit_movement_in_tiles(unit)
+	//Start by adding the current position
 	var unit_pos = get_center_of_occupied_tile(unit)
+		var start_pos = {
+		_x: unit_pos[0],
+		_y: unit_pos[1]
+	}
+	ds_queue_enqueue(context, start_pos)
 	for(var i= -1*unit_movement; i<=unit_movement;i++){
 		for(var j=-1*unit_movement; j<=unit_movement;j++){
 			var manhatten_distance = abs(i)+abs(j)

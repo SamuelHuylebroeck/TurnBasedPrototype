@@ -9,7 +9,7 @@ if(global.map_running){
 	var current_pos_y = y_offset;
 	var old_align = draw_get_halign();
 	
-	var width = 420
+	var width = 516
 	var height = 96
 	
 	draw_sprite_stretched(spr_next_turn_button,0,current_pos_x-width/2,current_pos_y,width,height)

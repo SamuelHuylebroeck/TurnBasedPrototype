@@ -130,18 +130,6 @@ function get_objective_score_raider_taskforce(objective, taskforce, ai_player){
 	compound_score += type_score
 	return compound_score
 }
-
-function is_objective_completed(objective, taskforce, ai_player){
-	if objective == noone{
-		return true
-	}
-		
-	switch (objective.objective_type){
-		case OBJECTIVE_TYPES.capture:
-			return is_capture_objective_completed(objective, taskforce, ai_player)
-	}
-
-
 #endregion
 #region scoring
 function raider_taskforce_action_scoring_function(action_type, unit, tile, taskforce, target){
@@ -279,4 +267,5 @@ function raider_taskforce_score_skill(unit,tile, taskforce, nr_digits){
 	return rel_skill_score
 }
 #endregion
+
 

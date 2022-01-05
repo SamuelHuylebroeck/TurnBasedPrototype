@@ -14,6 +14,9 @@ function max_out_taskforce(ai_player, taskforce_template, max_count){
 function update_objectives(ai_player, taskforce_type, ds_list_taskforces){
 	show_debug_message("Updating objectives for taskforces of type " + string(taskforce_type))
 	switch(taskforce_type){
+		case obj_assault_taskforce:
+			update_objectives_all_assault_taskforces(ds_list_taskforces, ai_player)
+			break;
 		case obj_raider_taskforce:
 			update_objectives_all_raider_taskforces(ds_list_taskforces, ai_player)
 			break;
@@ -42,28 +45,6 @@ function update_objectives_taskforce(taskforce, ai_player){
 
 function update_objectives_defender_taskforce(ds_list_taskforces, ai_player){
 	show_debug_message("Updating objectives for Defender taskforces")
-}
-
-function is_objective_completed(objective, taskforce, ai_player){
-	if objective == noone{
-		return true
-	}
-		
-	switch (objective.objective_type){
-		case OBJECTIVE_TYPES.capture:
-			return is_capture_objective_completed(objective, taskforce, ai_player)
-	}
-}
-
-function is_capture_objective_completed(objective, taskforce, ai_player){
-	var objective_already_captured = objective.target.controlling_player != noone and objective.target.controlling_player.id == ai_player.id
-	var objective_will_be_captured = false
-	var unit_at_position = instance_position(objective.target.x, objective.target.y , par_abstract_unit)
-	if unit_at_position != noone{
-		objective_will_be_captured = (unit_at_position.controlling_player!=noone and unit_at_position.controlling_player.id == ai_player.id)
-	}	
-	return objective_already_captured or objective_will_be_captured
-
 }
 
 function debug_dump_objective_queue_contents(objective_queue){

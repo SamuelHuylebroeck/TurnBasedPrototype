@@ -20,11 +20,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
-  "properties": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
+  "properties": [
+    {"varType":0,"value":"4","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"assault_tile_radius","tags":[],"resourceType":"GMObjectProperty",},
+  ],
   "overriddenProperties": [
     {"propertyId":{"name":"taskforce_max_size","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"10","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"objective_queue_max_size","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_recruitment_request_function","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"get_assault_taskforce_recruitment_request","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_action_scoring_function","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"assault_taskforce_action_scoring_function","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "taskforces",

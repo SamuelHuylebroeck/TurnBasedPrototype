@@ -159,7 +159,7 @@ function generic_taskforce_score_retreating_skill(unit, tile, taskforce, nr_digi
 
 function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,target){
 	#region Score explanation
-	//ABBBBCC
+	//ABBBBCCDEE
 	//A is 4 if the action does not take place inside the home area
 	//6 for attack and skill moves if the tile is in the home area
 	//6 for moves if the tile  in the inner home area (r/2)
@@ -168,7 +168,9 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 	//The distance score is maxed when the target tile is in the home zone
 	//CC is the action score on the tile, with 20 being no action. 
 	//Skill can take priority over attack if enough more targets are effected
-	//DD is the defensive score of the tile, with the current tile getting a slight bump
+	//D is a penalty score for the tiles surrounding the recruitment building
+	// 5 for a tile not next to the recruitment building, 4 for a tile directly next to it
+	//EE is the defensive score of the tile, with the current tile getting a slight bump
 	#endregion
 	#region digit config
 	var distance_digits = 3
@@ -205,10 +207,18 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 	}
 
 	var defense_component = generic_taskforce_score_tile_defense(unit, tile, defense_digits)
-	final_score = defense_component 
-	final_score += power(10, defense_digits)*action_component
-	final_score += power(10,defense_digits + action_digits)*distance_to_objective_component
-	final_score += power(10,defense_digits + action_digits+distance_digits)*objective_component
+	var recruitment_space_penalty=5
+	var distance_to_home = point_distance(tile._x, tile._y, taskforce.home_x, taskforce.home_y)
+	if distance_to_home <= global.grid_cell_width and distance_to_home != 0 
+	{
+		recruitment_space_penalty = 4
+	}
+	
+	final_score = defense_component
+	final_score += recruitment_space_penalty+power(10,defense_digits)
+	final_score += power(10, defense_digits+1)*action_component
+	final_score += power(10,defense_digits+1 + action_digits)*distance_to_objective_component
+	final_score += power(10,defense_digits+1 + action_digits+distance_digits)*objective_component
 	if global.debug_ai_generic_taskforces_scoring {
 		var action_string = "Move"
 		switch(action_type){
@@ -278,9 +288,6 @@ function generic_taskforce_score_tile_defense(unit, tile, nr_digits){
 	}
 	//Rescale from [0,1] to [0,10^digits[
 	rel_defensive_score = clamp(floor(rel_defensive_score*power(10,nr_digits)),0,power(10,nr_digits)-2) 
-	if unit.x ==tile._x and unit.y == tile._y{
-		rel_defensive_score += 1 
-	}
 	return rel_defensive_score
 }
 #endregion

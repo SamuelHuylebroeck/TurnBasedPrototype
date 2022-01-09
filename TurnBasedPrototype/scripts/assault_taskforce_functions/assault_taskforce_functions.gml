@@ -6,6 +6,7 @@ function get_assault_taskforce_recruitment_request(ds_request_queue, taskforce, 
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
 		repeat(2){
 			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword)
+			show_debug_message(string(choice))
 			//var choice = obj_unit_groundpounder
 			var placeholder_request = {
 				template: choice,
@@ -120,7 +121,39 @@ function update_objectives_assault_taskforce(taskforce, ai_player){
 				x = current_objective.target.x
 				y = current_objective.target.y
 			}else{
-				current_objective = noone
+				// Check if there's an unclaimed flag
+				//Gather all contested flags
+				var flag_list = get_all_contested_flags_list(ai_player)
+				var all_assault_taskforces = ds_list_create()
+				for(var i=0; i< ai_player.ds_list_taskforces;i++){
+					var tf = ai_player.ds_list_taskforces[|i]
+					if tf.object_index == obj_assault_taskforce {
+						ds_list_add(all_assault_taskforces, tf)
+					}
+				}
+				// Remove already claimed flags
+				remove_all_claimed_flags(flag_list, all_assault_taskforces)
+				if (ds_list_size(flag_list) >0){
+					var first_flag = flag_list[|0]
+					current_objective = new Objective(first_flag.id, OBJECTIVE_TYPES.capture)
+					x = current_objective.target.x
+					y = current_objective.target.y
+					
+				}else{
+					//No unclaimed flags left, take the same objective as another assault taskforce
+					for(var i=0; i<ds_list_size(all_assault_taskforces);i++){
+						var atf = all_assault_taskforces[|i]
+						if atf.id != self.id and atf.current_objective != noone{
+							current_objective = atf.current_objective
+							x = current_objective.target.x
+							y = current_objective.target.y
+							break;
+						}
+					}
+				}
+				
+				ds_list_destroy(flag_list)
+				ds_list_destroy(all_assault_taskforces)
 			}
 			// if empty, wait for the player to distribute new objectives
 			if ds_queue_empty(ds_queue_taskforce_objectives)
@@ -148,7 +181,7 @@ function assault_taskforce_action_scoring_function(action_type, unit, tile, task
 
 function assault_taskforce_score_advancing(action_type, unit, tile, taskforce, target){
 		#region Score explanation
-		//ABBBBCC
+		//ABBBBCCDDEE
 		//A is the objective score, scoring as follows
 		// 8 if the tile is the objective tile
 		// 7 if the target of an attack is on the objective tile
@@ -160,12 +193,14 @@ function assault_taskforce_score_advancing(action_type, unit, tile, taskforce, t
 		// 2 if the tile is not in the objective zone
 		//BBBB is the remaining path distance towards the objective, from the target tile, ignoring all units. If the tile is in the objective zone, this score is maxed out
 		//CC is the action score on the tile, with 20 being no action. Skill can take prioirity over attack if enough more targets are effected
-		//DD is the defensive score of the tile, with 50 being a neutral tile
+		//DD is the defensive score of the tile
+		//EE is the euclidean distance to center, with a slight boost given for the current tile
 		#endregion
 		#region digit config
 		var distance_digits = 3
 		var action_digits = 2
 		var defense_digits = 2
+		var euclidean_distance_digits = 2
 		#endregion
 		var final_score = 0
 		var objective_component = assault_taskforce_score_objective_advancing(action_type,unit,tile,taskforce, target)
@@ -188,10 +223,19 @@ function assault_taskforce_score_advancing(action_type, unit, tile, taskforce, t
 		}
 
 		var defense_component = generic_taskforce_score_tile_defense(unit, tile, defense_digits)
-		final_score = defense_component 
-		final_score += power(10, defense_digits)*action_component
-		final_score += power(10,defense_digits + action_digits)*distance_to_objective_component
-		final_score += power(10,defense_digits + action_digits+distance_digits)*objective_component
+		var euclidean_distance_component = point_distance(tile._x, tile._y, taskforce.current_objective.target.x,taskforce.current_objective.target.y)
+		euclidean_distance_component = clamp(euclidean_distance_component,0, taskforce.assault_tile_radius*global.grid_cell_width)/(taskforce.assault_tile_radius*global.grid_cell_width)
+		euclidean_distance_component = 1-euclidean_distance_component
+		euclidean_distance_component = clamp(floor(euclidean_distance_component*power(10,euclidean_distance_digits)),0, power(10, euclidean_distance_digits)-1)
+		if unit.x ==tile._x and unit.y == tile._y{
+			euclidean_distance_component += 1
+			clamp(euclidean_distance_component,0, power(10, euclidean_distance_digits)-1)
+		}
+		final_score = euclidean_distance_component
+		final_score += power(10, euclidean_distance_digits)*defense_component 
+		final_score += power(10, euclidean_distance_digits+defense_digits)*action_component
+		final_score += power(10, euclidean_distance_digits+defense_digits + action_digits)*distance_to_objective_component
+		final_score += power(10, euclidean_distance_digits+defense_digits + action_digits+distance_digits)*objective_component
 		if global.debug_ai_assault_taskforces_scoring {
 			var action_string = "Move"
 			switch(action_type){
@@ -227,9 +271,9 @@ function assault_taskforce_score_objective_advancing(action_type, unit, tile, ta
 	if tile_is_objective{
 		return 8
 	}
-	if action_type ==ACTION_TYPES.move_and_attack {
-		var target_is_on_objective = target.x == objective_x and target.y == objective_y
-		var target_in_objective_zone = point_distance(target.x, target.y, objective_x, objective_y) <= taskforce.assault_tile_radius * global.grid_cell_width
+	if action_type == ACTION_TYPES.move_and_attack {
+		var target_is_on_objective = target._x == objective_x and target._y == objective_y
+		var target_in_objective_zone = point_distance(target._x, target._y, objective_x, objective_y) <= taskforce.assault_tile_radius * global.grid_cell_width
 
 		if target_is_on_objective
 			return 7

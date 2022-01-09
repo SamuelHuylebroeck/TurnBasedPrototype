@@ -1,4 +1,57 @@
 #region creation
+function create_raider_taskforce(pos_x, pos_y, zoi_radius, taskforce_player){
+	//Get the closest owned recruitment building
+	var tile_center = get_center_of_tile_for_pixel_position(pos_x, pos_y)
+	var tf = instance_create_layer(tile_center[0], tile_center[1],"Taskforces", obj_raider_taskforce)
+	var closest_recruitment_building = get_closest_controlled_recruitment_building(tile_center[0], tile_center[1], taskforce_player)
+	with(tf){
+		self.home_x = closest_recruitment_building.x
+		self.home_y = closest_recruitment_building.y
+		self.zoi_tile_radius = floor(zoi_radius / global.grid_cell_width)
+		self.taskforce_player = taskforce_player
+	}
+	with(taskforce_player){
+		ds_list_add(ds_list_taskforces, tf)
+	}
+}
+
+
+function max_out_raider_taskforces_radial_distribution(taskforce_player, max_count){
+	#region Get positions and zone of interests
+	var dir = point_direction(taskforce_player.x, taskforce_player.y, room_width/2, room_height/2)
+	var distributions = get_radial_distribution_on_map(dir, max_count)
+	#endregion
+	
+	while(not ds_queue_empty(distributions))
+	{
+		var next_area = ds_queue_dequeue(distributions)
+		
+		if(not raider_task_force_occupies_zone(taskforce_player.ds_list_taskforces,next_area._x, next_area._y)){
+			#region Create new one
+			create_raider_taskforce(next_area._x, next_area._y, next_area.r,taskforce_player)
+			#endregion
+		
+		}else{
+			#region potentially update old one
+			#endregion
+		}
+	}
+	ds_queue_destroy(distributions)
+}
+
+function raider_task_force_occupies_zone(ds_list_taskforces, zone_x,zone_y){
+	var result = false;
+	var justified_zone_coordinates= get_center_of_tile_for_pixel_position(zone_x,zone_y)
+	for(var i=0; i< ds_list_size(ds_list_taskforces); i++){
+		var tf = ds_list_taskforces[|i]
+		if tf.x == justified_zone_coordinates[0] and tf.y == justified_zone_coordinates[1]
+		{
+			return true
+		}
+	}
+	return result
+
+}
 #endregion
 #region recruitment
 function get_raider_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){

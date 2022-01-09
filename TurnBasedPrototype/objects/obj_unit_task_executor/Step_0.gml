@@ -14,7 +14,7 @@ switch(executor_state){
 		if current_task == noone{
 			//Get the next executor from the queue
 			var next_exec = ds_queue_dequeue(current_taskforce_executors_queue)
-			if next_exec != undefined {
+			if next_exec != undefined  and instance_exists(next_exec){
 				//Gather tasks and decide on next one
 				var player = next_exec.controlling_player
 				var next_task = get_next_task(next_exec, current_taskforce, player)

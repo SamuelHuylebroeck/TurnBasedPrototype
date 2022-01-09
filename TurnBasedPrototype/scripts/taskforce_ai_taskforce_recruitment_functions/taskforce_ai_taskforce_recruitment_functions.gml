@@ -5,6 +5,9 @@ function get_task_force_recruitment_request(taskforce, taskforce_player){
 		case obj_raider_taskforce:
 			get_raider_taskforce_recruitment_request(ds_tf_request_queue,taskforce, taskforce_player)
 			break;
+		case obj_assault_taskforce:
+			get_assault_taskforce_recruitment_request(ds_tf_request_queue,taskforce, taskforce_player)
+			break;
 		default:
 			get_taskforce_recruitment_request_placeholder(ds_tf_request_queue,taskforce, taskforce_player)
 			break;

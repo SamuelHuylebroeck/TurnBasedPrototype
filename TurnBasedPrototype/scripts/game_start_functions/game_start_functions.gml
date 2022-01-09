@@ -16,6 +16,9 @@ function start_game(setup_multiplayer){
 		//Set up victory conditions
 		init_victory_conditions(game_control)
 		
+		//Setup garrison objective tracking
+		init_garrison_objective_tracking(game_control)
+		
 		//set game to running
 		global.game_in_progress = true
 		global.map_running = true;
@@ -192,4 +195,110 @@ function init_victory_conditions(game_control){
 	}
 	game_control.flags_to_win = ceil(global.flag_control_fraction * total_nr_of_flags)
 
+}
+
+function init_garrison_objective_tracking(game_control){
+	//Cluster regions together to create the garrision areas
+	#region setup
+	//Gather all objectives
+	var list_candidate_objectives = ds_list_create()
+	var grouping_queue = ds_queue_create()
+	
+	with(obj_flag)
+	{
+		ds_list_add(list_candidate_objectives, self)
+		var candidate_grouping = ds_list_create()
+		ds_list_add(candidate_grouping, self)
+		ds_queue_enqueue(grouping_queue, candidate_grouping)
+	}
+	with(par_recruitment_building)
+	{
+		ds_list_add(list_candidate_objectives, self)
+		var candidate_grouping = ds_list_create()
+		ds_list_add(candidate_grouping, self)
+		ds_queue_enqueue(grouping_queue, candidate_grouping)
+	}
+	#endregion
+	#region clustering
+	while(not ds_queue_empty(grouping_queue)){
+
+		var next_candidate_grouping = ds_queue_dequeue(grouping_queue)
+		if is_grouping_candidate_valid(next_candidate_grouping,list_candidate_objectives){
+			//Check if the grouping can be extended
+			var extendable = false
+			for(var i=0; i<ds_list_size(list_candidate_objectives);i++){
+				var obj = list_candidate_objectives[|i]
+				if can_extend_grouping(next_candidate_grouping, obj) {
+					extendable = true
+					var new_candidate_grouping = ds_list_create()
+					ds_list_copy(new_candidate_grouping, next_candidate_grouping)
+					ds_list_add(new_candidate_grouping, obj)
+					ds_queue_enqueue(grouping_queue, new_candidate_grouping)
+				}
+			}
+			if not extendable 
+			{
+				//This is a final grouping, create a tracker for it
+				var mass_center = get_center_of_mass(next_candidate_grouping)
+				mass_center = get_center_of_tile_for_pixel_position(mass_center._x, mass_center._y)
+				var tracker = instance_create_layer(mass_center[0], mass_center[1], "Logic", obj_garrison_objective_tracker)
+				with(tracker)
+				{
+					ds_list_copy(list_nearby_structures, next_candidate_grouping)
+					garrison_objective_tile_radius = global.taskforce_ai_garrison_grouping_tile_distance+1
+				}
+				//Remove the grouping from the list
+				for(var i=0; i<ds_list_size(next_candidate_grouping); i++)
+				{
+					var obj = next_candidate_grouping[|i]
+					var pos = ds_list_find_index(list_candidate_objectives, obj)
+					ds_list_delete(list_candidate_objectives, pos)
+				}
+			}
+		}
+		ds_list_destroy(next_candidate_grouping)
+	}
+	
+	
+	#endregion
+	
+	ds_list_destroy(list_candidate_objectives)
+	ds_queue_destroy(grouping_queue)
+}
+function is_grouping_candidate_valid(grouping,list_available_objectives){
+	for(var i=0; i<ds_list_size(grouping); i++){
+		var obj = grouping[|i]
+		if ds_list_find_index(list_available_objectives, obj) == -1 
+		{
+			return false
+		}
+	}
+	return true
+}
+
+function can_extend_grouping(grouping, candidate_objective){
+	if ds_list_find_index(grouping, candidate_objective) != -1 {
+		return false
+	}
+	for(var i=0; i<ds_list_size(grouping); i++){
+		var obj = grouping[|i]
+		var distance_to_obj = point_distance(candidate_objective.x, candidate_objective.y, obj.x, obj.y)
+		if distance_to_obj > global.taskforce_ai_garrison_grouping_tile_distance*global.grid_cell_width
+		{
+			return false
+		}
+	}
+	return true
+}
+
+function get_center_of_mass(list_objects){
+	var m_x = 0
+	var m_y = 0
+	var list_size = ds_list_size(list_objects)
+	for(var i=0; i<ds_list_size(list_objects);i++){
+		m_x += list_objects[|i].x
+		m_y += list_objects[|i].y
+	}
+	
+	return {_x: m_x/list_size, _y: m_y/list_size}
 }

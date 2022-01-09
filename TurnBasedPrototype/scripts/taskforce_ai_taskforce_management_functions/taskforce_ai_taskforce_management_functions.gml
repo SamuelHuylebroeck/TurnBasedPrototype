@@ -4,6 +4,9 @@ function max_out_taskforce(ai_player, taskforce_template, max_count){
 		case obj_raider_taskforce:
 			max_out_raider_taskforces_radial_distribution(ai_player, max_count)
 			break;
+		case obj_defender_taskforce:
+			update_defender_taskforce_distribution(ai_player, max_count)
+			break;
 		default:
 			placeholder_max_out_taskforce(ai_player, taskforce_template, max_count);
 			break;

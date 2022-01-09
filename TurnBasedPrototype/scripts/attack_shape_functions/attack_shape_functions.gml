@@ -48,7 +48,7 @@ function get_attack_cone_target_positions(origin_x, origin_y, target_x, target_y
 }
 
 function get_attack_burst_target_positions(origin_x, origin_y, target_x, target_y, origin_unit, attack_profile){
-	return get_burst_target_positions(target_x, target_y, attack_profile.base_size)
+	return get_burst_target_positions(origin_x, origin_y, attack_profile.base_size)
 }
 
 function get_burst_target_positions(origin_x, origin_y, burst_size){

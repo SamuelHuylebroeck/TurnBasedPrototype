@@ -83,6 +83,10 @@ function init_globals(){
 	global.debug_ai_assault_taskforces_scoring = true;
 	global.debug_ai_assault_taskforces_execution = true;
 	
+	global.debug_ai_garrison_taskforces = true;
+	global.debug_ai_garrison_taskforces_scoring = true;
+	global.debug_ai_garrison_taskforces_execution = true;
+	
 	global.debug_camera = false
 	#endregion
 	
@@ -183,6 +187,10 @@ function define_weather_relations(){
 function define_ai_globals(){
 	global.ai_turn_in_progress = false
 	global.ai_turn_completed = false
+	
+	#region Taskforce AI configuration
+	global.taskforce_ai_garrison_grouping_tile_distance = 2
+	#endregion
 
 }
 	

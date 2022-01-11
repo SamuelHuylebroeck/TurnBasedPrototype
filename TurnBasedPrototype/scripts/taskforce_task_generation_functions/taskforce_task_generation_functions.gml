@@ -41,17 +41,24 @@ function get_unit_tile_context(unit){
 		_y: unit_pos[1]
 	}
 	ds_queue_enqueue(context, start_pos)
-	for(var i= -1*unit_movement; i<=unit_movement;i++){
-		for(var j=-1*unit_movement; j<=unit_movement;j++){
+	for(var i= -1*unit_movement; i<=unit_movement;i++)
+	{
+		for(var j=-1*unit_movement; j<=unit_movement;j++)
+		{
 			var manhatten_distance = abs(i)+abs(j)
-			if (manhatten_distance <= unit_movement) {
-			var tile_pos = {
-				_x: unit_pos[0]+i*global.grid_cell_width,
-				_y: unit_pos[1]+j*global.grid_cell_height
-			}
-			var occupied = instance_position(tile_pos._x, tile_pos._y, par_abstract_unit) != noone
-			if not occupied	and can_navigate_unit(unit, global.map_grid, global.navigate, tile_pos._x, tile_pos._y)
-				ds_queue_enqueue(context, tile_pos)
+			if (manhatten_distance <= unit_movement) 
+			{
+				var tile_pos = {
+					_x: unit_pos[0]+i*global.grid_cell_width,
+					_y: unit_pos[1]+j*global.grid_cell_height
+				}
+				var occupied = instance_position(tile_pos._x, tile_pos._y, par_abstract_unit) != noone
+				var path_length = get_path_length(global.map_grid, global.navigate,unit.x, unit.y, tile_pos._x, tile_pos._y)
+				var can_navigate = can_navigate_unit(unit,global.map_grid, global.navigate,tile_pos._x, tile_pos._y)
+				if(not occupied and can_navigate and  floor(path_length/global.grid_cell_width) <= unit_movement)
+				{
+					ds_queue_enqueue(context, tile_pos)
+				}
 			}
 		}
 	}
@@ -59,7 +66,7 @@ function get_unit_tile_context(unit){
 }
 
 function generate_tasks_based_on_tile_context(unit,taskforce,player, context_queue, task_priority_queue){
-	if global.debug_ai show_debug_message("---Unit:"+string(unit)+"("+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_height))+")---")
+	if global.debug_ai_scoring show_debug_message("---Unit:"+string(unit)+"("+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_height))+")---")
 	while(not ds_queue_empty(context_queue)){
 		var next_tile = ds_queue_dequeue(context_queue)
 		if global.debug_ai show_debug_message("generating tasks for ["+string(floor(next_tile._x/global.grid_cell_width))+","+string(floor(next_tile._y/global.grid_cell_width))+"]")
@@ -72,11 +79,11 @@ function generate_tasks_based_on_tile_context(unit,taskforce,player, context_que
 
 	
 	}
-	if global.debug_ai show_debug_message("---Unit:"+string(unit)+"---")
+	if global.debug_ai_scoring show_debug_message("---Unit:"+string(unit)+"---")
 }
 
 function generate_movement_action_for_tile(tile, unit, taskforce, player, task_priority_queue){
-	if global.debug_ai show_debug_message("----Move----")
+	if global.debug_ai_scoring show_debug_message("----Move----")
 	var move_score = script_execute(taskforce.taskforce_action_scoring_function,ACTION_TYPES.move, unit,tile, taskforce, noone)
 	var move_task = instance_create_layer(0,0,"Logic", obj_move_task)
 	with(move_task){
@@ -85,11 +92,12 @@ function generate_movement_action_for_tile(tile, unit, taskforce, player, task_p
 		self.target_y = tile._y
 	}
 	ds_priority_add(task_priority_queue,move_task,move_score)
-	if global.debug_ai show_debug_message("----/Move----")
+	if global.debug_ai_scoring show_debug_message("["+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_width))+"]->["+string(floor(tile._x/global.grid_cell_width))+","+string(floor(tile._y/global.grid_cell_width))+"]")
+	if global.debug_ai_scoring show_debug_message("----/Move----")
 }
 
 function generate_movement_and_skill_action_for_tile(tile, unit, taskforce, player, task_priority_queue){
-	if global.debug_ai show_debug_message("----Skill Move----")
+	if global.debug_ai_scoring show_debug_message("----Skill Move----")
 	var move_score = script_execute(taskforce.taskforce_action_scoring_function,ACTION_TYPES.move_and_skill, unit,tile, taskforce, noone)
 	var move_task = instance_create_layer(0,0,"Logic", obj_skill_move_task)
 	with(move_task){
@@ -99,12 +107,12 @@ function generate_movement_and_skill_action_for_tile(tile, unit, taskforce, play
 		self.linked_weather_profile = unit.weather_profile
 	}
 	ds_priority_add(task_priority_queue,move_task,move_score)
-	if global.debug_ai show_debug_message("----/Skill Move----")
+	if global.debug_ai_scoring show_debug_message("----/Skill Move----")
 }
 
 
 function generate_move_and_attack_actions_for_tile(tile,unit,taskforce,player, task_priority_queue){
-	if global.debug_ai show_debug_message("----Attack Moves----")
+	if global.debug_ai_scoring show_debug_message("----Attack Moves----")
 	var targets_in_range_of_tile = attack_get_allowed_enemy_targets(tile._x,tile._y, unit, unit.attack_profile)
 	while not ds_queue_empty(targets_in_range_of_tile){
 		var target = ds_queue_dequeue(targets_in_range_of_tile)
@@ -113,10 +121,10 @@ function generate_move_and_attack_actions_for_tile(tile,unit,taskforce,player, t
 			_x: center_of_target[0],
 			_y: center_of_target[1]
 		}
-		if global.debug_ai show_debug_message("---Target:("+string(floor(target_pos._x/global.grid_cell_width))+","+string(floor(target_pos._y/global.grid_cell_height))+")---")
+		if global.debug_ai_scoring show_debug_message("---Target:("+string(floor(target_pos._x/global.grid_cell_width))+","+string(floor(target_pos._y/global.grid_cell_height))+")---")
 		var attack_move_score = script_execute(taskforce.taskforce_action_scoring_function,ACTION_TYPES.move_and_attack, unit,tile, taskforce,target_pos)
 		//Create an attack move task
-		if global.debug_ai show_debug_message("Score: "+string(attack_move_score))
+		if global.debug_ai_scoring show_debug_message("Score: "+string(attack_move_score))
 		var attack_move_task= instance_create_layer(0,0,"Logic", obj_attack_move_task)
 		with(attack_move_task){
 			self.unit = unit
@@ -129,11 +137,13 @@ function generate_move_and_attack_actions_for_tile(tile,unit,taskforce,player, t
 
 	}
 	ds_queue_destroy(targets_in_range_of_tile)
-	if global.debug_ai show_debug_message("----/Attack Moves----")
+	if global.debug_ai_scoring show_debug_message("----/Attack Moves----")
 }
 
-function empty_task_priority_queue(task_priority_queue){
-	while(ds_priority_size(task_priority_queue)>0){
+function empty_task_priority_queue(task_priority_queue)
+{
+	while(ds_priority_size(task_priority_queue)>0)
+	{
 		var next_task_to_delete = ds_priority_delete_max(task_priority_queue)
 		instance_destroy(next_task_to_delete)
 	}

@@ -73,19 +73,24 @@ function init_globals(){
 	#region debug
 	global.debug_gui = false;
 	
-	global.debug_ai = true;
-	global.debug_ai_generic_taskforces_scoring = true
-	global.debug_ai_raider_taskforces = true;
+	global.debug_ai = false;
+	
+	global.debug_ai_scoring = false;
+	global.debug_ai_recruitment = false;
+	global.debug_ai_execution = false;
+	global.debug_ai_objective_update = false;
+	
+	global.debug_ai_raider_taskforces = false;
 	global.debug_ai_raider_taskforces_scoring = false;
 	global.debug_ai_raider_taskforces_execution = false;
 	
-	global.debug_ai_assault_taskforces = true;
-	global.debug_ai_assault_taskforces_scoring = true;
-	global.debug_ai_assault_taskforces_execution = true;
+	global.debug_ai_assault_taskforces = false;
+	global.debug_ai_assault_taskforces_scoring = false;
+	global.debug_ai_assault_taskforces_execution = false;
 	
-	global.debug_ai_garrison_taskforces = true;
-	global.debug_ai_garrison_taskforces_scoring = true;
-	global.debug_ai_garrison_taskforces_execution = true;
+	global.debug_ai_defender_taskforces = false;
+	global.debug_ai_defender_taskforces_scoring = false;
+	global.debug_ai_defender_taskforces_execution = false;
 	
 	global.debug_camera = false
 	#endregion
@@ -124,7 +129,6 @@ function create_player_type_picker_options(){
 	var type = DD_PICKER_TYPES.player_type_picker
 	global.all_player_type_options = [
 		{text: "Human", template: obj_player_human,dd_type: type},
-		{text: "Dummy AI", template: obj_player_dummy_ai,dd_type: type},
 		{text: "Balanced AI", template: obj_player_ai_balanced,dd_type: type}
 	]
 }
@@ -145,16 +149,16 @@ function create_map_picker_options(){
 function create_recruitment_options(){
 	global.ds_basic_recruitment_options = ds_list_create()
 	
-	var flamesword = new recruitment_option("Flamesword", obj_unit_flamesword, 175)
+	var flamesword = new recruitment_option("Flamesword", obj_unit_flamesword, 200)
 	ds_list_add(global.ds_basic_recruitment_options, flamesword)
 
-	var windsword = new recruitment_option("Windsword", obj_unit_windsword, 155)
+	var windsword = new recruitment_option("Windsword", obj_unit_windsword, 180)
 	ds_list_add(global.ds_basic_recruitment_options, windsword)
 	
-	var waveaxe = new recruitment_option("Wave Axe", obj_unit_waveaxe, 150)
+	var waveaxe = new recruitment_option("Wave Axe", obj_unit_waveaxe, 175)
 	ds_list_add(global.ds_basic_recruitment_options, waveaxe)
 	
-	var groundpounder = new recruitment_option("Groundpounder", obj_unit_groundpounder, 195)
+	var groundpounder = new recruitment_option("Groundpounder", obj_unit_groundpounder, 220)
 	ds_list_add(global.ds_basic_recruitment_options, groundpounder)
 
 

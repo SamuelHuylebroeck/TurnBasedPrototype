@@ -1,4 +1,5 @@
 /// @description Force taskforces into advancing stance
+show_debug_message("Putting taskforces into advance")
 with(par_ai_taskforce){
-	current_stance = TASKFORCE_STANCES.advancing
+	taskforce_stance = TASKFORCE_STANCES.advancing
 }

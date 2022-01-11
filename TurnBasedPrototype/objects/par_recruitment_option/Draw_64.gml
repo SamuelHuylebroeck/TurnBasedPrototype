@@ -33,7 +33,7 @@ if initialized {
 			visible= false
 		}
 		with(obj_recruitment_dialog_cancel){
-			visible = true
+			visible = false
 		}
 		create_recruitment_placement_opportunities(recruitment_building, recruitment_option_detail.unit,recruiting_player,recruitment_option_detail.cost)
 	}

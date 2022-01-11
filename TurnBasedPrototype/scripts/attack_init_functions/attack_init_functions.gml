@@ -105,7 +105,7 @@ function attack_get_allowed_enemy_targets(center_x, center_y,origin_unit, attack
 				var unit_on_target = instance_position(center_x+i*global.grid_cell_width, center_y+j*global.grid_cell_height,par_abstract_unit)
 				if unit_on_target != noone 
 				{
-					if not is_unit_friendly(unit_on_target, origin_unit.controlling_player)
+					if (not is_unit_friendly(unit_on_target, origin_unit.controlling_player)) and unit_on_target.current_state != UNIT_STATES.dying
 					{
 						ds_queue_enqueue(allowed_targets, unit_on_target.id)
 					}

@@ -111,7 +111,7 @@ function navigate(unit, start_x, start_y, end_x, end_y){
 	with(unit){
 		if(!mp_grid_path(global.map_grid, global.navigate, start_x,start_y,end_x,end_y,global.path_allow_diag))
 		{
-			show_message("Unable to navigate");
+			show_debug_message("Unable to navigate");
 			return false;
 		}
 		else

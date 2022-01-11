@@ -24,7 +24,7 @@ function update_objectives(ai_player, taskforce_type, ds_list_taskforces){
 			update_objectives_all_raider_taskforces(ds_list_taskforces, ai_player)
 			break;
 		case obj_defender_taskforce:
-			update_objectives_defender_taskforce(ds_list_taskforces, ai_player)
+			update_objectives_all_defender_taskforces(ds_list_taskforces, ai_player)
 			break;
 		default:
 			show_debug_message("Taskforces of type " + string(taskforce_type) + " do not have an objective function yet")
@@ -38,16 +38,14 @@ function update_objectives_taskforce(taskforce, ai_player){
 		case obj_raider_taskforce:
 			update_objectives_raider_taskforce(taskforce, ai_player)
 			break;
+		case obj_defender_taskforce:
+			update_objectives_defender_taskforce(taskforce, ai_player)
+			break;
 		default:
 			show_debug_message("Taskforce of type " + string(taskforce.taskforce_type) + " does not have an objective update function yet")
 			
 	}
 
-}
-
-
-function update_objectives_defender_taskforce(ds_list_taskforces, ai_player){
-	show_debug_message("Updating objectives for Defender taskforces")
 }
 
 function debug_dump_objective_queue_contents(objective_queue){

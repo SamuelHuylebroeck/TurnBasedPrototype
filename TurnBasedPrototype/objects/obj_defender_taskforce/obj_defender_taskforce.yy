@@ -20,10 +20,15 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [
     {"propertyId":{"name":"taskforce_type","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"TASKFORCE_TYPES.defender","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_retreat_threshold","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"0.1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_advance_threshold","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"0.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"taskforce_action_scoring_function","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"objectId":{"name":"par_ai_taskforce","path":"objects/par_ai_taskforce/par_ai_taskforce.yy",},"value":"defender_taskforce_action_scoring_function","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "taskforces",

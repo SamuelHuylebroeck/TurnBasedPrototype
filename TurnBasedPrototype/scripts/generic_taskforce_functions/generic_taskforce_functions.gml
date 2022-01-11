@@ -2,7 +2,7 @@
 function dummy_taskforce_action_scoring_function(action_type, unit, tile, taskforce){
 	return 100
 }
-
+#region recruitment
 function get_taskforce_recruitment_request_placeholder(ds_request_queue, taskforce, taskforce_player){
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
 		var placeholder_request = {
@@ -12,6 +12,7 @@ function get_taskforce_recruitment_request_placeholder(ds_request_queue, taskfor
 		ds_queue_enqueue(ds_request_queue, placeholder_request)
 	}
 }
+#endregion
 #region management
 function is_objective_completed(objective, taskforce, ai_player){
 	if objective == noone{
@@ -20,12 +21,26 @@ function is_objective_completed(objective, taskforce, ai_player){
 	switch (objective.objective_type){
 		case OBJECTIVE_TYPES.capture:
 			return is_capture_objective_completed(objective, taskforce, ai_player)
+		case OBJECTIVE_TYPES.guard:
+			return is_guard_objective_completed(objective, taskforce, ai_player)
 	}
 }
 
 function is_capture_objective_completed(objective, taskforce, ai_player){
-	return objective.target.controlling_player.id == ai_player.id
+	return (objective.target.controlling_player!=noone) and (objective.target.controlling_player.id == ai_player.id)
+}
 
+function is_guard_objective_completed(objective, taskforce, ai_player){
+	var gt = objective.target
+	for(var i =0; i<ds_list_size(gt.list_nearby_structures); i++){
+		var structure = gt.list_nearby_structures[|i]
+		if structure.controlling_player != noone and structure.controlling_player.id == ai_player.id
+		{
+			return false
+		}
+	
+	}
+	return true
 }
 #endregion
 #region scoring
@@ -72,7 +87,7 @@ function generic_taskforce_score_retreating(action_type, unit, tile,taskforce,ta
 	final_score += power(10, defense_digits)*action_component
 	final_score += power(10,defense_digits + action_digits)*distance_to_objective_component
 	final_score += power(10,defense_digits + action_digits+distance_digits)*objective_component
-	if global.debug_ai_generic_taskforces_scoring {
+	if global.debug_ai_scoring {
 		var action_string = "Move"
 		switch(action_type){
 			case ACTION_TYPES.move_and_skill:
@@ -112,7 +127,7 @@ function generic_taskforce_score_attack(unit, tile, taskforce,target, nr_digits)
 	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-1.1)
 	var rel_expected_damage = expected_damage/maximum_damage
 
-	if (global.debug_ai_generic_taskforces_scoring) show_debug_message(string(expected_damage)+"/"+string(maximum_damage)+":"+string(rel_expected_damage))
+	if (global.debug_ai_scoring) show_debug_message(string(expected_damage)+"/"+string(maximum_damage)+":"+string(rel_expected_damage))
 	
 	//Rescale from [0,1] to [0,8*10^digits]
 	rel_expected_damage = clamp(rel_expected_damage,0,1)
@@ -140,7 +155,7 @@ function generic_taskforce_score_retreating_skill(unit, tile, taskforce, nr_digi
 	var skill_score = sum_preferred_targets*1/2*unit.attack_profile.base_damage
 	var max_skill_score = get_attack_damage_ceiling(unit,tile,tile,unit.attack_profile)
 	var rel_skill_score = clamp(skill_score/max_skill_score,0,1)
-	if (global.debug_ai_raider_taskforces_scoring) show_debug_message(string(sum_preferred_targets) + "," + string(skill_score)+"/"+string(max_skill_score)+":"+string(rel_skill_score))
+	if (global.debug_ai_scoring) show_debug_message(string(sum_preferred_targets) + "," + string(skill_score)+"/"+string(max_skill_score)+":"+string(rel_skill_score))
 	//Rescale from [0,1] to [0,8*10^digits]
 	if rel_skill_score > 0 {
 		rel_skill_score = rel_skill_score * (0.8)*power(10,nr_digits)
@@ -166,6 +181,7 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 	//5 for moves in the outer home area (r)
 	//BBB is the remaining path distance towards the home area center, from the target tile, ignoring all units
 	//The distance score is maxed when the target tile is in the home zone
+
 	//CC is the action score on the tile, with 20 being no action. 
 	//Skill can take priority over attack if enough more targets are effected
 	//D is a penalty score for the tiles surrounding the recruitment building
@@ -219,7 +235,7 @@ function generic_taskforce_score_mustering(action_type, unit, tile,taskforce,tar
 	final_score += power(10, defense_digits+1)*action_component
 	final_score += power(10,defense_digits+1 + action_digits)*distance_to_objective_component
 	final_score += power(10,defense_digits+1 + action_digits+distance_digits)*objective_component
-	if global.debug_ai_generic_taskforces_scoring {
+	if global.debug_ai_scoring {
 		var action_string = "Move"
 		switch(action_type){
 			case ACTION_TYPES.move_and_skill:
@@ -243,21 +259,21 @@ function generic_taskforce_score_mustering_skill(unit, tile, taskforce, nr_digit
 	//Each preferred target counts as a half a full power attack
 	//Each non-preferred target substracks half a full power attack in score
 	//Only apply score for tiles that have the skill effect terrain linger, refresh or detonate
-	//Favour doing a skill on empty terrain if the skill is adverse
 	#endregion
 	var sum_preferred_targets =  get_sum_preferred_targets(unit,tile,unit.weather_profile)
 	var skill_score = sum_preferred_targets*1/2*unit.attack_profile.base_damage
 	var max_skill_score = get_attack_damage_ceiling(unit,tile,tile,unit.attack_profile)
-	var rel_skill_score = clamp(skill_score/max_skill_score,0,1)
-	if (global.debug_ai_raider_taskforces_scoring) show_debug_message(string(sum_preferred_targets) + "," + string(skill_score)+"/"+string(max_skill_score)+":"+string(rel_skill_score))
-	//Rescale from [0,1] to [0,8*10^digits]
-	if rel_skill_score > 0 
+	var rel_skill_score = clamp(skill_score/max_skill_score,-1,1)/2+0.5
+	if (global.debug_ai_scoring) show_debug_message(string(sum_preferred_targets) + "," + string(skill_score)+"/"+string(max_skill_score)+":"+string(rel_skill_score))
+	if rel_skill_score == 0.5 
 	{
-		rel_skill_score = rel_skill_score * (0.8)*power(10,nr_digits)
-		rel_skill_score += 0.2*power(10,nr_digits)
-	}else{
-		rel_skill_score = 0.2*power(10,nr_digits)-1
+		//With neutral targets, do not do the skill
+		rel_skill_score = 0
 	}
+	
+	
+	
+	
 	rel_skill_score = clamp(floor(rel_skill_score),0,power(10,nr_digits)-1) 
 	return rel_skill_score
 }
@@ -265,7 +281,15 @@ function generic_taskforce_score_mustering_skill(unit, tile, taskforce, nr_digit
 
 function generic_taskforce_score_tile_defense(unit, tile, nr_digits){
 	//Check which defense type is dominant for the unit and get scales
-	var avoid_contribution, armour_contribution
+	var avoid_contribution
+	
+	
+	
+	
+	
+	
+	
+	, armour_contribution
 	var rel_defensive_score = 0
 	if(is_armour_dominant_defense(unit)){
 		avoid_contribution = 0.3

@@ -19,18 +19,25 @@ function start_game(setup_multiplayer){
 		//Setup garrison objective tracking
 		init_garrison_objective_tracking(game_control)
 		
+		if global.debug_ai
+		{
+			instance_create_layer(0,0,"Logic", obj_taskforce_debug_controller)
+		}
+		
 		//set game to running
 		global.game_in_progress = true
 		global.map_running = true;
-		
-	
-	
 	}	
 	
 
 }
 
 function create_player_objects(game_control){
+	//Clean up old players
+	with(par_player){
+		instance_destroy()
+	}
+	
 	for(var i= 0; i< ds_list_size(ds_player_configs); i++){
 		var pc = ds_player_configs[| i]
 		var player = create_player(pc)
@@ -141,6 +148,8 @@ function assign_spawn(player, spawn){
 			linked_spawn.player = player.id
 		}
 	}
+	player.x = spawn.x
+	player.y = spawn.y
 }
 	
 function consume_all_spawns(){
@@ -206,16 +215,16 @@ function init_garrison_objective_tracking(game_control){
 	
 	with(obj_flag)
 	{
-		ds_list_add(list_candidate_objectives, self)
+		ds_list_add(list_candidate_objectives, self.id)
 		var candidate_grouping = ds_list_create()
-		ds_list_add(candidate_grouping, self)
+		ds_list_add(candidate_grouping, self.id)
 		ds_queue_enqueue(grouping_queue, candidate_grouping)
 	}
 	with(par_recruitment_building)
 	{
-		ds_list_add(list_candidate_objectives, self)
+		ds_list_add(list_candidate_objectives, self.id)
 		var candidate_grouping = ds_list_create()
-		ds_list_add(candidate_grouping, self)
+		ds_list_add(candidate_grouping, self.id)
 		ds_queue_enqueue(grouping_queue, candidate_grouping)
 	}
 	#endregion
@@ -232,7 +241,7 @@ function init_garrison_objective_tracking(game_control){
 					extendable = true
 					var new_candidate_grouping = ds_list_create()
 					ds_list_copy(new_candidate_grouping, next_candidate_grouping)
-					ds_list_add(new_candidate_grouping, obj)
+					ds_list_add(new_candidate_grouping, obj.id)
 					ds_queue_enqueue(grouping_queue, new_candidate_grouping)
 				}
 			}

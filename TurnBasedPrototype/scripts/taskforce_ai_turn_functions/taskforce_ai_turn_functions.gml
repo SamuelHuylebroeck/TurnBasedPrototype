@@ -61,7 +61,7 @@ function restore_player_control(){
 }
 
 function execute_task_force_management(taskforce_player){
-	show_debug_message("Executing task force management")
+	show_debug_message("Executing task force and player stance management")
 	#region task force creation
 	var keys = ds_map_keys_to_array(taskforce_player.ds_map_force_max_composition)
 	
@@ -72,8 +72,6 @@ function execute_task_force_management(taskforce_player){
 	}
 	#endregion
 	
-	
-	#region task force objective checking
 	//Group task forces together
 	var grouped_map = ds_map_create()
 	for (var i=0; i< ds_list_size(taskforce_player.ds_list_taskforces);i++){
@@ -88,6 +86,12 @@ function execute_task_force_management(taskforce_player){
 			ds_map_add(grouped_map, key, new_list)
 		}
 	}
+	#region ai_player stance management
+	
+	update_player_stance(taskforce_player, grouped_map)
+	#endregion
+	
+	#region task force objective checking
 	// Run the grouped forces through the objective updates
 	var key_array = ds_map_keys_to_array(grouped_map)
 	for(var i=0; i<array_length(key_array);i++){
@@ -133,6 +137,7 @@ function initialize_taskforce_recruitment(taskforce_player){
 	with(taskforce_player){
 		for(var i=0; i<ds_list_size(ds_list_taskforces);i++){
 			var tf = ds_list_taskforces[|i]
+			if(global.debug_ai) show_debug_message("Generating recruitment requests for Taskforce " + string(tf)) 
 			var request_queue = get_task_force_recruitment_request(tf, self.id)
 			ds_list_add(request_list, request_queue)
 		}
@@ -191,4 +196,52 @@ function initialize_taskforce_execution(taskforce_player){
 	
 	#endregion
 	current_task_executor.alarm[0] = 1
+}
+
+function update_player_stance(player, map_grouped_taskforces)
+{
+	#region explanation
+	// A AI player starts the game in expansion stance, and will switch out of this stance into either aggressive or defensive when 90% of all structures is player controlled
+	// An AI player will switch from aggresive to defensive when 75% of it's assault taskforces is in retreat or mustering
+	// An AI player will switch from defensive to aggresive when 75% or more of it's assault taskforces are advancing
+	#endregion
+	switch(player.player_stance){
+		case TASKFORCE_AI_STANCE.expanding:
+			var total_nr_of_structures = 0
+			var total_nr_of_controlled_structures = 0
+			with(par_building){
+				total_nr_of_structures++
+				if(controlling_player != noone)total_nr_of_controlled_structures++
+			}
+			if total_nr_of_controlled_structures/total_nr_of_structures > 0.9 {
+				player.player_stance = TASKFORCE_AI_STANCE.attacking
+				update_player_stance(player, map_grouped_taskforces)
+			}
+			break;
+		default:
+			var list_assault_forces = ds_map_find_value(map_grouped_taskforces, obj_assault_taskforce)
+			if list_assault_forces != undefined and ds_list_size(list_assault_forces) > 0
+			{
+				var total_nr_of_assault_forces = ds_list_size(list_assault_forces)
+				var total_nr_of_advancing_assault_forces = 0
+				for(var i=0; i<total_nr_of_assault_forces;i++)
+				{
+					var atf = list_assault_forces[|i]
+					if atf.taskforce_stance == TASKFORCE_STANCES.advancing 
+					{
+						total_nr_of_advancing_assault_forces++
+					}
+				}
+				var atf_fraction_advancing = total_nr_of_advancing_assault_forces/total_nr_of_assault_forces
+				if player.player_stance == TASKFORCE_AI_STANCE.attacking and atf_fraction_advancing <=0.25
+				{
+					player.player_stance = TASKFORCE_AI_STANCE.defending
+				}
+				if player.player_stance == TASKFORCE_AI_STANCE.defending and atf_fraction_advancing >0.75
+				{
+					player.player_stance = TASKFORCE_AI_STANCE.attacking
+				}
+			}
+			break;
+	}
 }

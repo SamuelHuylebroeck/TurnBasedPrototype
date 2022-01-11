@@ -15,7 +15,6 @@ function create_raider_taskforce(pos_x, pos_y, zoi_radius, taskforce_player){
 	}
 }
 
-
 function max_out_raider_taskforces_radial_distribution(taskforce_player, max_count){
 	#region Get positions and zone of interests
 	var dir = point_direction(taskforce_player.x, taskforce_player.y, room_width/2, room_height/2)
@@ -58,11 +57,14 @@ function get_raider_taskforce_recruitment_request(ds_request_queue, taskforce, t
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
 		var windsword_odds = 0.7
 		var flip = random(1)
+		var name= "Flamesword"
 		var unit_template = obj_unit_flamesword
 		if flip < windsword_odds{
+			name = "Windsword"
 			unit_template = obj_unit_windsword
 		}
 		var placeholder_request = {
+			verbose_name: name,
 			template: unit_template,
 			tf: taskforce
 		}
@@ -131,7 +133,7 @@ function get_new_objective_raider_taskforce(taskforce, ai_player){
 			ds_priority_add(ds_scored_objectives, objective, flag_building_score)
 		}
 	}
-	if global.debug_ai and global.debug_ai_raider_taskforces
+	if global.debug_ai_objective_update and global.debug_ai_raider_taskforces
 	{ 
 		debug_dump_objective_queue_contents(ds_scored_objectives)
 	}
@@ -149,20 +151,19 @@ function get_objective_score_raider_taskforce(objective, taskforce, ai_player){
 	// - Favour objectives closer to home base
 	// - Favour objectives in zone of interest
 	// - Favour recruitment buildings over income over flags 
-	// Score is abbbc, with a if the objective is in the zone of interest, b being the distance component, and c the type component
+	// Score is abccc, with a if the objective is in the zone of interest, b the type component and c being the distance component 
 	#endregion
-	var compound_score = 0
-	// Get and scale zone of interest score
-	var in_zone = floor(point_distance(taskforce.x, taskforce.y, objective.target.x, objective.target.y)/global.grid_cell_width) <= taskforce.zoi_tile_radius
-	if in_zone {
-		compound_score += 1000
-	}
+	#region digits
+	var distance_digits = 3
+	var type_digits = 1
+	var zoi_digits = 1
+	#endregion
 	// Get and scale distance_score
 	var distance_to_home = point_distance(taskforce.home_x, taskforce.home_y, objective.target.x, objective.target.y)
 	var max_map_distance = point_distance(0,0,room_width, room_height)
 	var scaled_distance_to_home = distance_to_home / max_map_distance
-	var distance_score = round((1-scaled_distance_to_home)*100)*10
-	compound_score += distance_score
+	var distance_score = round((1-scaled_distance_to_home)*power(10,distance_digits-1))
+
 	//Get type scores
 	var type_score =0
 	var target_type = object_get_parent(objective.target.object_index)
@@ -180,7 +181,18 @@ function get_objective_score_raider_taskforce(objective, taskforce, ai_player){
 			type_score = 1
 			break;
 	}
-	compound_score += type_score
+
+	// Get and scale zone of interest score
+	var in_zone = floor(point_distance(taskforce.x, taskforce.y, objective.target.x, objective.target.y)/global.grid_cell_width) <= taskforce.zoi_tile_radius
+	
+	var compound_score = 0
+	compound_score += distance_score
+	compound_score += power(10,distance_digits)*type_score
+	
+	if in_zone {
+		compound_score += power(10,distance_digits+type_digits)*5
+	}
+	
 	return compound_score
 }
 #endregion
@@ -272,7 +284,7 @@ function raider_taskforce_score_distance_to_objective(unit, tile, taskforce, nr_
 
 function raider_taskforce_score_attack(unit,tile, taskforce,target, nr_digits){
 	var maximum_damage = get_attack_damage_ceiling(unit, tile, target,unit.attack_profile)
-	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-1.1)
+	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-0.9)
 	var rel_expected_damage = expected_damage/maximum_damage
 	//Put extra importance on clearing out an objective 
 	var  target_on_objective = (target._x == taskforce.current_objective.target.x and target._y == taskforce.current_objective.target.y)

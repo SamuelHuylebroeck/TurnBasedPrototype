@@ -39,8 +39,8 @@ function draw_capture_objective(objective, objective_colour){
 
 }
 	
-function log_recruitment_task_creation(template, position, player, taskforce, recruitment_building,cost){
-	show_debug_message("---RT("+template.stats_name+"): " +string(cost) +"---")
+function log_recruitment_task_creation(verbose_name, template, position, player, taskforce, recruitment_building,cost){
+	show_debug_message("---RT("+verbose_name+":"+string(template)+"): " +string(cost) +"---")
 	show_debug_message("P:" +string(player.id)+" TF: "+string(taskforce.id))
 	var recruit_pos = {
 		_x: floor(position._x/global.grid_cell_width),
@@ -62,4 +62,18 @@ function get_stance_verbose_name(stance){
 			return "Undefined"
 	}
 	
+}
+
+function get_player_stance_verbose_name(stance)
+{
+	switch(stance){
+		case TASKFORCE_AI_STANCE.expanding:
+			return "Expanding"
+		case TASKFORCE_AI_STANCE.attacking:
+			return "Attacking"
+		case TASKFORCE_AI_STANCE.defending:
+			return "Defending"
+		default:
+			return "Undefined"
+	}
 }

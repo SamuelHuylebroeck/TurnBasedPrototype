@@ -6,9 +6,9 @@ function get_assault_taskforce_recruitment_request(ds_request_queue, taskforce, 
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
 		repeat(2){
 			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword)
-			show_debug_message(string(choice))
 			//var choice = obj_unit_groundpounder
 			var placeholder_request = {
+				verbose_name:"Assault Req: " + string(choice),
 				template: choice,
 				tf: taskforce
 			}
@@ -122,10 +122,10 @@ function update_objectives_assault_taskforce(taskforce, ai_player){
 				y = current_objective.target.y
 			}else{
 				// Check if there's an unclaimed flag
-				//Gather all contested flags
+				// Gather all contested flags
 				var flag_list = get_all_contested_flags_list(ai_player)
 				var all_assault_taskforces = ds_list_create()
-				for(var i=0; i< ai_player.ds_list_taskforces;i++){
+				for(var i=0; i< ds_list_size(ai_player.ds_list_taskforces);i++){
 					var tf = ai_player.ds_list_taskforces[|i]
 					if tf.object_index == obj_assault_taskforce {
 						ds_list_add(all_assault_taskforces, tf)
@@ -315,7 +315,7 @@ function assault_taskforce_score_objective_advancing(action_type, unit, tile, ta
 
 function assault_taskforce_score_attack(unit,tile, taskforce,target, nr_digits){
 	var maximum_damage = get_attack_damage_ceiling(unit, tile, target,unit.attack_profile)
-	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-1.1)
+	var expected_damage = get_attack_expected_damage(unit, tile, target,unit.attack_profile,-0.9)
 	var rel_expected_damage = expected_damage/maximum_damage
 	//Put extra importance on clearing out an objective 
 	var  target_on_objective = (target._x == taskforce.current_objective.target.x and target._y == taskforce.current_objective.target.y)

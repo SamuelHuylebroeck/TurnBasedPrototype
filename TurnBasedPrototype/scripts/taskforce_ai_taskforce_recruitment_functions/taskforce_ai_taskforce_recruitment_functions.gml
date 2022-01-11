@@ -8,6 +8,9 @@ function get_task_force_recruitment_request(taskforce, taskforce_player){
 		case obj_assault_taskforce:
 			get_assault_taskforce_recruitment_request(ds_tf_request_queue,taskforce, taskforce_player)
 			break;
+		case obj_defender_taskforce:
+			get_defender_taskforce_recruitment_request(ds_tf_request_queue,taskforce, taskforce_player)
+			break;
 		default:
 			get_taskforce_recruitment_request_placeholder(ds_tf_request_queue,taskforce, taskforce_player)
 			break;
@@ -31,6 +34,10 @@ function construct_recruitment_priority_queue(ds_requests_list, taskforce_player
 			var priority_score = get_recruit_priority_score(next_request,taskforce_player, pos_in_queue,i);
 			ds_priority_add(priority_queue,next_request, priority_score)
 			pos_in_queue++
+			if global.debug_ai_recruitment
+			{
+				show_debug_message("Request: "+string(next_request.template)+" for "+string(next_request.tf)+" : "+string(priority_score))
+			}
 		}
 	}
 
@@ -47,10 +54,15 @@ function get_recruit_priority_score(recruit_request, taskforce_player, queue_pos
 	// D is derived from the position of the taskforce queue
 	#endregion
 	var compound_score = 0
-	compound_score += score_taskforce_state(recruit_request.tf, taskforce_player)*100000
-	compound_score += score_taskforce_type(recruit_request.tf, taskforce_player)*10000
-	compound_score += (99-queue_position)*100
+	var queue_digits = 2
+	var tf_list_position_digits = 2
+	var taskforce_type_digits = 1
+	var taskforce_state_digits = 1
+	
 	compound_score += (99-list_position)
+	compound_score += power(10,tf_list_position_digits)*(99-queue_position)
+	compound_score += power(10,tf_list_position_digits+queue_digits)*score_taskforce_type(recruit_request.tf, taskforce_player)
+	compound_score += power(10,tf_list_position_digits+queue_digits+taskforce_type_digits)*score_taskforce_state(recruit_request.tf, taskforce_player)
 	
 	return compound_score
 }
@@ -86,7 +98,7 @@ function generate_recruitment_tasks(rec_req_priority, taskforce_player, executor
 				var selected_position = select_closest_position(selected_building, next_opportunity.tf)
 				var index_to_remove = ds_list_find_index(ds_list_recruitment_buildings, selected_building)
 				ds_list_delete(ds_list_recruitment_buildings, index_to_remove)
-				var rec_task = create_recruitment_task_from_opportunity(next_opportunity.template,selected_position, taskforce_player, next_opportunity.tf, selected_building, cost)
+				var rec_task = create_recruitment_task_from_opportunity(next_opportunity.verbose_name, next_opportunity.template,selected_position, taskforce_player, next_opportunity.tf, selected_building, cost)
 				ds_queue_enqueue(executor_queue,rec_task)
 			}
 		}
@@ -167,8 +179,8 @@ function select_closest_position(recruitment_building, taskforce){
 	return closest_position
 	
 }
-function create_recruitment_task_from_opportunity(template, position, player, taskforce, recruitment_building, cost){
-	if (global.debug_ai) log_recruitment_task_creation(template, position, player, taskforce, recruitment_building, cost)
+function create_recruitment_task_from_opportunity(verbose_name, template, position, player, taskforce, recruitment_building, cost){
+	if (global.debug_ai_recruitment) log_recruitment_task_creation(verbose_name, template, position, player, taskforce, recruitment_building, cost)
 	var rec_task = instance_create_layer(0,0,"Logic", obj_recruitment_task)
 	with(rec_task){
 		recruitment_details = new RecruitmentTaskDetail(template,position, player, taskforce, recruitment_building, cost)

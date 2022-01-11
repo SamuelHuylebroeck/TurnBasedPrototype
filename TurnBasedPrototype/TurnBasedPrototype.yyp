@@ -145,7 +145,6 @@
     {"id":{"name":"obj_dd_picker_player_type","path":"objects/obj_dd_picker_player_type/obj_dd_picker_player_type.yy",},"order":3,},
     {"id":{"name":"obj_player_dummy_ai","path":"objects/obj_player_dummy_ai/obj_player_dummy_ai.yy",},"order":3,},
     {"id":{"name":"par_detonate_weather_effect","path":"objects/par_detonate_weather_effect/par_detonate_weather_effect.yy",},"order":3,},
-    {"id":{"name":"recruitment_task_functions","path":"scripts/recruitment_task_functions/recruitment_task_functions.yy",},"order":0,},
     {"id":{"name":"obj_placeholder_weather","path":"objects/obj_placeholder_weather/obj_placeholder_weather.yy",},"order":1,},
     {"id":{"name":"obj_placeholder_unit","path":"objects/obj_placeholder_unit/obj_placeholder_unit.yy",},"order":1,},
     {"id":{"name":"spr_placeholder_idle","path":"sprites/spr_placeholder_idle/spr_placeholder_idle.yy",},"order":0,},

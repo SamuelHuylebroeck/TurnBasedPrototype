@@ -103,7 +103,10 @@ function update_taskforce_stance(tf, ai_player){
 function update_taskforce_home_area(tf, ai_player){
 	//Select the recruitment building closest to the current objective
 	var closest_recruitment_building = get_closest_controlled_recruitment_building(tf.current_objective.target.x, tf.current_objective.target.y, ai_player)
-	tf.home_x = closest_recruitment_building.x
-	tf.home_y = closest_recruitment_building.y
+	if closest_recruitment_building != noone
+	{
+		tf.home_x = closest_recruitment_building.x
+		tf.home_y = closest_recruitment_building.y
+	}
 
 }

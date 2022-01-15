@@ -24,7 +24,7 @@ if(global.map_running){
 	draw_text(current_pos_x,current_pos_y+8,turn_text);
 	
 	draw_set_font(text_small_font);
-	var resource_text = "Flags: "+ string(player.player_current_flag_total)+"/"+string(flags_to_win)+"- Resources: "+ string(player.player_current_resources); 
+	var resource_text = "Flags: "+ string(player.player_current_flag_total)+"/"+string(flags_to_win)+"- Resources: "+ string(player.player_current_resources) + "("+string(player.current_income)+")"; 
 	draw_text(current_pos_x,current_pos_y+8+string_height(turn_text)+8,resource_text);
 	
 	

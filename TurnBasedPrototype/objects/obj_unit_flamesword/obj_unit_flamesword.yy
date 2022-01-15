@@ -43,6 +43,7 @@
     {"propertyId":{"name":"stats_weather_template","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"obj_weather_fire","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_weather_element","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"WEATHER_ELEMENTS.fire","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_weather_benign","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"stats_animation_hit_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_flamesword_hit_effect","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "flamesword",

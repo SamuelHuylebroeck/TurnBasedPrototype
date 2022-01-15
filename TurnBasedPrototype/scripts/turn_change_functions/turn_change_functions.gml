@@ -16,6 +16,16 @@ function goto_next_turn(){
 function resolve_turn_start(player){
 	if (player != noone){
 		count_flags(player)
+		//Add income
+		var turn_income = player.player_base_income
+		
+		with(par_income_building){
+			if(controlling_player != noone and controlling_player.id == player.id){
+				turn_income += income_per_turn
+			}
+		}
+		player.current_income = turn_income
+		player.player_current_resources += turn_income
 		//Loop over every unit
 		with(par_abstract_unit){
 			if(controlling_player != noone and controlling_player.id == player.id){
@@ -32,16 +42,16 @@ function resolve_turn_start_unit(unit){
 	unit.move_points_total_current = unit.unit_profile.base_movement
 	
 	
-	#region Terrain effect
+	#region Weather
 	var weather = instance_place(unit.x, unit.y ,par_weather)
 	
 	if weather != noone {
 		resolve_weather_start_of_turn(unit, weather)
-	
 	}
+	ds_map_clear(unit.ds_weather_crossed)
 	#endregion
 	
-	#region weather
+	#region Terrain effect
 	
 	var terrain = instance_place(unit.x, unit.y ,par_terrain)
 	
@@ -49,6 +59,7 @@ function resolve_turn_start_unit(unit){
 		resolve_terrain_start_of_turn(unit, terrain)
 	
 	}
+	ds_map_clear(unit.ds_terrain_crossed)
 	#endregion
 	
 	#region boons and banes
@@ -98,17 +109,6 @@ function resolve_turn_end(player){
 			}
 		
 		}
-		
-		//Add income
-		var turn_income = player.player_base_income
-		
-		with(par_income_building){
-			if(controlling_player != noone and controlling_player.id == player.id){
-				turn_income += income_per_turn
-			}
-		}
-		player.player_current_resources += turn_income
-		
 		//check for victory
 		count_flags(player)
 		check_for_flag_victory(player)

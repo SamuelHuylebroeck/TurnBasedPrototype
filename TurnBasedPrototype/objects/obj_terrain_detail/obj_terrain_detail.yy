@@ -28,10 +28,9 @@
   "properties": [
     {"varType":4,"value":"c_soft_yellow","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_color","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":5,"value":"font_stat_card_small","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_font","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"32","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"x_offset","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":0,"value":"224","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"w","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"128","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"h","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"8","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"margin","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":0,"value":"132","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"h","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":0,"value":"32","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"margin","tags":[],"resourceType":"GMObjectProperty",},
     {"varType":0,"value":"16","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"frame_margin","tags":[],"resourceType":"GMObjectProperty",},
   ],
   "overriddenProperties": [],

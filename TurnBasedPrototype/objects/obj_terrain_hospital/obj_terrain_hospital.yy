@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_terrain_placeholder_fort",
-    "path": "sprites/spr_terrain_placeholder_fort/spr_terrain_placeholder_fort.yy",
+    "name": "spr_hospital",
+    "path": "sprites/spr_hospital/spr_hospital.yy",
   },
   "solid": false,
   "visible": true,

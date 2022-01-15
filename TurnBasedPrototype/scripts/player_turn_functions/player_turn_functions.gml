@@ -7,8 +7,8 @@ function take_player_turn(){
 	if(instance_position(mouse_x, mouse_y,par_abstract_unit) and mouse_check_button_pressed(mb_left) and global.player_permission_selection)
 	{
 		var selection_candidate;
-		selection_candidate = instance_nearest(mouse_x,mouse_y,par_abstract_unit);
-		if(selection_candidate.id != global.selected and selection_candidate.controlling_player.id == active_player)
+		selection_candidate = instance_position(mouse_x,mouse_y,par_abstract_unit);
+		if(selection_candidate != noone and selection_candidate.id != global.selected and selection_candidate.controlling_player != noone and selection_candidate.controlling_player.id == active_player)
 		{
 			//delete old stat card
 			with(obj_gui_unit_stat_card)
@@ -30,7 +30,7 @@ function take_player_turn(){
 		}
 		
 		//Select enemy unit
-		if(selection_candidate.id != global.enemy_selected and selection_candidate.controlling_player.id != active_player)
+		if(selection_candidate != noone and selection_candidate.id != global.enemy_selected and (selection_candidate.controlling_player == noone or selection_candidate.controlling_player.id != active_player.id))
 		{
 			var enemy_unit = selection_candidate
 			//delete old stat card

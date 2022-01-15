@@ -3,7 +3,7 @@ if (controlling_player != noone) {
 	shader_set(sha_team_colour_blend)
 	var player_colour= controlling_player.player_colour;
 	var pass_colour = [colour_get_red(player_colour)/255, colour_get_green(player_colour)/255 ,colour_get_blue(player_colour)/255,1];
-	var mix = 0.6
+	var mix = 0.33
 	shader_set_uniform_f(_tc_mix, mix)
 	shader_set_uniform_f_array(_team_colour, pass_colour)
 	

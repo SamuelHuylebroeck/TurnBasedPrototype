@@ -8,6 +8,7 @@ if global.enemy_selected != noone and self.id == global.enemy_selected.id{
 }
 
 ds_map_destroy(ds_terrain_crossed)
+ds_map_destroy(ds_weather_crossed)
 ds_map_destroy(ds_boons_and_banes)
 
 if linked_taskforce != noone {

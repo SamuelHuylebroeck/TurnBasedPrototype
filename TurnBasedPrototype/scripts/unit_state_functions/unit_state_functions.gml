@@ -33,14 +33,14 @@ function end_of_animation_reached(){
 }
 	
 	
-function resolve_moving_terrain_contact(unit, terrain){
+function resolve_moving_terrain_contact(unit, terrain)
+{
 	//Apply contact damage/healing
 	if(terrain.contact_hp_change != 0){
 		do_hp_change(unit, terrain.contact_hp_change)
 	}
 	//Aply contact boon and banes
 }
-
 function resolve_terrain_start_of_turn(unit,terrain){
 	#region boon and bane
 	if(terrain.start_of_turn_boon_bane != noone)

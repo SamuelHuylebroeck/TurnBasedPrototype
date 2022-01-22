@@ -24,7 +24,9 @@
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"assault_cooldown","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"objectId":{"name":"par_player_taskforce_ai","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "taskforce_ai",
     "path": "folders/Objects/control/taskforce_ai.yy",

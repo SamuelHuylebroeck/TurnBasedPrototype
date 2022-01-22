@@ -9,7 +9,7 @@ ds_boons_and_banes = ds_map_create()
 
 #region stat constructors
 weather_profile = new WeatherProfile(stats_weather_name, stats_weather_template, stats_weather_duration,stats_weather_burst_size, stats_weather_element, stats_weather_benign)
-var attack_animation_profile = new AttackAnimationProfile(stats_animation_hit_frame, sprite_get_speed(animation_attack_sprite), stats_animation_hit_sprite)
+var attack_animation_profile = new AttackAnimationProfile(stats_animation_hit_frame, sprite_get_speed(animation_attack_sprite), stats_animation_hit_sprite, stats_animation_hit_sprite_hit_frame)
 attack_profile = new AttackProfile(stats_damage,stats_piercing,stats_accuracy,stats_attack_shape, stats_attack_size,stats_attack_min_range,stats_attack_max_range,attack_animation_profile, weather_profile)
 unit_profile = new UnitProfile(stats_name, stats_hp, stats_move_points_grid,stats_avoid,stats_armour)
 #endregion

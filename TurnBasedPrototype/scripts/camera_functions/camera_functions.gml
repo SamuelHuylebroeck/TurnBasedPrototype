@@ -57,7 +57,7 @@ function player_pan(){
 	{
 		camera_y -= camera_pan_step;
 	}
-//(mouse_y > display_get_gui_height()-edge_pan_zone)
+	//(mouse_y > display_get_gui_height()-edge_pan_zone)
 	if( (down_pressed or m_y > display_get_gui_height()-edge_pan_zone)  and camera_y < room_height - camera_height)
 	{
 		camera_y += camera_pan_step;

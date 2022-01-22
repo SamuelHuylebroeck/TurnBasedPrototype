@@ -160,6 +160,9 @@ function create_recruitment_options(){
 	
 	var groundpounder = new recruitment_option("Groundpounder", obj_unit_groundpounder, 220)
 	ds_list_add(global.ds_basic_recruitment_options, groundpounder)
+	
+	var tempest_knight = new recruitment_option("Tempest Knight", obj_unit_tempest_knight, 405)
+	ds_list_add(global.ds_basic_recruitment_options, tempest_knight)
 
 
 }
@@ -194,11 +197,15 @@ function define_ai_globals(){
 	
 	#region Taskforce AI configuration
 	global.taskforce_ai_garrison_grouping_tile_distance = 2
+	global.taskforce_ai_raid_opportunity_grouping_tile_distance = 3
 	#endregion
 
 }
 	
 function define_combat_balance_globals(){
-	global.max_armour = 30
+	global.max_tile_armour = 20
+	global.max_tile_avoid = 50
 	global.max_avoid = 150
+	global.max_armour = 50
+	global.explosion_damage_fraction = 0.2
 }

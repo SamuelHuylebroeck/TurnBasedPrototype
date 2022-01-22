@@ -7,6 +7,7 @@ with(obj_control){
 	
 	init_victory_conditions(self)
 	init_garrison_objective_tracking(self)
+	init_raid_opportunity_tracking(self)
 	
 	global.game_in_progress = true
 	global.map_running = true;

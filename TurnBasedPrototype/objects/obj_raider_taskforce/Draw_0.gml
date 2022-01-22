@@ -24,8 +24,8 @@ if global.debug_ai and global.debug_ai_raider_taskforces {
 	draw_circle_color(home_x,home_y,global.grid_cell_width/2, c_red, c_yellow, false)
 	draw_line_width_color(x,y,home_x, home_y,2, c_green, c_green)
 	//Draw ZOI
-	draw_set_alpha(0.1)
-	draw_circle_color(x,y,zoi_tile_radius * global.grid_cell_width, c_yellow, c_red, false)
+	//draw_set_alpha(0.1)
+	//draw_circle_color(x,y,zoi_tile_radius * global.grid_cell_width, c_yellow, c_red, false)
 	draw_set_alpha(old_alpha)
 	//Draw current objective
 	if current_objective != noone {

@@ -120,6 +120,12 @@ function resolve_turn_end(player){
 			fade_weather()
 		}
 	}
+	
+	//Update taskforce positions
+	with(par_ai_taskforce){
+		update_taskforce_position(self, taskforce_player)
+	}
+
 }
 
 function resolve_turn_end_unit(unit){

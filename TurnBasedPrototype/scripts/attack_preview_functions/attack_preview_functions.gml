@@ -50,13 +50,30 @@ function simulate_attack(attack_profile, target_unit, origin_unit){
 	// Terrain after attack
 	#endregion
 	var refined_profile = get_refined_stats(attack_profile, origin_unit, target_unit)
+	var final_damage = refined_profile.d
 	var kills = (target_unit.current_hp- refined_profile.d) <=0
+	var weather_end = attack_profile.weather_profile.weather_type
+	var relation = WEATHER_RELATIONS.overpower
+	var weather_on_tile = instance_position(target_unit.x, target_unit.y, par_weather)
+	if weather_on_tile != noone {
+		var relation = global.weather_relations[attack_profile.weather_profile.weather_element][weather_on_tile.weather_element]
+	}
+	if relation == WEATHER_RELATIONS.fizzle 
+	{
+		weather_end = weather_on_tile.object_index
+	}
+	if relation == WEATHER_RELATIONS.detonate
+	{
+		final_damage += target_unit.unit_profile.max_hp * global.explosion_damage_fraction
+		weather_end = noone
+	}
+	
 	var result={
 		hit_rate: refined_profile.hr,
-		damage: refined_profile.d,
+		damage: final_damage,
 		kill: kills,
-		terrain_reaction: WEATHER_RELATIONS.overpower,
-		terrain_after_attack: obj_weather_fire
+		weather_reaction: relation,
+		weather_after_attack: weather_end
 	}
 	return result
 }

@@ -6,7 +6,7 @@ draw_set_valign(fa_top)
 draw_set_halign(fa_left)
 
 var nr_of_options = ds_list_size(ds_recruitment_options)
-var calculated_frame_height = max((nr_of_options+1) * button_height, frame_min_height)
+var calculated_frame_height = max((nr_of_options+1) * button_height+2*inner_margin, frame_min_height)
 
 var tlc_outer = {
 	_x: display_get_gui_width()/2-frame_width/2,
@@ -46,7 +46,7 @@ for(var i = 0; i<nr_of_options; i++){
 	var option = ds_recruitment_options[| i]
 	with(option){
 		ui_x = tlc_inner._x
-		ui_y = tlc_inner._y+ i*button_height
+		ui_y = tlc_inner._y+ i*(button_height)
 	}
 }
 //Cancel button

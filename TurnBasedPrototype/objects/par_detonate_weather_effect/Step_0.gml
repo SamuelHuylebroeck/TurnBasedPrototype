@@ -4,7 +4,7 @@ if not done and image_speed >0 {
 		//Apply effect
 		var defender = instance_position(x,y, par_abstract_unit)
 		if (defender != noone){
-			var explosion_damage = defender.unit_profile.max_hp*explosion_damage_rel_value
+			var explosion_damage = defender.unit_profile.max_hp*global.explosion_damage_fraction
 			do_hp_change(defender, -1*explosion_damage)
 		}
 		effect_applied = true

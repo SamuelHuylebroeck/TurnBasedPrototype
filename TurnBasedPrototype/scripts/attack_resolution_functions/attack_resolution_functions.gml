@@ -33,6 +33,7 @@ function create_attack_effect_object_at_location(i, _x, _y, origin_unit, attack_
 	with(instance){
 		//Calculate when the attack should trigger
 		var time_to_hit_frame = attack_profile.animation_profile.hit_frame * origin_unit.image_speed / attack_profile.animation_profile.base_sprite_animation_speed * game_get_speed(gamespeed_fps)
+		hit_frame = attack_profile.animation_profile.hit_sprite_hit_frame
 		alarm[0] = time_to_hit_frame
 		// Set the required data
 		sprite_index = attack_profile.animation_profile.hit_sprite

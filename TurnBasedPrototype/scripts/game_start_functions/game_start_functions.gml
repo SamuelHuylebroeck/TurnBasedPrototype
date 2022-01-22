@@ -18,6 +18,7 @@ function start_game(setup_multiplayer){
 		
 		//Setup garrison objective tracking
 		init_garrison_objective_tracking(game_control)
+		init_raid_opportunity_tracking(game_control)
 		
 		if global.debug_ai
 		{
@@ -206,7 +207,8 @@ function init_victory_conditions(game_control){
 
 }
 
-function init_garrison_objective_tracking(game_control){
+function init_garrison_objective_tracking(game_control)
+{
 	//Cluster regions together to create the garrision areas
 	#region setup
 	//Gather all objectives
@@ -237,7 +239,7 @@ function init_garrison_objective_tracking(game_control){
 			var extendable = false
 			for(var i=0; i<ds_list_size(list_candidate_objectives);i++){
 				var obj = list_candidate_objectives[|i]
-				if can_extend_grouping(next_candidate_grouping, obj) {
+				if can_extend_grouping(next_candidate_grouping, obj, global.taskforce_ai_garrison_grouping_tile_distance) {
 					extendable = true
 					var new_candidate_grouping = ds_list_create()
 					ds_list_copy(new_candidate_grouping, next_candidate_grouping)
@@ -263,7 +265,14 @@ function init_garrison_objective_tracking(game_control){
 					var pos = ds_list_find_index(list_candidate_objectives, obj)
 					ds_list_delete(list_candidate_objectives, pos)
 				}
-			}
+			}else
+			{
+				//At least one extension was found, but it is possible that this extension becomes invalid due to another pairing
+				//Re-add the grouping before extension to give it another shot
+				var new_candidate_grouping = ds_list_create()
+				ds_list_copy(new_candidate_grouping, next_candidate_grouping)
+				ds_queue_enqueue(grouping_queue, new_candidate_grouping)
+			} 
 		}
 		ds_list_destroy(next_candidate_grouping)
 	}
@@ -285,14 +294,14 @@ function is_grouping_candidate_valid(grouping,list_available_objectives){
 	return true
 }
 
-function can_extend_grouping(grouping, candidate_objective){
+function can_extend_grouping(grouping, candidate_objective, tile_distance){
 	if ds_list_find_index(grouping, candidate_objective) != -1 {
 		return false
 	}
 	for(var i=0; i<ds_list_size(grouping); i++){
 		var obj = grouping[|i]
 		var distance_to_obj = point_distance(candidate_objective.x, candidate_objective.y, obj.x, obj.y)
-		if distance_to_obj > global.taskforce_ai_garrison_grouping_tile_distance*global.grid_cell_width
+		if distance_to_obj > tile_distance*global.grid_cell_width
 		{
 			return false
 		}
@@ -310,4 +319,89 @@ function get_center_of_mass(list_objects){
 	}
 	
 	return {_x: m_x/list_size, _y: m_y/list_size}
+}
+
+function init_raid_opportunity_tracking(game_control)
+{
+	//Cluster regions together to create the garrision areas
+	#region setup
+	//Gather all objectives
+	var list_candidate_objectives = ds_list_create()
+	var grouping_queue = ds_queue_create()
+	
+	with(obj_flag)
+	{
+		ds_list_add(list_candidate_objectives, self.id)
+		var candidate_grouping = ds_list_create()
+		ds_list_add(candidate_grouping, self.id)
+		ds_queue_enqueue(grouping_queue, candidate_grouping)
+	}
+	with(par_recruitment_building)
+	{
+		ds_list_add(list_candidate_objectives, self.id)
+		var candidate_grouping = ds_list_create()
+		ds_list_add(candidate_grouping, self.id)
+		ds_queue_enqueue(grouping_queue, candidate_grouping)
+	}
+	
+	with(par_income_building)
+	{
+		ds_list_add(list_candidate_objectives, self.id)
+		var candidate_grouping = ds_list_create()
+		ds_list_add(candidate_grouping, self.id)
+		ds_queue_enqueue(grouping_queue, candidate_grouping)
+	}
+	
+	#endregion
+	#region clustering
+	while(not ds_queue_empty(grouping_queue)){
+		var next_candidate_grouping = ds_queue_dequeue(grouping_queue)
+		if is_grouping_candidate_valid(next_candidate_grouping,list_candidate_objectives)
+		{
+			//Check if the grouping can be extended
+			var extendable = false
+			for(var i=0; i<ds_list_size(list_candidate_objectives);i++){
+				var obj = list_candidate_objectives[|i]
+				//show_debug_message("Checking " + string(obj.id) + " for grouping " + string(next_candidate_grouping))
+				if can_extend_grouping(next_candidate_grouping, obj, global.taskforce_ai_raid_opportunity_grouping_tile_distance) {
+					extendable = true
+					var new_candidate_grouping = ds_list_create()
+					ds_list_copy(new_candidate_grouping, next_candidate_grouping)
+					ds_list_add(new_candidate_grouping, obj.id)
+					ds_queue_enqueue(grouping_queue, new_candidate_grouping)
+				}
+			}
+			if not extendable 
+			{
+				//This is a final grouping, create a tracker for it
+				var mass_center = get_center_of_mass(next_candidate_grouping)
+				mass_center = get_center_of_tile_for_pixel_position(mass_center._x, mass_center._y)
+				var tracker = instance_create_layer(mass_center[0], mass_center[1], "Logic", obj_raid_opportunity_tracker)
+				with(tracker)
+				{
+					ds_list_copy(list_nearby_structures, next_candidate_grouping)
+				}
+				//Remove the grouping from the list
+				for(var i=0; i<ds_list_size(next_candidate_grouping); i++)
+				{
+					var obj = next_candidate_grouping[|i]
+					var pos = ds_list_find_index(list_candidate_objectives, obj)
+					ds_list_delete(list_candidate_objectives, pos)
+				}
+				
+			}else
+			{
+				//At least one extension was found, but it is possible that this extension becomes invalid due to another pairing
+				//Re-add the grouping before extension
+				var new_candidate_grouping = ds_list_create()
+				ds_list_copy(new_candidate_grouping, next_candidate_grouping)
+				ds_queue_enqueue(grouping_queue, new_candidate_grouping)
+			} 
+		}
+		ds_list_destroy(next_candidate_grouping)
+	}
+	#endregion
+	
+	ds_list_destroy(list_candidate_objectives)
+	ds_queue_destroy(grouping_queue)
 }

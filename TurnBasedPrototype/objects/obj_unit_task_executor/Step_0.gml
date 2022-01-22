@@ -32,7 +32,7 @@ switch(executor_state){
 		}else{
 			if(current_task.current_state == TASK_STATES.done){
 				//Clean up done task
-				show_debug_message("Cleanup")
+				if global.debug_ai_execution show_debug_message("Cleanup done task")
 				var player = current_task.unit.controlling_player
 				update_objectives_taskforce(current_taskforce, player)
 				instance_destroy(current_task)

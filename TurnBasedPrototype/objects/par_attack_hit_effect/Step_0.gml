@@ -1,6 +1,6 @@
 /// @description ??
 if not done and image_speed >0 {	
-	if (not effect_applied and floor(image_index) == hit_frame){
+	if (not effect_applied and floor(image_index)>= hit_frame){
 		//Apply effect
 		show_debug_message("Apply attack effect here")
 		var defender = instance_position(x,y, par_abstract_unit)

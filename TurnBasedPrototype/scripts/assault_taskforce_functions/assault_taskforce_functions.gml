@@ -1,11 +1,51 @@
 #region creation
+function update_assault_taskforce_numbers(taskforce_player, current_count, max_count)
+{
+	var current_round = 0
+	with(obj_control){
+		current_round = self.current_round
+	}
+	var allowed_assault_taskforces = min(floor(current_round / taskforce_player.raider_cooldown)+1, max_count)
+	//Check if we have enought recruitment support for every force beyond the 1st
+	var nr_controlled_recruitment_buildings = 0
+	with(par_recruitment_building)
+	{
+		if controlling_player != noone and controlling_player.id == taskforce_player.id
+		{
+			nr_controlled_recruitment_buildings++
+		}
+	}
 
+	var rec_capacity = max(floor(nr_controlled_recruitment_buildings / taskforce_player.assault_required_recruit_support),1)
+	var nr_to_create = min(allowed_assault_taskforces - current_count, rec_capacity-current_count)
+	if global.debug_ai_assault_taskforces show_debug_message("Creating " + string(nr_to_create) + " ATFs")
+	if nr_to_create >0 
+	{
+		repeat(nr_to_create)
+		{
+			create_assault_taskforce(taskforce_player.x, taskforce_player.y,taskforce_player)
+		}
+		ds_map_replace(taskforce_player.ds_map_force_current_composition, obj_assault_taskforce, current_count+nr_to_create)
+	}
+}
+
+function create_assault_taskforce(_x, _y, taskforce_player)
+{
+	var new_tf = instance_create_layer(_x,_y,"Taskforces", obj_assault_taskforce)
+	with(new_tf){
+		self.taskforce_player = taskforce_player 
+	}
+			
+	with(taskforce_player){
+		ds_list_add(ds_list_taskforces, new_tf)
+	}
+}
 #endregion
 #region recruitment
 function get_assault_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
-		repeat(2){
-			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword)
+		repeat(3){
+			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword, obj_unit_tempest_knight)
 			//var choice = obj_unit_groundpounder
 			var placeholder_request = {
 				verbose_name:"Assault Req: " + string(choice),

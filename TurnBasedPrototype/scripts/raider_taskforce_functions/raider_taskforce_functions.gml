@@ -1,74 +1,69 @@
 #region creation
-function create_raider_taskforce(pos_x, pos_y, zoi_radius, taskforce_player){
+
+function create_raider_taskforce(pos_x, pos_y, taskforce_player){
 	//Get the closest owned recruitment building
 	var tile_center = get_center_of_tile_for_pixel_position(pos_x, pos_y)
 	var tf = instance_create_layer(tile_center[0], tile_center[1],"Taskforces", obj_raider_taskforce)
 	var closest_recruitment_building = get_closest_controlled_recruitment_building(tile_center[0], tile_center[1], taskforce_player)
+	if closest_recruitment_building = noone 
+	{
+		closest_recruitment_building = taskforce_player
+	}
 	with(tf){
 		self.home_x = closest_recruitment_building.x
 		self.home_y = closest_recruitment_building.y
-		self.zoi_tile_radius = floor(zoi_radius / global.grid_cell_width)
 		self.taskforce_player = taskforce_player
 	}
 	with(taskforce_player){
 		ds_list_add(ds_list_taskforces, tf)
 	}
-}
-
-function max_out_raider_taskforces_radial_distribution(taskforce_player, max_count){
-	#region Get positions and zone of interests
-	var dir = point_direction(taskforce_player.x, taskforce_player.y, room_width/2, room_height/2)
-	var distributions = get_radial_distribution_on_map(dir, max_count)
-	#endregion
 	
-	while(not ds_queue_empty(distributions))
+	if global.debug_ai_raider_taskforces
 	{
-		var next_area = ds_queue_dequeue(distributions)
-		
-		if(not raider_task_force_occupies_zone(taskforce_player.ds_list_taskforces,next_area._x, next_area._y)){
-			#region Create new one
-			create_raider_taskforce(next_area._x, next_area._y, next_area.r,taskforce_player)
-			#endregion
-		
-		}else{
-			#region potentially update old one
-			#endregion
-		}
+		show_debug_message("Created Raider taskforce: " + string(tf.id))
 	}
-	ds_queue_destroy(distributions)
 }
 
-function raider_task_force_occupies_zone(ds_list_taskforces, zone_x,zone_y){
-	var result = false;
-	var justified_zone_coordinates= get_center_of_tile_for_pixel_position(zone_x,zone_y)
-	for(var i=0; i< ds_list_size(ds_list_taskforces); i++){
-		var tf = ds_list_taskforces[|i]
-		if tf.x == justified_zone_coordinates[0] and tf.y == justified_zone_coordinates[1]
-		{
-			return true
-		}
+function update_raider_taskforce_numbers(taskforce_player, current_count, max_count)
+{
+	var current_round = 0
+	with(obj_control){
+		current_round = self.current_round
 	}
-	return result
-
+	var allowed_raider_taskforces = min(floor(current_round / taskforce_player.raider_cooldown)+1, max_count)
+	var nr_to_create = allowed_raider_taskforces - current_count
+	if nr_to_create >0 
+	{
+		repeat(nr_to_create)
+		{
+			create_raider_taskforce(taskforce_player.x, taskforce_player.y,taskforce_player)
+		}
+		ds_map_replace(taskforce_player.ds_map_force_current_composition, obj_raider_taskforce, current_count+nr_to_create)
+	}
 }
 #endregion
 #region recruitment
 function get_raider_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){
-	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
-		var windsword_odds = 0.7
-		var flip = random(1)
-		var name= "Flamesword"
-		var unit_template = obj_unit_flamesword
-		if flip < windsword_odds{
-			name = "Windsword"
-			unit_template = obj_unit_windsword
+	var i=0
+	repeat(2) 
+	{
+		i++
+		if ds_list_size(taskforce.ds_list_taskforce_units)+i <= taskforce.taskforce_max_size{
+			var windsword_odds = 0.7
+			var flip = random(1)
+			var name= "Flamesword"
+			var unit_template = obj_unit_flamesword
+			if flip < windsword_odds{
+				name = "Windsword"
+				unit_template = obj_unit_windsword
+			}
+			var raider_request = {
+				verbose_name: name,
+				template: unit_template,
+				tf: taskforce
+			}
+			ds_queue_enqueue(ds_request_queue, raider_request)
 		}
-		var placeholder_request = {
-			verbose_name: name,
-			template: unit_template,
-			tf: taskforce
-		}
-		ds_queue_enqueue(ds_request_queue, placeholder_request)
 	}
 }
 #endregion
@@ -78,6 +73,7 @@ function update_objectives_all_raider_taskforces(ds_list_taskforces, ai_player){
 	//Loop over each taskforce
 	for(var i = 0; i< ds_list_size(ds_list_taskforces); i++){
 		var tf = ds_list_taskforces[| i]
+		update_taskforce_position(tf, ai_player)
 		update_taskforce_stance(tf, ai_player)
 		update_objectives_raider_taskforce(tf, ai_player)
 		update_taskforce_home_area(tf, ai_player)
@@ -99,101 +95,106 @@ function update_objectives_raider_taskforce(taskforce, ai_player){
 			// if empty, get new objectives
 			if ds_queue_empty(ds_queue_taskforce_objectives)
 			{
-				get_new_objective_raider_taskforce(self, ai_player)
-				//Immediatly check if this has completed already
-				update_objectives_raider_taskforce(self, ai_player)
+				//Clear claims on raid opportunities
+				if claimed_raid_opportunity != noone 
+				{
+					ds_map_delete(claimed_raid_opportunity.map_assigned_taskforces, ai_player.id)
+				}
+				//Get new objectives from opportunities
+				var next_opportunity_found = get_new_objectives_from_raid_opportunities(self, ai_player)
+				if next_opportunity_found {
+					//Apply the an immediate update to get the next current objective
+					update_objectives_raider_taskforce(taskforce, ai_player)
+				}
+				else
+				{
+					show_debug_message("Raider taskforce did not find an eligible opportunity")
+					show_debug_message("Crash likely")
+				}
+			
 			}
 		}
 	}
 }
 
-function get_new_objective_raider_taskforce(taskforce, ai_player){
-	//Loop over all economy buildings to get a list of targets
-	var ds_scored_objectives = ds_priority_create()
-	with(par_income_building){
-		if controlling_player == noone or controlling_player.id != ai_player.id{
-			var objective = new Objective(self.id, OBJECTIVE_TYPES.capture )
-			var income_building_score = get_objective_score_raider_taskforce(objective, taskforce, ai_player)
-			ds_priority_add(ds_scored_objectives, objective, income_building_score)
+function get_new_objectives_from_raid_opportunities(taskforce, ai_player)
+{
+	//Get all opportunities
+	var scored_opportunities = ds_priority_create()
+	with(obj_raid_opportunity_tracker)
+	{
+		//Score them based on distance to player and contents
+		var ro_score = score_raid_opportunity(self, taskforce)
+		ds_priority_add(scored_opportunities, self, ro_score)
+	}
+	//pop them until a free one is found or when the queue is empty
+	var opportunity_found = false
+	while(not opportunity_found and not ds_priority_empty(scored_opportunities))
+	{
+		var next_opportunity = ds_priority_delete_min(scored_opportunities)
+		if is_raid_opportunity_available(next_opportunity, ai_player)
+		{
+			opportunity_found = true
+			//Assign the structures of the opportunity to the raider taskforce
+			for(var i=0; i<ds_list_size(next_opportunity.list_nearby_structures); i++)
+			{
+				var new_objective = new Objective(next_opportunity.list_nearby_structures[|i], OBJECTIVE_TYPES.capture)
+				ds_queue_enqueue(taskforce.ds_queue_taskforce_objectives, new_objective)
+			}
+			claimed_raid_opportunity = next_opportunity
+			//Assign the raider taskforce to the opportunity
+			ds_map_add(next_opportunity.map_assigned_taskforces, ai_player.id, taskforce)
 		}
-	}
-	//Loop over all production buildings to get a list of targets
-	with(par_recruitment_building){
-		if controlling_player == noone or controlling_player.id != ai_player.id{
-			var objective = new Objective(self.id, OBJECTIVE_TYPES.capture )
-			var recruitment_building_score = get_objective_score_raider_taskforce(objective, taskforce, ai_player)
-			ds_priority_add(ds_scored_objectives, objective, recruitment_building_score)
-		}
-	}
-	//Loop over all flags to add to the list of targets
-	with(obj_flag){
-		if controlling_player == noone or controlling_player.id != ai_player.id{
-			var objective = new Objective(self.id, OBJECTIVE_TYPES.capture)
-			var flag_building_score = get_objective_score_raider_taskforce(objective, taskforce, ai_player)
-			ds_priority_add(ds_scored_objectives, objective, flag_building_score)
-		}
-	}
-	if global.debug_ai_objective_update and global.debug_ai_raider_taskforces
-	{ 
-		debug_dump_objective_queue_contents(ds_scored_objectives)
-	}
-	repeat(taskforce.objective_queue_max_size){
-		var new_objective = ds_priority_delete_max(ds_scored_objectives)
-		ds_queue_enqueue(taskforce.ds_queue_taskforce_objectives, new_objective)
 	}
 	
-	ds_priority_clear(ds_scored_objectives)
-	ds_priority_destroy(ds_scored_objectives)
+	//Cleanup
+	ds_priority_destroy(scored_opportunities)
+	return opportunity_found
 }
 
-function get_objective_score_raider_taskforce(objective, taskforce, ai_player){
-	#region Explanation
-	// - Favour objectives closer to home base
-	// - Favour objectives in zone of interest
-	// - Favour recruitment buildings over income over flags 
-	// Score is abccc, with a if the objective is in the zone of interest, b the type component and c being the distance component 
+function score_raid_opportunity(raid_opportunity,taskforce)
+{
+	#region explanation
+	// Lower score is better
+	// XXXX
+	// X is the euclidean distance to the player
 	#endregion
-	#region digits
-	var distance_digits = 3
-	var type_digits = 1
-	var zoi_digits = 1
-	#endregion
-	// Get and scale distance_score
-	var distance_to_home = point_distance(taskforce.home_x, taskforce.home_y, objective.target.x, objective.target.y)
-	var max_map_distance = point_distance(0,0,room_width, room_height)
-	var scaled_distance_to_home = distance_to_home / max_map_distance
-	var distance_score = round((1-scaled_distance_to_home)*power(10,distance_digits-1))
-
-	//Get type scores
-	var type_score =0
-	var target_type = object_get_parent(objective.target.object_index)
-	if target_type = -100 {
-		target_type = objective.target.object_index
-	}
-	switch(target_type){
-		case par_recruitment_building:
-			type_score = 3
-			break;
-		case par_income_building:
-			type_score = 2
-			break;
-		case obj_flag:
-			type_score = 1
-			break;
-	}
-
-	// Get and scale zone of interest score
-	var in_zone = floor(point_distance(taskforce.x, taskforce.y, objective.target.x, objective.target.y)/global.grid_cell_width) <= taskforce.zoi_tile_radius
+	var distance_digits = 4
 	
-	var compound_score = 0
-	compound_score += distance_score
-	compound_score += power(10,distance_digits)*type_score
+	var distance_to_opportunity = point_distance(raid_opportunity.x, raid_opportunity.y, taskforce.x, taskforce.y)
+	var max_distance = point_distance(0,0,room_width, room_height)
+	var rel_distance_to_opportunity = distance_to_opportunity/max_distance
 	
-	if in_zone {
-		compound_score += power(10,distance_digits+type_digits)*5
-	}
-	
+	var compound_score =0
+	compound_score += clamp(power(10,distance_digits)*rel_distance_to_opportunity,0,power(10,distance_digits))
 	return compound_score
+}
+
+function is_raid_opportunity_available(raid_opportunity, ai_player)
+{
+	//A raid opportunity is available if:
+	// 1. at least half of the total buildings are not under control
+	// 2. it is not claimed by another taskforce
+	var nr_of_structures_under_player_control = 0
+	var total_nr_of_structures = ds_list_size(raid_opportunity.list_nearby_structures)
+	for(var i=0; i< total_nr_of_structures; i++)
+	{
+		var structure = raid_opportunity.list_nearby_structures[|i]
+		var structure_under_player_control = structure.controlling_player != noone and structure.controlling_player.id == ai_player.id
+		if structure_under_player_control
+		{
+			nr_of_structures_under_player_control++
+		}
+	}
+	
+	if nr_of_structures_under_player_control / total_nr_of_structures <=0.5 
+	{
+		var assigned_taskforce = ds_map_find_value(raid_opportunity.map_assigned_taskforces, ai_player.id)
+		if assigned_taskforce = undefined {
+			return true 
+		}
+	}
+	return false
 }
 #endregion
 #region scoring

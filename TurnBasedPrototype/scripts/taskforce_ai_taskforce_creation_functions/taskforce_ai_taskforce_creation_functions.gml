@@ -23,9 +23,6 @@ function placeholder_max_out_taskforce(ai_player, taskforce_template, max_count)
 	}
 
 }
-	
-
-//@description ??
 
 function get_closest_controlled_recruitment_building(pos_x, pos_y, player){
 	var closest = noone
@@ -44,8 +41,6 @@ function get_closest_controlled_recruitment_building(pos_x, pos_y, player){
 	return closest
 }
  
-
-
 function get_radial_distribution_on_map(offset_angle, nr_sections){
 	var queue_circles = ds_queue_create()
 	// get the middle

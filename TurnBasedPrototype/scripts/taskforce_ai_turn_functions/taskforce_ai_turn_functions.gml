@@ -68,7 +68,8 @@ function execute_task_force_management(taskforce_player){
 	for (var i=0; i<array_length(keys);i++)
 	{
 		var max_count = ds_map_find_value(taskforce_player.ds_map_force_max_composition, keys[i])
-		max_out_taskforce(taskforce_player, keys[i], max_count)
+		var current_count = ds_map_find_value(taskforce_player.ds_map_force_current_composition, keys[i])
+		update_number_of_active_taskforces(taskforce_player, keys[i], current_count, max_count)
 	}
 	#endregion
 	
@@ -128,6 +129,10 @@ function execute_taskforce_recruitment(taskforce_player){
 
 function initialize_taskforce_recruitment(taskforce_player){
 	show_debug_message("init recruitment")
+	#region gather up all free units and put them in reserves
+	add_free_units_to_reserve(taskforce_player)
+	#endregion 
+
 	#region create and configure task executor
 	current_task_executor = instance_create_layer(0,0,"Logic", obj_recruitment_task_executor)
 	var executor_queue = current_task_executor.recruitment_task_queue
@@ -161,6 +166,26 @@ function initialize_taskforce_recruitment(taskforce_player){
 	#endregion
 	
 	current_task_executor.alarm[0] = 1
+}
+
+function add_free_units_to_reserve(taskforce_player)
+{
+	with(par_abstract_unit)
+	{
+		if controlling_player != noone and controlling_player.id = taskforce_player.id
+		{
+			if linked_taskforce == noone
+			{
+				if global.debug_ai_recruitment show_debug_message("Unit " + string(self.id) + " has been added to the reserves for player " + string(taskforce_player.id))
+				if ds_list_find_index(taskforce_player.ds_list_unit_reserves, self.id) == -1
+				{
+					ds_list_add(taskforce_player.ds_list_unit_reserves, self.id)
+				}
+
+			}
+		}
+	}
+
 }
 
 function execute_task_force_execution(taskforce_player){

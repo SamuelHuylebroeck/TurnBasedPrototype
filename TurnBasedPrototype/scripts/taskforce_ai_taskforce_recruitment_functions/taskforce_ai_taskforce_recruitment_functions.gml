@@ -86,11 +86,18 @@ function generate_recruitment_tasks(rec_req_priority, taskforce_player, executor
 		}
 	}
 	#endregion
+
+	
 	while(not ds_priority_empty(rec_req_priority) and not ds_list_empty(ds_list_recruitment_buildings))
 	{
 		var next_opportunity = ds_priority_delete_max(rec_req_priority)
+		
+		#region assign from reserves first
+		var assigned_from_reserves = try_assign_from_reserves(taskforce_player,next_opportunity)
+		#endregion
 		var cost = get_unit_cost(next_opportunity.template, taskforce_player)
-		if can_recruit(next_opportunity.template,cost, taskforce_player)
+		#region create recruitment task
+		if can_recruit(next_opportunity.template,cost, taskforce_player) and not assigned_from_reserves
 		{
 			var selected_building = select_closest_available_recruitment_building(next_opportunity, ds_list_recruitment_buildings)
 			if(selected_building != noone)
@@ -102,8 +109,62 @@ function generate_recruitment_tasks(rec_req_priority, taskforce_player, executor
 				ds_queue_enqueue(executor_queue,rec_task)
 			}
 		}
+		#endregion
 	}
 	ds_list_destroy(ds_list_recruitment_buildings)
+}
+
+function try_assign_from_reserves(taskforce_player, recruitment_opportunity)
+{
+	var result = false
+	var reserves_priority = ds_priority_create()
+	//Fill priority
+	//Closest to the taskforce's current objective, or it's home if the objective is missing
+	var  position_to_consider = {
+		_x: recruitment_opportunity.tf.home_x,
+		_y: recruitment_opportunity.tf.home_y
+	}
+	if recruitment_opportunity.tf.current_objective != noone {
+		position_to_consider ={
+			_x: recruitment_opportunity.tf.current_objective.target.x,
+			_y: recruitment_opportunity.tf.current_objective.target.y
+		}
+	}
+	
+	for(var i=0; i<ds_list_size(taskforce_player.ds_list_unit_reserves); i++)
+	{
+		var reserve_unit = taskforce_player.ds_list_unit_reserves[|i]
+		if reserve_unit.object_index == recruitment_opportunity.template 
+		{
+			var distance = point_distance(reserve_unit.x,reserve_unit.y, position_to_consider._x, position_to_consider._y)
+			ds_priority_add(reserves_priority,reserve_unit,distance)
+		}
+	}
+	
+	//See if we can source from reserves
+	if ds_priority_size(reserves_priority) > 0
+	{
+		result = true
+		var reserve_to_assign = ds_priority_delete_min(reserves_priority)
+		var pos = ds_list_find_index(taskforce_player.ds_list_unit_reserves, reserve_to_assign.id)
+		show_debug_message(string(pos))
+		show_debug_message(ds_list_size(taskforce_player.ds_list_unit_reserves))
+		ds_list_delete(taskforce_player.ds_list_unit_reserves,pos)
+		show_debug_message(ds_list_size(taskforce_player.ds_list_unit_reserves))
+		if global.debug_ai_recruitment show_debug_message("Sourcing " + string(reserve_to_assign) + " from reserves as recruit for " + string(recruitment_opportunity.tf))
+		with(reserve_to_assign)
+		{
+			linked_taskforce = recruitment_opportunity.tf
+		}
+		with(recruitment_opportunity.tf)
+		{
+			ds_list_add(ds_list_taskforce_units, reserve_to_assign.id)
+		}
+
+	}
+	
+	ds_priority_destroy(reserves_priority)
+	return result
 }
 
 function get_unit_cost(template, player){

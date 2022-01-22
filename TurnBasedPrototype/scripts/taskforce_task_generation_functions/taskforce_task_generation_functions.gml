@@ -69,7 +69,7 @@ function generate_tasks_based_on_tile_context(unit,taskforce,player, context_que
 	if global.debug_ai_scoring show_debug_message("---Unit:"+string(unit)+"("+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_height))+")---")
 	while(not ds_queue_empty(context_queue)){
 		var next_tile = ds_queue_dequeue(context_queue)
-		if global.debug_ai show_debug_message("generating tasks for ["+string(floor(next_tile._x/global.grid_cell_width))+","+string(floor(next_tile._y/global.grid_cell_width))+"]")
+		if global.debug_ai_scoring show_debug_message("generating tasks for ["+string(floor(next_tile._x/global.grid_cell_width))+","+string(floor(next_tile._y/global.grid_cell_width))+"]")
 		//Movement task
 		generate_movement_action_for_tile(next_tile, unit, taskforce, player, task_priority_queue)
 		//Movement+skill use task

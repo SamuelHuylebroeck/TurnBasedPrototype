@@ -1,11 +1,14 @@
 //@description 
-function max_out_taskforce(ai_player, taskforce_template, max_count){
+function update_number_of_active_taskforces(ai_player, taskforce_template,current_count, max_count){
 	switch(taskforce_template){
 		case obj_raider_taskforce:
-			max_out_raider_taskforces_radial_distribution(ai_player, max_count)
+			update_raider_taskforce_numbers(ai_player, current_count, max_count)
 			break;
 		case obj_defender_taskforce:
 			update_defender_taskforce_distribution(ai_player, max_count)
+			break;
+		case obj_assault_taskforce:
+			update_assault_taskforce_numbers(ai_player, current_count, max_count)
 			break;
 		default:
 			placeholder_max_out_taskforce(ai_player, taskforce_template, max_count);

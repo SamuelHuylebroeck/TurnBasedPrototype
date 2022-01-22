@@ -42,6 +42,42 @@ function is_guard_objective_completed(objective, taskforce, ai_player){
 	}
 	return true
 }
+
+function update_taskforce_position(tf, ai_player)
+{
+	var nr_units = ds_list_size(tf.ds_list_taskforce_units)	
+	if nr_units >0
+	{
+		//Move to the center of mass
+		var _x =0
+		var _y =0
+		
+		for(var i=0; i< nr_units; i++)
+		{
+			var next_unit = tf.ds_list_taskforce_units[|i]
+			if not instance_exists(next_unit)
+			{
+				show_debug_message(string(next_unit) + " does not exist but is still in the unit list for taskforce " + string(tf))
+			}
+			_x+=next_unit.x
+			_y+=next_unit.y
+				
+		}
+		
+		_x = _x/nr_units
+		_y = _y/nr_units
+		
+		var new_center = get_center_of_tile_for_pixel_position(_x, _y)
+		tf.x= new_center[0]
+		tf.y=new_center[1]
+		
+	}else
+	{
+		//Move to player position
+		tf.x = ai_player.x
+		tf.y = ai_player.y
+	}
+}
 #endregion
 #region scoring
 function generic_taskforce_score_retreating(action_type, unit, tile,taskforce,target){
@@ -270,48 +306,73 @@ function generic_taskforce_score_mustering_skill(unit, tile, taskforce, nr_digit
 		//With neutral targets, do not do the skill
 		rel_skill_score = 0
 	}
-	
-	
-	
-	
 	rel_skill_score = clamp(floor(rel_skill_score),0,power(10,nr_digits)-1) 
 	return rel_skill_score
 }
 
 
-function generic_taskforce_score_tile_defense(unit, tile, nr_digits){
+function generic_taskforce_score_tile_defense(unit, tile, nr_digits)
+{
+	#region explanation
+	//Defensive score is based on the average between the final defensive stats of the tile
+	//And the relative HP change for entering and starting on the tile
+	//If standing on the tile would kill the unit, the score is zeroed out
+	#endregion
 	//Check which defense type is dominant for the unit and get scales
-	var avoid_contribution
-	
-	
-	
-	
-	
-	
-	
-	, armour_contribution
-	var rel_defensive_score = 0
-	if(is_armour_dominant_defense(unit)){
+	var avoid_contribution, armour_contribution
+	var stats_score = 0
+	var hp_change = 0
+	var rel_armour = 0
+	var rel_avoid = 0
+	if(is_armour_dominant_defense(unit))
+	{
 		avoid_contribution = 0.3
 		armour_contribution = 0.7
 	}else{
 		avoid_contribution = 0.7
 		armour_contribution = 0.3
 	}
-	
-	//Get individual contributions
+	//Get individual contributions from terrain
 	var terrain_on_tile = instance_position(tile._x, tile._y, par_terrain)
-	if terrain_on_tile != noone {
-		var total_armour = terrain_on_tile.armour_modifier + unit.unit_profile.base_armour
-		var rel_armour  = armour_contribution * clamp(total_armour/global.max_armour,0,1)
+	if terrain_on_tile != noone 
+	{
+		var total_armour = terrain_on_tile.armour_modifier
+		var rel_armour  = armour_contribution * clamp(total_armour/global.max_tile_armour,-1,1)
 		
-		var total_avoid = terrain_on_tile.avoid_modifier + unit.unit_profile.base_avoid
-		var rel_avoid  = avoid_contribution * clamp(total_avoid/global.max_avoid,0,1)
-	
-		rel_defensive_score = clamp(rel_armour + rel_avoid,0,1)
+		var total_avoid = terrain_on_tile.avoid_modifier
+		var rel_avoid  = avoid_contribution * clamp(total_avoid/global.max_tile_avoid,-1,1)
+		
+		if terrain_on_tile.contact_hp_change != 0 
+		{
+			hp_change += terrain_on_tile.contact_hp_change
+		}
+		if terrain_on_tile.start_of_turn_hp_change != 0 
+		{
+			hp_change += terrain_on_tile.start_of_turn_hp_change * unit.unit_profile.max_hp
+		}
 	}
+	
+	//Get weather on tile
+	var weather_on_tile = instance_position(tile._x, tile._y, par_weather)
+	if weather_on_tile != noone 
+	{
+		if weather_on_tile.weather_scoring_hp_change_per_turn != 0
+		{
+			hp_change += weather_on_tile.weather_scoring_hp_change_per_turn*weather_on_tile.weather_boon_bane_duration		
+		}
+	}
+	
+	stats_score = clamp(rel_armour + rel_avoid,-1,1)
+	stats_score = stats_score/2+0.5
+	
+	var hp_score = min(unit.current_hp+hp_change, unit.unit_profile.max_hp)/unit.unit_profile.max_hp
+	var rel_defensive_score = (stats_score+hp_score)/2
+	if hp_score <= 0 {
+		rel_defensive_score = 0
+	}
+	
 	//Rescale from [0,1] to [0,10^digits[
-	rel_defensive_score = clamp(floor(rel_defensive_score*power(10,nr_digits)),0,power(10,nr_digits)-2) 
+	rel_defensive_score = clamp(floor(rel_defensive_score*power(10,nr_digits)),0,power(10,nr_digits)-1) 
 	return rel_defensive_score
 }
 #endregion

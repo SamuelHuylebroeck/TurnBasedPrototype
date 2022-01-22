@@ -31,7 +31,7 @@ function draw_capture_objective(objective, objective_colour){
 	draw_set_alpha(0.2)
 	draw_circle(objective.target.x, objective.target.y, global.grid_cell_width/2, false)
 	draw_set_alpha(0.7)
-	draw_line_width_color(home_x,home_y, objective.target.x, objective.target.y, 3,c_blue, objective_colour)
+	draw_line_width_color(x,y, objective.target.x, objective.target.y, 3,c_blue, objective_colour)
 	//draw_line_width_color(x,y, objective.target.x, objective.target.y, 3,c_red, objective_colour)
 
 	draw_set_color(old_color)

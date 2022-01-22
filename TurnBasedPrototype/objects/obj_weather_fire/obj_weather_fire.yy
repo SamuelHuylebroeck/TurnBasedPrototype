@@ -30,6 +30,7 @@
   "overriddenProperties": [
     {"propertyId":{"name":"fading_sprite","path":"objects/par_weather/par_weather.yy",},"objectId":{"name":"par_weather","path":"objects/par_weather/par_weather.yy",},"value":"spr_weather_fire_vanish","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"weather_name","path":"objects/par_weather/par_weather.yy",},"objectId":{"name":"par_weather","path":"objects/par_weather/par_weather.yy",},"value":"Blaze","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"weather_scoring_hp_change_per_turn","path":"objects/par_weather/par_weather.yy",},"objectId":{"name":"par_weather","path":"objects/par_weather/par_weather.yy",},"value":"-8","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
     "name": "weather",

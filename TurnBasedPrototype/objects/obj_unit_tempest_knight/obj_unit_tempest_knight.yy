@@ -51,7 +51,7 @@
   ],
   "parent": {
     "name": "tempestknight",
-    "path": "folders/Objects/units/tempestknight.yy",
+    "path": "folders/Objects/units/heavy/tempestknight.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_tempest_knight",

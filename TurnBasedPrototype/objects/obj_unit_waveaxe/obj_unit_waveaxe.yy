@@ -45,7 +45,7 @@
   ],
   "parent": {
     "name": "waveaxe",
-    "path": "folders/Objects/units/waveaxe.yy",
+    "path": "folders/Objects/units/medium/waveaxe.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_waveaxe",

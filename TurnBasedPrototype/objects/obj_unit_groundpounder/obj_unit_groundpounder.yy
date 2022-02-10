@@ -49,7 +49,7 @@
   ],
   "parent": {
     "name": "groundpounder",
-    "path": "folders/Objects/units/groundpounder.yy",
+    "path": "folders/Objects/units/medium/groundpounder.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_groundpounder",

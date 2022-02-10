@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "windsword",
-    "path": "folders/Sprites/units/windsword.yy",
+    "path": "folders/Sprites/units/medium/windsword.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_unit_windsword_idle",

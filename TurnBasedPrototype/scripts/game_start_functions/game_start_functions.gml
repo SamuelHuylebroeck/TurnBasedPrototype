@@ -20,6 +20,9 @@ function start_game(setup_multiplayer){
 		init_garrison_objective_tracking(game_control)
 		init_raid_opportunity_tracking(game_control)
 		
+		//Create ingame pause menu object
+		instance_create_layer(0,0,"UI", obj_pause_menu)
+		
 		if global.debug_ai
 		{
 			instance_create_layer(0,0,"Logic", obj_taskforce_debug_controller)

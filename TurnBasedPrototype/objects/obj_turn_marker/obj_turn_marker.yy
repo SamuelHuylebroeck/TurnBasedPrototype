@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "spr_next_turn_button",
-    "path": "sprites/spr_next_turn_button/spr_next_turn_button.yy",
+    "name": "spr_frame",
+    "path": "sprites/spr_frame/spr_frame.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "par_ui_element",
+    "path": "objects/par_ui_element/par_ui_element.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -27,12 +30,12 @@
   ],
   "properties": [
     {"varType":4,"value":"c_soft_yellow","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_color","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":5,"value":"font_turn_marker","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_big_font","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":5,"value":"font_stat_card_small","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_small_font","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"32","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"y_offset","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"0","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"variable_name","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":0,"value":"64","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"base_width","tags":[],"resourceType":"GMObjectProperty",},
+    {"varType":0,"value":"32","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"base_height","tags":[],"resourceType":"GMObjectProperty",},
   ],
-  "overriddenProperties": [],
+  "overriddenProperties": [
+    {"propertyId":{"name":"max_gui_width","path":"objects/par_ui_element/par_ui_element.yy",},"objectId":{"name":"par_ui_element","path":"objects/par_ui_element/par_ui_element.yy",},"value":"0.5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "ui",
     "path": "folders/Objects/ui.yy",

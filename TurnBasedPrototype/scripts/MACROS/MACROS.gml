@@ -6,6 +6,7 @@
 #macro c_soft_green make_colour_rgb(45,120,47)
 #macro c_soft_yellow make_colour_rgb(217,149,58)
 #macro c_soft_yellow_dark make_colour_rgb(154,120,73)
+#macro c_soft_light_blue make_color_rgb(97,156,165)
 
 #endregion
 
@@ -106,4 +107,61 @@ enum ACTION_TYPES {
 	move_and_attack,
 	move_and_skill
 }
+#region settings_enums
+enum pause_menu_page {
+	main,
+	settings,
+	audio,
+	video,
+	controls,
+	game,
+	size
+}
+
+enum options_menu_page {
+	settings,
+	audio,
+	video,
+	controls,
+	game,
+	size
+}
+
+enum menu_element_types {
+	script_runner,
+	page_transfer,
+	slider,
+	shift,
+	toggle,
+	input,
+	size
+}
+
+enum menu_supported_resolution
+{
+	res_3840x2160,
+	res_1920x1080,
+	res_1600x900,
+	res_1536x864,
+	res_1440x900,
+	res_1366x768,
+	res_1024x768,
+
+	
+}
+
+enum gui_sizes
+{
+	small,
+	medium,
+	large
+}
+
+enum draw_healthbar_condition{
+	never,
+	damaged_only,
+	always
+}
+#endregion
+
 #endregion

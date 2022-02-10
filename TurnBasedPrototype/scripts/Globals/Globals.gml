@@ -14,8 +14,7 @@ function init_globals(){
 	global.path_move_speed = 3;
 
 
-	//Debug globals
-	global.debug_draw_grid = false;
+
 	#endregion
 	
 	#region player permissions
@@ -38,6 +37,7 @@ function init_globals(){
 	global.left = global.azerty?"Q":"A";
 	global.down = "S";
 	global.right = "D";
+	global.pause_game = vk_escape
 	#endregion
 
 	#region victory_config
@@ -56,7 +56,14 @@ function init_globals(){
 	create_colour_picker_options()
 	create_player_type_picker_options()
 	create_map_picker_options()
-
+	
+	global.view_width = camera_get_view_width(view_camera[0])
+	global.view_height = camera_get_view_height(view_camera[0])
+	global.in_game_pause_menu_active  = false
+	global.ui_width = display_get_gui_width()
+	global.ui_height = display_get_gui_height()
+	display_set_gui_size(global.ui_width, global.ui_height)
+	
 	enum menu_locks {
 		ps_type,
 		ps_colour
@@ -71,6 +78,9 @@ function init_globals(){
 	#endregion
 	
 	#region debug
+	//Debug globals
+	global.debug_draw_grid = false;
+	
 	global.debug_gui = false;
 	
 	global.debug_ai = false;
@@ -99,6 +109,14 @@ function init_globals(){
 	define_combat_balance_globals()
 	#endregion
 	
+	#region video settings
+	define_resolution_settings()
+	define_ui_settings()
+	#endregion
+	
+	#region audio settings
+	define_audio_settings()
+	#endregion
 	
 }
 
@@ -163,6 +181,9 @@ function create_recruitment_options(){
 	
 	var tempest_knight = new recruitment_option("Tempest Knight", obj_unit_tempest_knight, 405)
 	ds_list_add(global.ds_basic_recruitment_options, tempest_knight)
+	
+	var forge_lord = new recruitment_option("Forge Lord", obj_unit_forgelord, 380)
+	ds_list_add(global.ds_basic_recruitment_options, forge_lord)
 
 
 }
@@ -208,4 +229,33 @@ function define_combat_balance_globals(){
 	global.max_avoid = 150
 	global.max_armour = 50
 	global.explosion_damage_fraction = 0.2
+}
+
+
+function define_resolution_settings(){
+	global.resolution_options[menu_supported_resolution.res_3840x2160] = [3840, 2160]
+	global.resolution_options[menu_supported_resolution.res_1920x1080] = [1920, 1080]
+	global.resolution_options[menu_supported_resolution.res_1600x900] = [1600, 900]
+	global.resolution_options[menu_supported_resolution.res_1536x864] = [1536, 864]
+	global.resolution_options[menu_supported_resolution.res_1440x900] = [1440, 900]
+	global.resolution_options[menu_supported_resolution.res_1366x768] = [1366, 768]
+	global.resolution_options[menu_supported_resolution.res_1024x768] = [1024, 768]
+}
+
+function define_ui_settings()
+{
+	// [ x_scale, y_scale, font_array]
+	global.ui_scale_values[gui_sizes.small] = [1,1,[font_gui_xsmall, font_gui_small, font_gui_medium]]
+	global.ui_scale_values[gui_sizes.medium] = [2,2,[font_gui_small, font_gui_medium, font_gui_large]]
+	global.ui_scale_values[gui_sizes.large] = [3,3,[font_gui_medium, font_gui_large, font_gui_xlarge]]
+	global.current_ui_scale = gui_sizes.medium
+	
+	global.draw_healthbars = draw_healthbar_condition.damaged_only
+
+}
+
+function define_audio_settings()
+{
+	audio_group_load(audiogroup_music)
+	audio_group_load(audiogroup_sfx)
 }

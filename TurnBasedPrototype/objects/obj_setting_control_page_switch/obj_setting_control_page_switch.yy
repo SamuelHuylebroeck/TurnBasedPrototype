@@ -1,0 +1,42 @@
+{
+  "spriteId": {
+    "name": "spr_setting_arrow",
+    "path": "sprites/spr_setting_arrow/spr_setting_arrow.yy",
+  },
+  "solid": false,
+  "visible": true,
+  "spriteMaskId": null,
+  "persistent": false,
+  "parentObjectId": {
+    "name": "par_setting_control",
+    "path": "objects/par_setting_control/par_setting_control.yy",
+  },
+  "physicsObject": false,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsGroup": 1,
+  "physicsDensity": 0.5,
+  "physicsRestitution": 0.1,
+  "physicsLinearDamping": 0.1,
+  "physicsAngularDamping": 0.1,
+  "physicsFriction": 0.2,
+  "physicsStartAwake": true,
+  "physicsKinematic": false,
+  "physicsShapePoints": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
+  "properties": [
+    {"varType":1,"value":"-1","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"target_page","tags":[],"resourceType":"GMObjectProperty",},
+  ],
+  "overriddenProperties": [],
+  "parent": {
+    "name": "pause_menu",
+    "path": "folders/Objects/ui/pause_menu.yy",
+  },
+  "resourceVersion": "1.0",
+  "name": "obj_setting_control_page_switch",
+  "tags": [],
+  "resourceType": "GMObject",
+}

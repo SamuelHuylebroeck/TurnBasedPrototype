@@ -44,7 +44,7 @@
   ],
   "parent": {
     "name": "windsword",
-    "path": "folders/Objects/units/windsword.yy",
+    "path": "folders/Objects/units/medium/windsword.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_windsword",

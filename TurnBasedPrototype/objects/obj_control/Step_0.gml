@@ -17,3 +17,8 @@ if(global.map_running)
 	}
 	
 }
+
+if keyboard_check_pressed(global.pause_game)
+{
+	toggle_pause_game_bring_up_menu()
+}

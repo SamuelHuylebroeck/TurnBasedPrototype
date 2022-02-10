@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "groundpounder",
-    "path": "folders/Sprites/units/groundpounder.yy",
+    "path": "folders/Sprites/units/medium/groundpounder.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_unit_groundpounder_idle",

@@ -11,7 +11,7 @@ function draw_attack_preview(attack_profile, target_unit, origin_unit){
 	var tl_y= y+global.grid_cell_height/2-hb_heigth
 	draw_set_color(c_red)
 	draw_rectangle(tl_x,tl_y, tl_x+hb_width, tl_y+hb_heigth, false)
-	draw_set_color(c_green)
+	draw_set_color(c_soft_light_blue)
 	var rel_health_remaining=  clamp(target_unit.current_hp/target_unit.unit_profile.max_hp,0,1)
 	draw_rectangle(tl_x,tl_y, tl_x+rel_health_remaining*hb_width, tl_y+hb_heigth, false)
 	

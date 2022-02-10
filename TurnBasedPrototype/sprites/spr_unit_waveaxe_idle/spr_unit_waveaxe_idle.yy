@@ -74,7 +74,7 @@
   "nineSlice": null,
   "parent": {
     "name": "waveaxe",
-    "path": "folders/Sprites/units/waveaxe.yy",
+    "path": "folders/Sprites/units/medium/waveaxe.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_unit_waveaxe_idle",

@@ -142,7 +142,7 @@
   "nineSlice": null,
   "parent": {
     "name": "tempestknight",
-    "path": "folders/Sprites/units/tempestknight.yy",
+    "path": "folders/Sprites/units/heavy/tempestknight.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_unit_tempestknight_attack",

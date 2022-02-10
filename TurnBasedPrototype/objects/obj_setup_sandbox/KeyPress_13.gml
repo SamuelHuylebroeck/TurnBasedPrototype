@@ -9,6 +9,8 @@ with(obj_control){
 	init_garrison_objective_tracking(self)
 	init_raid_opportunity_tracking(self)
 	
+	instance_create_layer(0,0,"UI", obj_pause_menu)
+	
 	global.game_in_progress = true
 	global.map_running = true;
 }

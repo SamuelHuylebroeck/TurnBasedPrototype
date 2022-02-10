@@ -122,7 +122,7 @@
   "nineSlice": null,
   "parent": {
     "name": "flamesword",
-    "path": "folders/Sprites/units/flamesword.yy",
+    "path": "folders/Sprites/units/medium/flamesword.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_unit_flamesword_attack",

@@ -47,7 +47,7 @@
   ],
   "parent": {
     "name": "flamesword",
-    "path": "folders/Objects/units/flamesword.yy",
+    "path": "folders/Objects/units/medium/flamesword.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_flamesword",

@@ -45,7 +45,7 @@ function take_player_turn(){
 			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
 			gui_unit_stats.unit = global.enemy_selected;
 			//TODO remove magic number
-			gui_unit_stats.screen_offset_x += 1300
+			gui_unit_stats.left_side = false
 			
 		} 
 	}

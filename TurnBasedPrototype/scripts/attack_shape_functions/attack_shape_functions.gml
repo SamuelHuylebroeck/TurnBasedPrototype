@@ -5,8 +5,9 @@ function get_attack_line_target_positions(origin_x, origin_y, target_x, target_y
 	if (attack_profile.base_size > 1){
 		var dir = point_direction(origin_x, origin_y, target_x, target_y)
 		for(var i= 1; i<attack_profile.base_size;i++){
-			var grid_x = lengthdir_x(i, dir)
-			var grid_y = lengthdir_y(i, dir)
+			var grid_x = floor(lengthdir_x(i, dir))
+			var grid_y = floor(lengthdir_y(i, dir))
+			
 			ds_list_add(targets, {_x: target_x+grid_x*global.grid_cell_width, _y: target_y+ grid_y*global.grid_cell_height})
 
 		}

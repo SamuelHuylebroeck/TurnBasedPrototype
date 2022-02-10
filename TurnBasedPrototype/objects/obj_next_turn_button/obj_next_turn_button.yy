@@ -7,7 +7,10 @@
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "par_ui_element",
+    "path": "objects/par_ui_element/par_ui_element.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -27,8 +30,12 @@
     {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":64,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
-  "properties": [],
-  "overriddenProperties": [],
+  "properties": [
+    {"varType":0,"value":"2","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"base_scale","tags":[],"resourceType":"GMObjectProperty",},
+  ],
+  "overriddenProperties": [
+    {"propertyId":{"name":"base_margin","path":"objects/par_ui_element/par_ui_element.yy",},"objectId":{"name":"par_ui_element","path":"objects/par_ui_element/par_ui_element.yy",},"value":"4","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+  ],
   "parent": {
     "name": "ui",
     "path": "folders/Objects/ui.yy",

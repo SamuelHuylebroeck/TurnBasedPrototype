@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_recruiting_tower","path":"sprites/spr_recruiting_tower/spr_recruiting_tower.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_recruiting_tower",
     "tags": [],
     "resourceType": "GMSequence",

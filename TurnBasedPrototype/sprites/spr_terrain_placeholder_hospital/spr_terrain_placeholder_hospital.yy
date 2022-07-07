@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_terrain_placeholder_hospital","path":"sprites/spr_terrain_placeholder_hospital/spr_terrain_placeholder_hospital.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_terrain_placeholder_hospital",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_setting_slider_slide","path":"sprites/spr_setting_slider_slide/spr_setting_slider_slide.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_setting_slider_slide",
     "tags": [],
     "resourceType": "GMSequence",

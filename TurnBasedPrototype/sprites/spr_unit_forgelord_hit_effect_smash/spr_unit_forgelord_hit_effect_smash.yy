@@ -455,7 +455,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_forgelord_hit_effect_smash","path":"sprites/spr_unit_forgelord_hit_effect_smash/spr_unit_forgelord_hit_effect_smash.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_forgelord_hit_effect_smash",
     "tags": [],
     "resourceType": "GMSequence",

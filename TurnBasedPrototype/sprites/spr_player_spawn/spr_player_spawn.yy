@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_player_spawn","path":"sprites/spr_player_spawn/spr_player_spawn.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_player_spawn",
     "tags": [],
     "resourceType": "GMSequence",

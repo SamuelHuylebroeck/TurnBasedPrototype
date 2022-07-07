@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_weather","path":"sprites/spr_placeholder_weather/spr_placeholder_weather.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_weather",
     "tags": [],
     "resourceType": "GMSequence",

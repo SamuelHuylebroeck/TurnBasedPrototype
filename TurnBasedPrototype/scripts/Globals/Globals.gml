@@ -38,6 +38,8 @@ function init_globals(){
 	global.down = "S";
 	global.right = "D";
 	global.pause_game = vk_escape
+	global.key_mark_unit_done = "N"
+	global.key_next_available_unit = "M"
 	#endregion
 
 	#region victory_config

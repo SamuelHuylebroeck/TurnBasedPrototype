@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_weather_breeze_vanish","path":"sprites/spr_weather_breeze_vanish/spr_weather_breeze_vanish.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_weather_breeze_vanish",
     "tags": [],
     "resourceType": "GMSequence",

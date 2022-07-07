@@ -75,7 +75,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_hit_effect","path":"sprites/spr_placeholder_hit_effect/spr_placeholder_hit_effect.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_hit_effect",
     "tags": [],
     "resourceType": "GMSequence",

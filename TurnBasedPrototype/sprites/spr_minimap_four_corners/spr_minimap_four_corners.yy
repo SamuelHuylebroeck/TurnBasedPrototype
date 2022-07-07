@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_minimap_four_corners","path":"sprites/spr_minimap_four_corners/spr_minimap_four_corners.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_minimap_four_corners",
     "tags": [],
     "resourceType": "GMSequence",

@@ -95,7 +95,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_tempestknight_hurt","path":"sprites/spr_unit_tempestknight_hurt/spr_unit_tempestknight_hurt.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_tempestknight_hurt",
     "tags": [],
     "resourceType": "GMSequence",

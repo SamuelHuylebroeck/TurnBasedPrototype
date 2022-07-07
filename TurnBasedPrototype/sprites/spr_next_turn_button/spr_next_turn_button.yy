@@ -67,7 +67,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_next_turn_button","path":"sprites/spr_next_turn_button/spr_next_turn_button.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_next_turn_button",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_speedup_boon_icon","path":"sprites/spr_speedup_boon_icon/spr_speedup_boon_icon.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_speedup_boon_icon",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_out_of_bounds","path":"sprites/spr_out_of_bounds/spr_out_of_bounds.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_out_of_bounds",
     "tags": [],
     "resourceType": "GMSequence",

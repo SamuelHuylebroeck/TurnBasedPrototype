@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_add_button","path":"sprites/spr_add_button/spr_add_button.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_add_button",
     "tags": [],
     "resourceType": "GMSequence",

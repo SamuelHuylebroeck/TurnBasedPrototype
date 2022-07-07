@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_setting_slide_knob","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_setting_slide_knob",
     "tags": [],
     "resourceType": "GMSequence",

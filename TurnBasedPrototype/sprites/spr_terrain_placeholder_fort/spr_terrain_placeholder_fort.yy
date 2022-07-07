@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_terrain_placeholder_fort","path":"sprites/spr_terrain_placeholder_fort/spr_terrain_placeholder_fort.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_terrain_placeholder_fort",
     "tags": [],
     "resourceType": "GMSequence",

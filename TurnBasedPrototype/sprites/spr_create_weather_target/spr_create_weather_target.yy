@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_create_weather_target","path":"sprites/spr_create_weather_target/spr_create_weather_target.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_create_weather_target",
     "tags": [],
     "resourceType": "GMSequence",

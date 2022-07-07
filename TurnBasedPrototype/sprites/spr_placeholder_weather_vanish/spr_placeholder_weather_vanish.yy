@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_weather_vanish","path":"sprites/spr_placeholder_weather_vanish/spr_placeholder_weather_vanish.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_weather_vanish",
     "tags": [],
     "resourceType": "GMSequence",

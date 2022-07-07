@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_abstract_terrain","path":"sprites/spr_abstract_terrain/spr_abstract_terrain.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_abstract_terrain",
     "tags": [],
     "resourceType": "GMSequence",

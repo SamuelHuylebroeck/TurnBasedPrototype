@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_remove_button","path":"sprites/spr_remove_button/spr_remove_button.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_remove_button",
     "tags": [],
     "resourceType": "GMSequence",

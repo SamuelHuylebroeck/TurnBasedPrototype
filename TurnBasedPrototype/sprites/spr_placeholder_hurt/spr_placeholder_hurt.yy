@@ -75,7 +75,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_hurt","path":"sprites/spr_placeholder_hurt/spr_placeholder_hurt.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_hurt",
     "tags": [],
     "resourceType": "GMSequence",

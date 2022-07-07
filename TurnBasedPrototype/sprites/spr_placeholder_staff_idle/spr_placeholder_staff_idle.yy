@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_staff_idle","path":"sprites/spr_placeholder_staff_idle/spr_placeholder_staff_idle.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_staff_idle",
     "tags": [],
     "resourceType": "GMSequence",

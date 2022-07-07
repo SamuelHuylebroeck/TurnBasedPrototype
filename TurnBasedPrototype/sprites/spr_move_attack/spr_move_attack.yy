@@ -60,7 +60,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_move_attack","path":"sprites/spr_move_attack/spr_move_attack.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_move_attack",
     "tags": [],
     "resourceType": "GMSequence",

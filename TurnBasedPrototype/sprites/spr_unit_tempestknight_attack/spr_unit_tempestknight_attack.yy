@@ -131,7 +131,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_tempestknight_attack","path":"sprites/spr_unit_tempestknight_attack/spr_unit_tempestknight_attack.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_tempestknight_attack",
     "tags": [],
     "resourceType": "GMSequence",

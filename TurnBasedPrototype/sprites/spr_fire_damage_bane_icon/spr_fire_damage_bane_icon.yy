@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_fire_damage_bane_icon","path":"sprites/spr_fire_damage_bane_icon/spr_fire_damage_bane_icon.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_fire_damage_bane_icon",
     "tags": [],
     "resourceType": "GMSequence",

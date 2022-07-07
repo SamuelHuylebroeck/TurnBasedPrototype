@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_minimap_forest_showdown","path":"sprites/spr_minimap_forest_showdown/spr_minimap_forest_showdown.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_minimap_forest_showdown",
     "tags": [],
     "resourceType": "GMSequence",

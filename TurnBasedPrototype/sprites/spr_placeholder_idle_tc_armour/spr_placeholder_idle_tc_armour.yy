@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_idle_tc_armour","path":"sprites/spr_placeholder_idle_tc_armour/spr_placeholder_idle_tc_armour.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_idle_tc_armour",
     "tags": [],
     "resourceType": "GMSequence",

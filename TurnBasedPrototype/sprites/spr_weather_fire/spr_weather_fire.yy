@@ -87,7 +87,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_weather_fire","path":"sprites/spr_weather_fire/spr_weather_fire.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_weather_fire",
     "tags": [],
     "resourceType": "GMSequence",

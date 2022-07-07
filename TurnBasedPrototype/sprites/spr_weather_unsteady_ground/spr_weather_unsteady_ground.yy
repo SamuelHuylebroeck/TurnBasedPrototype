@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_weather_unsteady_ground","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_weather_unsteady_ground",
     "tags": [],
     "resourceType": "GMSequence",

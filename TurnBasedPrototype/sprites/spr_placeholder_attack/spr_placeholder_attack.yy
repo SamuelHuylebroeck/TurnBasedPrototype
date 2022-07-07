@@ -111,7 +111,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_attack","path":"sprites/spr_placeholder_attack/spr_placeholder_attack.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_attack",
     "tags": [],
     "resourceType": "GMSequence",

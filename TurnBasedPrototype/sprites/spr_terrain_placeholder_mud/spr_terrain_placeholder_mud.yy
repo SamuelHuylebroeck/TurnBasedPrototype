@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_terrain_placeholder_mud","path":"sprites/spr_terrain_placeholder_mud/spr_terrain_placeholder_mud.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_terrain_placeholder_mud",
     "tags": [],
     "resourceType": "GMSequence",

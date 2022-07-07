@@ -135,7 +135,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_forgelord_death","path":"sprites/spr_unit_forgelord_death/spr_unit_forgelord_death.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_forgelord_death",
     "tags": [],
     "resourceType": "GMSequence",

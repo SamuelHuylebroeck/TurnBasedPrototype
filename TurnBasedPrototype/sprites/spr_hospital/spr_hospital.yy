@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_hospital","path":"sprites/spr_hospital/spr_hospital.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_hospital",
     "tags": [],
     "resourceType": "GMSequence",

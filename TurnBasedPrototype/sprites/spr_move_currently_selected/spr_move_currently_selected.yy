@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_move_currently_selected","path":"sprites/spr_move_currently_selected/spr_move_currently_selected.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_move_currently_selected",
     "tags": [],
     "resourceType": "GMSequence",

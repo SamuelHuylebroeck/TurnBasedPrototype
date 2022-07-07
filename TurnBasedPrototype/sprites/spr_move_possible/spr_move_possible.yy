@@ -60,7 +60,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_move_possible","path":"sprites/spr_move_possible/spr_move_possible.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_move_possible",
     "tags": [],
     "resourceType": "GMSequence",

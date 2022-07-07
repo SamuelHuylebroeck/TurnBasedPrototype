@@ -95,7 +95,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_tempestknight_skill","path":"sprites/spr_unit_tempestknight_skill/spr_unit_tempestknight_skill.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_tempestknight_skill",
     "tags": [],
     "resourceType": "GMSequence",

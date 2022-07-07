@@ -111,7 +111,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_tempestknight_death","path":"sprites/spr_unit_tempestknight_death/spr_unit_tempestknight_death.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_tempestknight_death",
     "tags": [],
     "resourceType": "GMSequence",

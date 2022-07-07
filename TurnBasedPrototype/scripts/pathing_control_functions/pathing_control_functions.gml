@@ -58,7 +58,16 @@ function clean_possible_moves() {
 	with(obj_placeholder_attack_command){
 		instance_destroy();
 	}
+	with(obj_attack_preview)
+	{
+		instance_destroy();
+	}
+	
 	with(obj_placeholder_create_weather_command){
+		instance_destroy();
+	}
+	with(obj_create_weather_preview)
+	{
 		instance_destroy();
 	}
 	move_grid_drawn = false;

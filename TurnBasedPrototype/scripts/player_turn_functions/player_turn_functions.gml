@@ -96,6 +96,11 @@ function take_player_turn(){
 		}
 	}
 
+	//Keyboard triggers
+	if global.player_permission_execute_orders
+	{
+		handle_mark_as_done()
+	}
 }
 	
 	
@@ -107,4 +112,61 @@ function deselect() {
 			instance_destroy();
 		}
 	}
+}
+
+function handle_mark_as_done()
+{
+		if	(
+				global.selected != noone 
+				and 
+				(
+					keyboard_check_pressed(ord(global.key_mark_unit_done)) 
+					or keyboard_check_pressed(vk_rshift)
+				)
+			)
+		{
+			with(global.selected)
+			{
+				has_acted_this_round = true
+			}
+			deselect()	
+		}
+}
+
+function handle_select_next_available(active_player)
+{
+	
+	if(
+		global.selected != noone 
+		and 
+		(
+				keyboard_check_pressed(ord(global.key_mark_unit_done)) 
+				or keyboard_check_pressed(vk_rshift)
+		)
+	)
+	{
+	
+	var next_available = get_next_available_unit(active_player)
+	if(next_available != noone)
+	{
+		global.selected = next_available
+		//Scroll or focus camera on unit's position
+			
+	}
+	}
+
+}
+
+function get_next_available_unit(player)
+{
+	var i = 0; while( i<ds_list_size(player.ds_active_units)
+	{
+		var candidate = player.ds_active_units[|i]
+		if not candidate.has_acted_this_round
+		{
+			return candidate
+		}
+		i++
+	}
+	return noone
 }

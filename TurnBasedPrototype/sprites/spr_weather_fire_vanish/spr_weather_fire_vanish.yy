@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_weather_fire_vanish","path":"sprites/spr_weather_fire_vanish/spr_weather_fire_vanish.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_weather_fire_vanish",
     "tags": [],
     "resourceType": "GMSequence",

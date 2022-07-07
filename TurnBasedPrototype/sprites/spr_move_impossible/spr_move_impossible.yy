@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_move_impossible","path":"sprites/spr_move_impossible/spr_move_impossible.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_move_impossible",
     "tags": [],
     "resourceType": "GMSequence",

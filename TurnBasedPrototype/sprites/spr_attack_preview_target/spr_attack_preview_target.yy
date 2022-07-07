@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_attack_preview_target","path":"sprites/spr_attack_preview_target/spr_attack_preview_target.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_attack_preview_target",
     "tags": [],
     "resourceType": "GMSequence",

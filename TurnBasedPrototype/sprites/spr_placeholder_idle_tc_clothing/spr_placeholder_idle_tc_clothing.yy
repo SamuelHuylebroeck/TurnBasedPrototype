@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_placeholder_idle_tc_clothing","path":"sprites/spr_placeholder_idle_tc_clothing/spr_placeholder_idle_tc_clothing.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_placeholder_idle_tc_clothing",
     "tags": [],
     "resourceType": "GMSequence",

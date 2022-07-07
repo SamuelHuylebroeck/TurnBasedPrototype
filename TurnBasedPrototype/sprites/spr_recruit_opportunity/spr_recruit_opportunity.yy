@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_recruit_opportunity","path":"sprites/spr_recruit_opportunity/spr_recruit_opportunity.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_recruit_opportunity",
     "tags": [],
     "resourceType": "GMSequence",

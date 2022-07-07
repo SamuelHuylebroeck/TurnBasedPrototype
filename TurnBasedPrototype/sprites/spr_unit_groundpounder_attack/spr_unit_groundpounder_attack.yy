@@ -111,7 +111,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_groundpounder_attack","path":"sprites/spr_unit_groundpounder_attack/spr_unit_groundpounder_attack.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_groundpounder_attack",
     "tags": [],
     "resourceType": "GMSequence",

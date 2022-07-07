@@ -63,7 +63,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_flamesword_idle","path":"sprites/spr_unit_flamesword_idle/spr_unit_flamesword_idle.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_flamesword_idle",
     "tags": [],
     "resourceType": "GMSequence",

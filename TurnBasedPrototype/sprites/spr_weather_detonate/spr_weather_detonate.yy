@@ -87,7 +87,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_weather_detonate","path":"sprites/spr_weather_detonate/spr_weather_detonate.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_weather_detonate",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_player_spawn_village","path":"sprites/spr_player_spawn_village/spr_player_spawn_village.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_player_spawn_village",
     "tags": [],
     "resourceType": "GMSequence",

@@ -95,7 +95,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_unit_forgelord_hurt","path":"sprites/spr_unit_forgelord_hurt/spr_unit_forgelord_hurt.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_unit_forgelord_hurt",
     "tags": [],
     "resourceType": "GMSequence",

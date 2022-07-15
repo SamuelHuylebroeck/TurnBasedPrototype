@@ -81,6 +81,13 @@ function smooth_pan(){
 	//origin_x_origin_y
 	var time_elapsed = counter / game_get_speed(gamespeed_fps)
 	var relative_progress = clamp(0,time_elapsed/pan_duration, 1)
+	
+	if(return_control_on_pan_end and relative_progress >= 1)
+	{
+		player_in_control = true;
+		return_control_on_pan_end = false;
+	}
+	
 	//Clamp target to room bounds
 	target_x = clamp(target_x, 0, room_width - camera_width)
 	target_y = clamp(target_y, 0, room_height - camera_height)
@@ -91,12 +98,12 @@ function smooth_pan(){
 	var camera_x = lerp(previous_position_x, target_x, curve_pos)
 	var camera_y= lerp(previous_position_y, target_y, curve_pos)
 	camera_set_view_pos(camera, camera_x, camera_y)
-	
 	counter++
 }
 
-function pan_camera_to_center_on_position(pos_x,pos_y,duration){
+function pan_camera_to_center_on_position(pos_x,pos_y,duration,take_control=false){
 	if global.debug_camera show_debug_message("Panning camera to ["+string(pos_x)+","+string(pos_y)+"] in "+string(duration)+"s")
+
 	with(obj_camera){
 		previous_position_x = camera_get_view_x(camera)
 		previous_position_y = camera_get_view_y(camera)
@@ -104,5 +111,11 @@ function pan_camera_to_center_on_position(pos_x,pos_y,duration){
 		target_y=pos_y-camera_height/2
 		pan_duration=duration
 		counter=0
+		
+		if(take_control)
+		{
+			player_in_control = false;
+			return_control_on_pan_end = true;
+		}
 	}
 }

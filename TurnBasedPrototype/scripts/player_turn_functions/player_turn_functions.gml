@@ -8,52 +8,7 @@ function take_player_turn(){
 	{
 		var selection_candidate;
 		selection_candidate = instance_position(mouse_x,mouse_y,par_abstract_unit);
-		if(selection_candidate != noone and selection_candidate.id != global.selected and selection_candidate.controlling_player != noone and selection_candidate.controlling_player.id == active_player)
-		{
-			//delete old stat card
-			with(obj_gui_unit_stat_card)
-			{
-				if (self.unit == global.selected){
-					instance_destroy();
-				}
-			}
-			
-			global.selected=selection_candidate;
-			clean_possible_moves();
-			
-			//Create unit stats view
-			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
-			gui_unit_stats.unit = global.selected;
-			
-			//play unit selection sound
-			if(!global.selected.has_acted_this_round)
-			{
-				play_random_sound_from_array(global.selected.unit_sound_map[sound_map_keys.select])
-			}
-		}	
-		if(!move_grid_drawn && global.selected != noone && !global.selected.has_acted_this_round and global.player_permission_execute_orders){ 
-			draw_possible_moves_selected();
-		}
-		
-		//Select enemy unit
-		if(selection_candidate != noone and selection_candidate.id != global.enemy_selected and (selection_candidate.controlling_player == noone or selection_candidate.controlling_player.id != active_player.id))
-		{
-			var enemy_unit = selection_candidate
-			//delete old stat card
-			with(obj_gui_unit_stat_card)
-			{
-				if (self.unit == global.enemy_selected){
-					instance_destroy();
-				}
-			}
-			global.enemy_selected=enemy_unit;
-			//Create unit stats view
-			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
-			gui_unit_stats.unit = global.enemy_selected;
-			//TODO remove magic number
-			gui_unit_stats.left_side = false
-			
-		} 
+		select(selection_candidate, active_player);
 	}
 		
 	if(global.selected != noone and mouse_check_button_pressed(mb_right))
@@ -108,9 +63,59 @@ function take_player_turn(){
 	if global.player_permission_execute_orders
 	{
 		handle_mark_as_done()
+		handle_select_next_available(active_player)
 	}
 }
-	
+
+function select(selection_candidate, active_player){
+		#region select logic
+		if(selection_candidate != noone and selection_candidate.id != global.selected and selection_candidate.controlling_player != noone and selection_candidate.controlling_player.id == active_player)
+		{
+			//delete old stat card
+			with(obj_gui_unit_stat_card)
+			{
+				if (self.unit == global.selected){
+					instance_destroy();
+				}
+			}
+			
+			global.selected=selection_candidate;
+			clean_possible_moves();
+			
+			//Create unit stats view
+			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
+			gui_unit_stats.unit = global.selected;
+			
+			//play unit selection sound
+			if(!global.selected.has_acted_this_round)
+			{
+				play_random_sound_from_array(global.selected.unit_sound_map[sound_map_keys.select])
+			}
+		}	
+		if(!move_grid_drawn && global.selected != noone && !global.selected.has_acted_this_round and global.player_permission_execute_orders){ 
+			draw_possible_moves_selected();
+		}
+		
+		//Select enemy unit
+		if(selection_candidate != noone and selection_candidate.id != global.enemy_selected and (selection_candidate.controlling_player == noone or selection_candidate.controlling_player.id != active_player.id))
+		{
+			var enemy_unit = selection_candidate
+			//delete old stat card
+			with(obj_gui_unit_stat_card)
+			{
+				if (self.unit == global.enemy_selected){
+					instance_destroy();
+				}
+			}
+			global.enemy_selected=enemy_unit;
+			//Create unit stats view
+			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
+			gui_unit_stats.unit = global.enemy_selected;
+			//TODO remove magic number
+			gui_unit_stats.left_side = false
+		}
+		#endregion
+}
 	
 function deselect() {
 	if(global.moving == false){
@@ -145,30 +150,30 @@ function handle_select_next_available(active_player)
 {
 	
 	if(
-		global.selected != noone 
-		and 
-		(
-				keyboard_check_pressed(ord(global.key_mark_unit_done)) 
-				or keyboard_check_pressed(vk_rshift)
-		)
+		keyboard_check_pressed(ord(global.key_next_available_unit)) 
+		or keyboard_check_pressed(vk_lshift)
 	)
 	{
-	
-	var next_available = get_next_available_unit(active_player)
-	if(next_available != noone)
-	{
-		global.selected = next_available
-		//Scroll or focus camera on unit's position
+		var next_available = get_next_available_unit(active_player)
+		if(next_available != noone)
+		{
+			select(next_available, active_player);
+			//Scroll or focus camera on unit's position
+			pan_camera_to_center_on_position(global.selected.x,global.selected.y,0.2,true)
 			
-	}
+		}
 	}
 
 }
 
 function get_next_available_unit(player)
 {
-	var i = 0; while( i<ds_list_size(player.ds_active_units)){
-		var candidate = player.ds_active_units[|i]
+	var max_units = ds_list_size(player.ds_active_units);
+	
+	var current_pos = global.selected == noone || ds_list_find_index(player.ds_active_units, global.selected)==-1 ?0: ds_list_find_index(player.ds_active_units, global.selected)
+	var i = 0; while( i<max_units){
+		current_pos = (current_pos+1)%max_units
+		var candidate = player.ds_active_units[|current_pos]
 		if (not candidate.has_acted_this_round)
 		{
 			return candidate

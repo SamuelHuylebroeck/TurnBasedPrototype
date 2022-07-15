@@ -19,3 +19,5 @@ aspect_ratio = camera_width/camera_height;
 
 //Starting position
 camera_set_view_pos(camera,0,0);
+
+return_control_on_pan_end = false;

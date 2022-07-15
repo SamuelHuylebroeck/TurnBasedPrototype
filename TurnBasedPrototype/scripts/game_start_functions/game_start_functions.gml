@@ -177,6 +177,7 @@ function consume_linked_spawn(linked_spawn){
 				if player != noone {
 					var instance = instance_create_layer(x,y,spawn_layer,spawn_template)
 					instance.controlling_player = player
+					ds_list_add(player.ds_active_units, instance)
 				}
 				break;
 			default:

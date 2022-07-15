@@ -38,8 +38,8 @@ function init_globals(){
 	global.down = "S";
 	global.right = "D";
 	global.pause_game = vk_escape
-	global.key_mark_unit_done = "N"
-	global.key_next_available_unit = "M"
+	global.key_mark_unit_done = "X"
+	global.key_next_available_unit = "C"
 	#endregion
 
 	#region victory_config
@@ -270,5 +270,4 @@ function define_audio_settings()
 	global.sfx_gain_base = 1;
 	
 	build_master_sound_map()
-	
 }

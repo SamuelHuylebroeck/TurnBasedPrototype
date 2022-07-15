@@ -2,6 +2,7 @@
 function start_recruitment(recruitment_building)
 {
 	//Disable controls
+	deselect()
 	//Create recruitment governing dialog
 	var recruitment_dialog = instance_create_layer(0,0,"UI_Frames", obj_placeholder_recruitment_dialog)
 	

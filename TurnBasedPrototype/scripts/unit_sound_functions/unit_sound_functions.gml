@@ -2,7 +2,6 @@ function play_random_sound_from_array(sound_array)
 {
 	if(array_length(sound_array)>0){
 		var index= irandom_range(0,array_length(sound_array)-1)
-		show_debug_message(index)
 		var sound = sound_array[index]
 		audio_sound_gain(sound,global.sfx_gain_base*global.sound_effect_scale*global.sound_master_scale,0)
 		audio_play_sound(sound,global.sfx_priority,false)

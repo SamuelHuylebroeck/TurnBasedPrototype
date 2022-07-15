@@ -260,4 +260,15 @@ function define_audio_settings()
 {
 	audio_group_load(audiogroup_music)
 	audio_group_load(audiogroup_sfx)
+	audio_group_load(audiogroup_voice)
+	
+	global.sound_music_scale = 1;
+	global.sound_effect_scale = 1;
+	global.sound_master_scale = 1;
+	
+	global.sfx_priority = 1100;
+	global.sfx_gain_base = 1;
+	
+	build_master_sound_map()
+	
 }

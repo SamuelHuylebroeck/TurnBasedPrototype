@@ -75,6 +75,9 @@ function resolve_attack_hit_effect(attack_profile, attacker, defender){
 	if (is_hit){
 		//Hit
 		do_hp_change(defender, -1* damage)
+		//play hit sound
+		play_sound(attack_profile.animation_profile.hit_sfx)
+		
 	}else{
 		//Miss
 		var floating_miss = instance_create_layer(defender.x,defender.y,"UI", obj_floating_miss_message)

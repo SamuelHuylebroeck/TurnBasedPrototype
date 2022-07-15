@@ -24,6 +24,12 @@ function take_player_turn(){
 			//Create unit stats view
 			var gui_unit_stats = instance_create_layer(0,0,"UI", obj_gui_unit_stat_card);
 			gui_unit_stats.unit = global.selected;
+			
+			//play unit selection sound
+			if(!global.selected.has_acted_this_round)
+			{
+				play_random_sound_from_array(global.selected.unit_sound_map[sound_map_keys.select])
+			}
 		}	
 		if(!move_grid_drawn && global.selected != noone && !global.selected.has_acted_this_round and global.player_permission_execute_orders){ 
 			draw_possible_moves_selected();
@@ -69,6 +75,8 @@ function take_player_turn(){
 				current_state = UNIT_STATES.moving
 			}
 			clean_possible_moves();
+			
+			play_random_sound_from_array(global.selected.unit_sound_map[sound_map_keys.move])
 		}else{
 			deselect();
 		}
@@ -159,10 +167,9 @@ function handle_select_next_available(active_player)
 
 function get_next_available_unit(player)
 {
-	var i = 0; while( i<ds_list_size(player.ds_active_units)
-	{
+	var i = 0; while( i<ds_list_size(player.ds_active_units)){
 		var candidate = player.ds_active_units[|i]
-		if not candidate.has_acted_this_round
+		if (not candidate.has_acted_this_round)
 		{
 			return candidate
 		}

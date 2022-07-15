@@ -40,6 +40,9 @@ function start_create_weather(origin_unit, weather_profile){
 	}
 	//Create the hit effect tiles
 	create_weather_effect_objects(ds_weather_effect_objects, weather_profile);
+	
+	//sfx
+	play_sound(weather_profile.weather_sfx)
 }
 
 

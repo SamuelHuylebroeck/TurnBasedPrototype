@@ -1,5 +1,5 @@
 
-#region colour definitions
+
 
 #macro c_soft_blue make_colour_rgb(46,61,96)
 #macro c_soft_red make_colour_rgb(143,37,46)
@@ -8,9 +8,7 @@
 #macro c_soft_yellow_dark make_colour_rgb(154,120,73)
 #macro c_soft_light_blue make_color_rgb(97,156,165)
 
-#endregion
 
-#region enums
 
 enum ATTACK_SHAPES {
 	as_line,
@@ -38,15 +36,12 @@ enum WEATHER_STATES {
 enum BUILDING_STATES {
 	ready,
 	exhausted
-
 }
 
 enum DD_PICKER_TYPES{
 	colour_picker,
 	player_type_picker,
 	map_picker
-
-
 }
 
 enum WEATHER_ELEMENTS {
@@ -54,7 +49,6 @@ enum WEATHER_ELEMENTS {
 	water,
 	wind,
 	earth
-	
 }
 
 enum WEATHER_RELATIONS {
@@ -69,7 +63,6 @@ enum AI_TURN_CONTROLLER_STATES {
 	recruitment,
 	task_force_execution,
 	done
-
 }
 
 enum TASKFORCE_AI_STANCE {
@@ -107,7 +100,7 @@ enum ACTION_TYPES {
 	move_and_attack,
 	move_and_skill
 }
-#region settings_enums
+	
 enum pause_menu_page {
 	main,
 	settings,
@@ -147,7 +140,6 @@ enum menu_supported_resolution
 	res_1366x768,
 	res_1024x768,
 
-	
 }
 
 enum gui_sizes
@@ -162,6 +154,12 @@ enum draw_healthbar_condition{
 	damaged_only,
 	always
 }
-#endregion
 
+enum sound_map_keys{
+	select,
+	move,
+	recruit,
+	attack_move,
+	action
+}
 #endregion

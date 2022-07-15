@@ -77,6 +77,7 @@ function execute_recruitment(pos_x, pos_y, recruitment_building, unit_template, 
 	recruitment_building.current_state = BUILDING_STATES.exhausted
 	//Add to list of units player controls
 	ds_list_add(player.ds_active_units, unit)
+	play_random_sound_from_array(unit.unit_sound_map[sound_map_keys.recruit])
 	
 	cancel_recruitment()
 	return unit

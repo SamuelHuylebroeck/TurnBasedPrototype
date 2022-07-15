@@ -90,6 +90,9 @@ function start_attack(origin_unit, attack_profile){
 	}
 	//Create the hit effect tiles
 	create_attack_effect_objects(ds_attack_effect_objects,origin_unit, attack_profile);
+	
+	//Sfx
+	play_sound(attack_profile.animation_profile.attack_sfx)
 }
 
 

@@ -45,7 +45,7 @@ function create_assault_taskforce(_x, _y, taskforce_player)
 function get_assault_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
 		repeat(3){
-			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword, obj_unit_tempest_knight)
+			var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_flamesword, obj_unit_tempest_knight, obj_unit_forgelord)
 			//var choice = obj_unit_groundpounder
 			var placeholder_request = {
 				verbose_name:"Assault Req: " + string(choice),

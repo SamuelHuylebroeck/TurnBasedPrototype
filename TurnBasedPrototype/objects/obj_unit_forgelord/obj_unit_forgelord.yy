@@ -50,10 +50,11 @@
     {"propertyId":{"name":"stats_weather_duration","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_weather_burst_size","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"stats_weather_element","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"WEATHER_ELEMENTS.fire","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"stats_weather_benign","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"False","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "forgelord",
-    "path": "folders/Objects/units/heavy/forgelord.yy",
+    "name": "heavy",
+    "path": "folders/Objects/units/heavy.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_forgelord",

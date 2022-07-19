@@ -181,8 +181,14 @@ function create_recruitment_options(){
 	var tempest_knight = new recruitment_option("Tempest Knight", obj_unit_tempest_knight, 405)
 	ds_list_add(global.ds_basic_recruitment_options, tempest_knight)
 	
-	var forge_lord = new recruitment_option("Forge Lord", obj_unit_forgelord, 380)
+	var forge_lord = new recruitment_option("Forge Lord", obj_unit_forgelord, 400)
 	ds_list_add(global.ds_basic_recruitment_options, forge_lord)
+	
+	var ground_splitter = new recruitment_option("Groundsplitter", obj_unit_groundsplitter, 370)
+	ds_list_add(global.ds_basic_recruitment_options, ground_splitter)
+	
+	var captain = new recruitment_option("Captain", obj_unit_captain_knight, 350)
+	ds_list_add(global.ds_basic_recruitment_options, captain)
 
 
 }

@@ -51,8 +51,8 @@
     {"propertyId":{"name":"stats_weather_burst_size","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "tempestknight",
-    "path": "folders/Objects/units/heavy/tempestknight.yy",
+    "name": "heavy",
+    "path": "folders/Objects/units/heavy.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_tempest_knight",

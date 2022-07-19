@@ -64,17 +64,10 @@ function create_defender_taskforce(garrison_objective_tracker,  taskforce_player
 #region recruitment
 function get_defender_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
-		var waveaxe_odds = 0.7
-		var flip = random(1)
-		var name = "Groundpounder"
-		var unit_template = obj_unit_groundpounder
-		if flip < waveaxe_odds{
-			name = "Waveaxe"
-			unit_template = obj_unit_waveaxe
-		}
+		var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_captain_knight, obj_unit_groundsplitter)
 		var placeholder_request = {
-			verbose_name: name,
-			template: unit_template,
+			verbose_name: "Defender Req: " + string(choice),
+			template: choice,
 			tf: taskforce
 		}
 		ds_queue_enqueue(ds_request_queue, placeholder_request)

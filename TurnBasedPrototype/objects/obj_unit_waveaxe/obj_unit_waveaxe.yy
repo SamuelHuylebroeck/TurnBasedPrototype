@@ -45,8 +45,8 @@
     {"propertyId":{"name":"stats_weather_element","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"WEATHER_ELEMENTS.water","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "waveaxe",
-    "path": "folders/Objects/units/medium/waveaxe.yy",
+    "name": "medium",
+    "path": "folders/Objects/units/medium.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_waveaxe",

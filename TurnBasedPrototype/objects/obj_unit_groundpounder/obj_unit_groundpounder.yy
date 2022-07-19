@@ -49,8 +49,8 @@
     {"propertyId":{"name":"stats_animation_hit_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_groundpounder_hit_effect","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
-    "name": "groundpounder",
-    "path": "folders/Objects/units/medium/groundpounder.yy",
+    "name": "medium",
+    "path": "folders/Objects/units/medium.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_unit_groundpounder",

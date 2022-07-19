@@ -12,9 +12,6 @@ function init_globals(){
 	//Pathing globals
 	global.path_allow_diag  = 0;
 	global.path_move_speed = 3;
-
-
-
 	#endregion
 	
 	#region player permissions
@@ -268,6 +265,8 @@ function define_audio_settings()
 	
 	global.sfx_priority = 1100;
 	global.sfx_gain_base = 1;
+	
+	global.music_base_gain = 1000;
 	
 	build_master_sound_map()
 }

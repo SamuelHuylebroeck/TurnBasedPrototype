@@ -14,7 +14,7 @@ if(global.map_running){
 	for(var i=0;i<ds_list_size(player.ds_active_units);i++)
 	{
 		var unit = player.ds_active_units[|i];
-		if(unit != noone and !unit.has_acted_this_round)
+		if(unit != noone and instance_exists(unit) and !(unit.has_acted_this_round))
 		{
 			count++;
 		}

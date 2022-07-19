@@ -20,6 +20,7 @@
             {"propertyId":{"name":"player_setup","path":"objects/obj_menu_game_setup/obj_menu_game_setup.yy",},"objectId":{"name":"obj_menu_game_setup","path":"objects/obj_menu_game_setup/obj_menu_game_setup.yy",},"value":"inst_player_setup","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
           ],"isDnd":false,"objectId":{"name":"obj_menu_game_setup","path":"objects/obj_menu_game_setup/obj_menu_game_setup.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1600.0,"y":0.0,"resourceVersion":"1.0","name":"inst_menu_game_setup","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_title_setting_menu","path":"objects/obj_title_setting_menu/obj_title_setting_menu.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":896.0,"resourceVersion":"1.0","name":"inst_5C88A26A","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"par_jukebox","path":"objects/par_jukebox/par_jukebox.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":0.0,"resourceVersion":"1.0","name":"inst_3525EF6E","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Logic","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[],"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Picker_Options","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
@@ -114,6 +115,7 @@
     {"name":"button_settings_back","path":"rooms/rm_title/rm_title.yy",},
     {"name":"button_settings_apply","path":"rooms/rm_title/rm_title.yy",},
     {"name":"inst_5C88A26A","path":"rooms/rm_title/rm_title.yy",},
+    {"name":"inst_3525EF6E","path":"rooms/rm_title/rm_title.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

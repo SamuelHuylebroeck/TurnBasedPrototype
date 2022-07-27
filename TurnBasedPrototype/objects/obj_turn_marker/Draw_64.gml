@@ -5,7 +5,7 @@ if(global.map_running){
 	var x_scale = global.ui_scale_values[global.current_ui_scale][0]
 	var y_scale = global.ui_scale_values[global.current_ui_scale][1]
 	
-		var margin = x_scale * base_margin
+	var margin = x_scale * base_margin
 	
 	var current_round = control.current_round
 	var current_index = control.current_active_player_index % ds_list_size(control.ds_turn_order)

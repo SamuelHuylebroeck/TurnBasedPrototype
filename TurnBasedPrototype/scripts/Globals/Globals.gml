@@ -189,7 +189,22 @@ function create_recruitment_options(){
 	
 	var captain = new recruitment_option("Captain", obj_unit_captain_knight, 350)
 	ds_list_add(global.ds_basic_recruitment_options, captain)
-
+	
+	var marine_archer = new recruitment_option("Marine Archer", obj_unit_marinearcher, 100)
+	ds_list_add(global.ds_basic_recruitment_options, marine_archer)
+	
+	//tabbed
+	global.ds_tabbed_recruitment_options_map = ds_map_create()
+	var infantry_list = ds_list_create()
+	ds_list_add(infantry_list, flamesword, windsword, groundpounder, waveaxe);
+	ds_map_add(global.ds_tabbed_recruitment_options_map,"Inf.", infantry_list)
+	var heavy_list = ds_list_create()
+	ds_list_add(heavy_list, forge_lord, tempest_knight, ground_splitter, captain);
+	ds_map_add(global.ds_tabbed_recruitment_options_map,"Hvy.", heavy_list)
+	var archer_list = ds_list_create()
+	ds_list_add(archer_list, marine_archer);
+	ds_map_add(global.ds_tabbed_recruitment_options_map,"Arc.", archer_list)
+	
 
 }
 

@@ -1,0 +1,12 @@
+/// @description ??
+initialized = false;
+dialog = noone
+dialog_index = -1
+max_width = 0
+max_height = 0
+recruitment_option_detail = noone
+recruitment_building = noone
+recruiting_player = noone
+ui_x = 0
+ui_y = 0
+selected = false;

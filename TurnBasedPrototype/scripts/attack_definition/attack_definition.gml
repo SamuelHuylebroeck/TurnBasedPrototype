@@ -1,4 +1,4 @@
-                                                                  //@description ??
+//@description ??
 function AttackProfile(base_damage=5, base_piercing=0,base_accuracy=90,base_shape=ATTACK_SHAPES.as_line, base_size=3,min_range=1, max_range=2, animation_profile = new AttackAnimationProfile(), weather_profile= new WeatherProfile()) constructor
 {
 	self.base_damage = base_damage;

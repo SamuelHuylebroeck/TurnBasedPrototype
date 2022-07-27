@@ -63,6 +63,10 @@ function change_resolution(resolution_index){
 		camera_set_view_border(camera,camera_width,camera_height);
 	
 	}
+	
+	//Reset UI globals
+	global.ui_width = display_get_gui_width()
+	global.ui_height = display_get_gui_height()
 }
 
 function change_window_mode(index){

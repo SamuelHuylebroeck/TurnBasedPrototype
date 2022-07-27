@@ -37,8 +37,8 @@
   ],
   "overriddenProperties": [],
   "parent": {
-    "name": "recruitment",
-    "path": "folders/Objects/ui/recruitment.yy",
+    "name": "simple",
+    "path": "folders/Objects/ui/recruitment/simple.yy",
   },
   "resourceVersion": "1.0",
   "name": "par_recruitment_option",

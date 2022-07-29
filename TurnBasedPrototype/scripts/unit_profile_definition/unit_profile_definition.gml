@@ -5,18 +5,17 @@ function UnitProfile(verbose_name, _max_hp, _base_movement, _base_avoid, _base_a
 	self.base_movement = _base_movement
 	self.base_avoid = _base_avoid
 	self.base_armour = _base_armour
+	
+	static Copy = function()
+	{
+		return new UnitProfile(verbose_name, max_hp, base_movement, base_avoid, base_armour)
+	}
 }
 
-function UnitProfile(unit_profile) constructor{
-	self.verbose_name = unit_profile.verbose_name
-	self.max_hp = unit_profile.max_hp
-	self.base_movement = unit_profile.base_movement
-	self.base_avoid = unit_profile.base_avoid
-	self.base_armour = unit_profile.base_armour
-}
 
-function CompleteUnitProfile(unit_profile,attack_profile, weather_profile)
+function CompleteUnitStatProfile(unit_profile,attack_stats_profile, weather_profile) constructor
 {
 	self.unit_profile = unit_profile
-	self.attack_profile = attack_profile
+	self.attack_stats_profile = attack_stats_profile
+	self.weather_profile= weather_profile
 }

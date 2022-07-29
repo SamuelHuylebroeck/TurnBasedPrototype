@@ -43,7 +43,7 @@ function build_master_sound_map(){
 function get_unit_sound_map(snd_map_key){
 	if(ds_map_exists(global.master_sound_map, snd_map_key))
 	{
-		return ds_map_find_value(global.master_sound_map, "generic");	
+		return ds_map_find_value(global.master_sound_map,snd_map_key);	
 	}else
 	{
 		return ds_map_find_value(global.master_sound_map, "generic");	

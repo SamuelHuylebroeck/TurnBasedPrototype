@@ -88,7 +88,9 @@ function start_attack(origin_unit, attack_profile){
 		sprite_index = animation_sprites[UNIT_STATES.attacking]
 		current_state = UNIT_STATES.attacking
 	}
-	//Create the hit effect tiles
+	//Create the hit effect tiles	//Create the hit effect tiles
+
+
 	create_attack_effect_objects(ds_attack_effect_objects,origin_unit, attack_profile);
 	
 	//Sfx

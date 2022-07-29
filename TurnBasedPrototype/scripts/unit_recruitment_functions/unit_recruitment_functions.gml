@@ -123,14 +123,17 @@ function select_for_recruitment(index)
 	ds_current_active_options[|current_active_option].selected = true;
 }
 
-function create_preview(index)
+function create_preview()
 {
 	cancel_current_preview()
 	
 	current_preview = instance_create_layer(0,0,"UI", obj_tabbed_recruitment_preview);
 	with(current_preview)
 	{
+		profile = other.ds_current_active_options[|other.current_active_option].recruitment_option_detail
 		initialized = true;
+		recruiting_player = other.ds_current_active_options[|other.current_active_option].recruiting_player;
+		
 	}
 	
 }

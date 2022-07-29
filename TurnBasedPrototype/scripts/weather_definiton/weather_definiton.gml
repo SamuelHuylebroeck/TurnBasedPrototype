@@ -7,4 +7,9 @@ function WeatherProfile(verbose_name="Placeholder Weather", weather_type= obj_pl
 	self.weather_element = weather_element
 	self.benign = benign
 	self.weather_sfx = weather_sfx
+	
+	static Copy = function()
+	{
+		return new WeatherProfile(verbose_name, weather_type, weather_duration, weather_burst_size, weather_element,benign,weather_sfx)
+	}
 }

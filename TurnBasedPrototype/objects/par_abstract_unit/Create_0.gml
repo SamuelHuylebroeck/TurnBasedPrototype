@@ -8,10 +8,18 @@ ds_boons_and_banes = ds_map_create()
 #endregion
 
 #region stat constructors
-weather_profile = new WeatherProfile(stats_weather_name, stats_weather_template, stats_weather_duration,stats_weather_burst_size, stats_weather_element, stats_weather_benign,stats_weather_sfx)
+var global_profile;
+
+if(ds_map_exists(global.unit_stat_map, stats_name))
+{
+	global_profile = ds_map_find_value(global.unit_stat_map, stats_name)
+}else{
+	global_profile = ds_map_find_value(global.unit_stat_map, "Default")
+}
+weather_profile = new WeatherProfile(global_profile.weather_profile.verbose_name, global_profile.weather_profile.weather_type, global_profile.weather_profile.weather_duration,global_profile.weather_profile.weather_burst_size, global_profile.weather_profile.weather_element, global_profile.weather_profile.benign,global_profile.weather_profile.weather_sfx)
 var attack_animation_profile = new AttackAnimationProfile(stats_animation_hit_frame, sprite_get_speed(animation_attack_sprite), stats_animation_hit_sprite, stats_animation_hit_sprite_hit_frame,stats_attack_sfx, stats_attack_hit_sfx)
-attack_profile = new AttackProfile(stats_damage,stats_piercing,stats_accuracy,stats_attack_shape, stats_attack_size,stats_attack_min_range,stats_attack_max_range,attack_animation_profile, weather_profile)
-unit_profile = new UnitProfile(stats_name, stats_hp, stats_move_points_grid,stats_avoid,stats_armour)
+attack_profile = new AttackProfile(global_profile.attack_stats_profile.base_damage,global_profile.attack_stats_profile.base_piercing,global_profile.attack_stats_profile.base_accuracy,global_profile.attack_stats_profile.base_shape, global_profile.attack_stats_profile.base_size,global_profile.attack_stats_profile.min_range,global_profile.attack_stats_profile.max_range,attack_animation_profile, weather_profile)
+unit_profile = new UnitProfile(global_profile.unit_profile.verbose_name, global_profile.unit_profile.max_hp, global_profile.unit_profile.base_movement,global_profile.unit_profile.base_avoid,global_profile.unit_profile.base_armour)
 unit_sound_map = get_unit_sound_map(stats_sound_map_key)
 #endregion
 

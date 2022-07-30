@@ -80,7 +80,7 @@ function add_heavy_stats(ds_stat_map)
 	#region Captain
 	var captainWeatherProfile = new WeatherProfile("Rain", obj_weather_rain, 3,2,WEATHER_ELEMENTS.water, true, snd_unit_generic_action01)
 	var captainAttackProfile = new AttackStatsProfile(26,6,85,ATTACK_SHAPES.as_cone,2,1,1,captainWeatherProfile)
-	var captainUnitProfile= new UnitProfile("Captain Knight", 50,5,0,5)
+	var captainUnitProfile= new UnitProfile("Captain Knight", 100,3,5,10)
 	var captainCompleteProfile = new CompleteUnitStatProfile(captainUnitProfile, captainAttackProfile, captainWeatherProfile)
 	ds_map_add(global.unit_stat_map,"Captain Knight", captainCompleteProfile)
 	#endregion

@@ -18,3 +18,9 @@ if linked_taskforce != noone and ds_exists(linked_taskforce.ds_list_taskforce_un
 	ds_list_delete(linked_taskforce.ds_list_taskforce_units, pos)
 }
 
+if controlling_player != noone and ds_exists(controlling_player.ds_active_units, ds_type_list)
+{
+	var index = ds_list_find_index(controlling_player.ds_active_units, self.id)
+	ds_list_delete(controlling_player.ds_active_units, index)
+}
+

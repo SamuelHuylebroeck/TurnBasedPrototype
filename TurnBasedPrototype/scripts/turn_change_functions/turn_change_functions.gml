@@ -1,3 +1,6 @@
+
+
+
 //@description ??
 function goto_next_turn(){
 	deselect()
@@ -45,7 +48,8 @@ function resolve_turn_start_unit(unit){
 	#region Weather
 	var weather = instance_place(unit.x, unit.y ,par_weather)
 	
-	if weather != noone {
+	if weather != noone and weather.current_state == WEATHER_STATES.present {
+		show_debug_message(weather.weather_name)
 		resolve_weather_start_of_turn(unit, weather)
 	}
 	ds_map_clear(unit.ds_weather_crossed)

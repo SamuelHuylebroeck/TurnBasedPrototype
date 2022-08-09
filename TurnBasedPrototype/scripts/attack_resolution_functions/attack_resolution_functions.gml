@@ -20,6 +20,9 @@ function get_attack_target_tiles(origin_x, origin_y, target_x, target_y, origin_
 		case ATTACK_SHAPES.as_cone:
 			target_tiles = get_attack_cone_target_positions(origin_x, origin_y, target_x,target_y, origin_unit, attack_profile);
 			break;
+		case ATTACK_SHAPES.as_wall:
+			target_tiles = get_attack_wall_target_positions(origin_x, origin_y, target_x,target_y, origin_unit, attack_profile);
+			break;
 		case ATTACK_SHAPES.as_line:
 		default:
 			target_tiles = get_attack_line_target_positions(origin_x, origin_y, target_x,target_y, origin_unit, attack_profile);
@@ -29,16 +32,20 @@ function get_attack_target_tiles(origin_x, origin_y, target_x, target_y, origin_
 }
 
 function create_attack_effect_object_at_location(i, _x, _y, origin_unit, attack_profile){
-	var instance = instance_create_layer(_x, _y, "Weather", obj_placeholder_attack_hit_effect)
-	with(instance){
-		//Calculate when the attack should trigger
-		var time_to_hit_frame = attack_profile.animation_profile.hit_frame * origin_unit.image_speed / attack_profile.animation_profile.base_sprite_animation_speed * game_get_speed(gamespeed_fps)
-		hit_frame = attack_profile.animation_profile.hit_sprite_hit_frame
-		alarm[0] = time_to_hit_frame
-		// Set the required data
-		sprite_index = attack_profile.animation_profile.hit_sprite
-		linked_attack_profile = attack_profile
-		linked_attacker = origin_unit
+	
+	if(instance_position(_x,_y, obj_impassible) == noone)
+	{
+		var instance = instance_create_layer(_x, _y, "Weather", obj_placeholder_attack_hit_effect)
+		with(instance){
+			//Calculate when the attack should trigger
+			var time_to_hit_frame = attack_profile.animation_profile.hit_frame * origin_unit.image_speed / attack_profile.animation_profile.base_sprite_animation_speed * game_get_speed(gamespeed_fps)
+			hit_frame = attack_profile.animation_profile.hit_sprite_hit_frame
+			alarm[0] = time_to_hit_frame
+			// Set the required data
+			sprite_index = attack_profile.animation_profile.hit_sprite
+			linked_attack_profile = attack_profile
+			linked_attacker = origin_unit
+		}
 	}
 }
 
@@ -100,6 +107,15 @@ function get_refined_stats(attack_profile, attacker, defender){
 		hit_rate -= occupied_terrain.avoid_modifier
 		armour += occupied_terrain.armour_modifier
 	}
+	
+	//Incorporate weather information
+	var occupied_weather = instance_position( defender.x, defender.y, par_weather );
+
+	if (occupied_weather != noone){
+		hit_rate += occupied_weather.avoid_modifier
+		armour += occupied_weather.armour_modifier
+	}
+	
 	
 	//Incorporate boon and bane information of attacker
 	

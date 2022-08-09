@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 2,
-  "bbox_right": 57,
+  "bbox_left": 3,
+  "bbox_right": 56,
   "bbox_top": 6,
-  "bbox_bottom": 57,
+  "bbox_bottom": 60,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -24,18 +24,18 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f4e09ed4-57cf-4d18-ac15-2b96c6827ded","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f4e09ed4-57cf-4d18-ac15-2b96c6827ded","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"719bde52-78c4-4d58-84bc-1e525e00dbda","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"f4e09ed4-57cf-4d18-ac15-2b96c6827ded","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"d9bf9095-0a73-4eb7-be4a-b27787324c3d","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d9bf9095-0a73-4eb7-be4a-b27787324c3d","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"719bde52-78c4-4d58-84bc-1e525e00dbda","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"d9bf9095-0a73-4eb7-be4a-b27787324c3d","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"0c534e77-c618-46f1-a065-47b445fa7cb3","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"0c534e77-c618-46f1-a065-47b445fa7cb3","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"719bde52-78c4-4d58-84bc-1e525e00dbda","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"0c534e77-c618-46f1-a065-47b445fa7cb3","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"a4e50cc6-c240-4e13-b3dc-9fc4a8da66bf","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"a4e50cc6-c240-4e13-b3dc-9fc4a8da66bf","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"719bde52-78c4-4d58-84bc-1e525e00dbda","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"a4e50cc6-c240-4e13-b3dc-9fc4a8da66bf","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"d9984aeb-9e6b-4c2f-a16a-d004ba631fa9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"d9984aeb-9e6b-4c2f-a16a-d004ba631fa9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"f65b2cef-63a5-49d0-bf7d-6e9ca6cc2e24","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"d9984aeb-9e6b-4c2f-a16a-d004ba631fa9","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"fb18704e-6c2a-4f1e-a83a-a1040149e566","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"fb18704e-6c2a-4f1e-a83a-a1040149e566","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"f65b2cef-63a5-49d0-bf7d-6e9ca6cc2e24","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"fb18704e-6c2a-4f1e-a83a-a1040149e566","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"93bb93ad-0fd3-4a26-b2ce-20cfea30b2b9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"93bb93ad-0fd3-4a26-b2ce-20cfea30b2b9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"f65b2cef-63a5-49d0-bf7d-6e9ca6cc2e24","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"93bb93ad-0fd3-4a26-b2ce-20cfea30b2b9","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"754e6057-594e-453e-936b-ebd9daf23a93","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"754e6057-594e-453e-936b-ebd9daf23a93","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"LayerId":{"name":"f65b2cef-63a5-49d0-bf7d-6e9ca6cc2e24","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","name":"754e6057-594e-453e-936b-ebd9daf23a93","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_weather_unsteady_ground_vanish","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},
@@ -50,10 +50,10 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"37fb9a5e-d960-4de0-9668-ad546088fc97","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f4e09ed4-57cf-4d18-ac15-2b96c6827ded","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"4f05a1cd-ad3d-4623-b543-6bee70fa57fc","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d9bf9095-0a73-4eb7-be4a-b27787324c3d","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"ed5bceb8-e3ab-4892-b211-b6110d056858","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0c534e77-c618-46f1-a065-47b445fa7cb3","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"138775d2-d993-4013-8999-07d4a7be81f3","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a4e50cc6-c240-4e13-b3dc-9fc4a8da66bf","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"d77f60e0-8fc4-4a44-8c08-615c6e3ae00a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d9984aeb-9e6b-4c2f-a16a-d004ba631fa9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"994d5cf8-6f74-428e-af20-19b346a69a80","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"fb18704e-6c2a-4f1e-a83a-a1040149e566","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"a4107c87-0baf-45c4-bf63-ae6232e08874","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"93bb93ad-0fd3-4a26-b2ce-20cfea30b2b9","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"b2f797ec-d3f8-4768-b257-2ca9d2cec170","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"754e6057-594e-453e-936b-ebd9daf23a93","path":"sprites/spr_weather_unsteady_ground_vanish/spr_weather_unsteady_ground_vanish.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -77,7 +77,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"719bde52-78c4-4d58-84bc-1e525e00dbda","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"f65b2cef-63a5-49d0-bf7d-6e9ca6cc2e24","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

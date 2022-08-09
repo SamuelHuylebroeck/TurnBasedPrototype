@@ -52,7 +52,7 @@ function get_raider_taskforce_recruitment_request(ds_request_queue, taskforce, t
 			var windsword_odds = 0.7
 			var flip = random(1)
 			var name= "Flamesword"
-			var unit_template = obj_unit_flamesword
+			var unit_template = obj_unit_marinearcher
 			if flip < windsword_odds{
 				name = "Windsword"
 				unit_template = obj_unit_windsword

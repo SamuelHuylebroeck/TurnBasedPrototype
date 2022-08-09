@@ -171,48 +171,63 @@ function create_recruitment_options(){
 	
 	key= "Flamesword"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var flamesword = new recruitment_option(key, obj_unit_flamesword, 200,complete_profile, spr_unit_flamesword_idle)
+	var flamesword = new recruitment_option(key, obj_unit_flamesword, 40,complete_profile, spr_unit_flamesword_idle)
 	ds_list_add(global.ds_basic_recruitment_options, flamesword)
 
 	key= "Windsword"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var windsword = new recruitment_option(key, obj_unit_windsword, 180, complete_profile, spr_unit_windsword_idle)
+	var windsword = new recruitment_option(key, obj_unit_windsword, 20, complete_profile, spr_unit_windsword_idle)
 	ds_list_add(global.ds_basic_recruitment_options, windsword)
 	
 	key= "Wave Axe"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var waveaxe = new recruitment_option(key, obj_unit_waveaxe, 175, complete_profile, spr_unit_waveaxe_idle)
+	var waveaxe = new recruitment_option(key, obj_unit_waveaxe, 40, complete_profile, spr_unit_waveaxe_idle)
 	ds_list_add(global.ds_basic_recruitment_options, waveaxe)
 	
 	key= "Groundpounder"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var groundpounder = new recruitment_option(key, obj_unit_groundpounder, 220, complete_profile, spr_unit_groundpounder_idle)
+	var groundpounder = new recruitment_option(key, obj_unit_groundpounder, 30, complete_profile, spr_unit_groundpounder_idle)
 	ds_list_add(global.ds_basic_recruitment_options, groundpounder)
 	
 	key= "Tempest Knight"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var tempest_knight = new recruitment_option(key, obj_unit_tempest_knight, 405, complete_profile, spr_unit_tempestknight_idle)
+	var tempest_knight = new recruitment_option(key, obj_unit_tempest_knight, 70, complete_profile, spr_unit_tempestknight_idle)
 	ds_list_add(global.ds_basic_recruitment_options, tempest_knight)
 	
 	key= "Forgelord"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var forge_lord = new recruitment_option(key, obj_unit_forgelord, 400, complete_profile, spr_unit_forgelord_idle)
+	var forge_lord = new recruitment_option(key, obj_unit_forgelord, 80, complete_profile, spr_unit_forgelord_idle)
 	ds_list_add(global.ds_basic_recruitment_options, forge_lord)
 	
 	key= "Groundsplitter"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var ground_splitter = new recruitment_option(key, obj_unit_groundsplitter, 370, complete_profile, spr_unit_groundsplitter_idle)
+	var ground_splitter = new recruitment_option(key, obj_unit_groundsplitter, 60, complete_profile, spr_unit_groundsplitter_idle)
 	ds_list_add(global.ds_basic_recruitment_options, ground_splitter)
 	
 	key= "Captain Knight"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var captain = new recruitment_option(key, obj_unit_captain_knight, 350, complete_profile, spr_unit_captainknight_idle)
+	var captain = new recruitment_option(key, obj_unit_captain_knight, 80, complete_profile, spr_unit_captainknight_idle)
 	ds_list_add(global.ds_basic_recruitment_options, captain)
+	
+	key= "Pyro Archer"
+	complete_profile = ds_map_find_value(global.unit_stat_map, key)
+	var pyro_archer = new recruitment_option(key, obj_unit_pyroarcher, 60, complete_profile, spr_unit_pyroarcher_idle)
+	ds_list_add(global.ds_basic_recruitment_options, pyro_archer)
+	
+	key= "Bolt Thrower"
+	complete_profile = ds_map_find_value(global.unit_stat_map, key)
+	var bolt_thrower = new recruitment_option(key, obj_unit_boltthrower, 90, complete_profile, spr_unit_boltthrower_idle)
+	ds_list_add(global.ds_basic_recruitment_options, bolt_thrower)
 	
 	key= "Marine Archer"
 	complete_profile = ds_map_find_value(global.unit_stat_map, key)
-	var marine_archer = new recruitment_option(key, obj_unit_marinearcher, 100, complete_profile, spr_unit_marinearcher_idle)
+	var marine_archer = new recruitment_option(key, obj_unit_marinearcher, 40, complete_profile, spr_unit_marinearcher_idle)
 	ds_list_add(global.ds_basic_recruitment_options, marine_archer)
+	
+	key= "Shard Slinger"
+	complete_profile = ds_map_find_value(global.unit_stat_map, key)
+	var shard_slinger = new recruitment_option(key, obj_unit_shardslinger, 30, complete_profile, spr_unit_shardslinger_idle)
+	ds_list_add(global.ds_basic_recruitment_options, shard_slinger)
 	
 	//tabbed
 	global.ds_tabbed_recruitment_options_map = ds_map_create()
@@ -223,7 +238,7 @@ function create_recruitment_options(){
 	ds_list_add(heavy_list, forge_lord, tempest_knight, ground_splitter, captain);
 	ds_map_add(global.ds_tabbed_recruitment_options_map,"Hvy.", heavy_list)
 	var archer_list = ds_list_create()
-	ds_list_add(archer_list, marine_archer);
+	ds_list_add(archer_list, marine_archer,bolt_thrower, shard_slinger, pyro_archer);
 	ds_map_add(global.ds_tabbed_recruitment_options_map,"Arc.", archer_list)
 	
 

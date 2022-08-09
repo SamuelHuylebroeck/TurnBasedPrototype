@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 2,
-  "bbox_right": 57,
+  "bbox_left": 3,
+  "bbox_right": 56,
   "bbox_top": 6,
-  "bbox_bottom": 57,
+  "bbox_bottom": 60,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"30f63868-e991-4d8b-88d0-eeb5569bbdb3","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"30f63868-e991-4d8b-88d0-eeb5569bbdb3","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"LayerId":{"name":"26147aaa-c93b-4e4e-a848-18372a99f849","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_weather_unsteady_ground","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","name":"30f63868-e991-4d8b-88d0-eeb5569bbdb3","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"9bbaf602-e4f3-4a3d-8582-3c0dc46ce82a","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"9bbaf602-e4f3-4a3d-8582-3c0dc46ce82a","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"LayerId":{"name":"5739fd9f-0864-4c1b-942b-ed8329880c5c","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_weather_unsteady_ground","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","name":"9bbaf602-e4f3-4a3d-8582-3c0dc46ce82a","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_weather_unsteady_ground","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"a1e50504-96df-42b6-a580-c501707de789","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"30f63868-e991-4d8b-88d0-eeb5569bbdb3","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
+            {"id":"738afeb5-3b7f-4754-946d-1c38638033b2","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9bbaf602-e4f3-4a3d-8582-3c0dc46ce82a","path":"sprites/spr_weather_unsteady_ground/spr_weather_unsteady_ground.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"26147aaa-c93b-4e4e-a848-18372a99f849","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"5739fd9f-0864-4c1b-942b-ed8329880c5c","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

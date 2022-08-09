@@ -49,6 +49,9 @@ function create_attack_preview(origin_unit, attack_profile){
 		case ATTACK_SHAPES.as_cone:
 			targets = get_attack_cone_target_positions(origin_unit.x, origin_unit.y,x,y,origin_unit, attack_profile)
 			break;
+		case ATTACK_SHAPES.as_wall:
+			targets = get_attack_wall_target_positions(origin_unit.x, origin_unit.y,x,y,origin_unit, attack_profile)
+			break;
 		case ATTACK_SHAPES.as_line:
 		default:
 			targets = get_attack_line_target_positions(origin_unit.x, origin_unit.y,x,y,origin_unit, attack_profile)
@@ -61,10 +64,14 @@ function create_attack_preview(origin_unit, attack_profile){
 function create_attack_preview_targets(origin_unit, attack_profile, targets){
 	for(var i=0; i< ds_list_size(targets);i++){
 		var target_pos = targets[| i]
-		var preview = instance_create_layer(target_pos._x, target_pos._y, "UI", obj_attack_preview)
-		with(preview){
-			linked_attack_profile = attack_profile
-			linked_attacker = origin_unit
+		
+		if(instance_position(target_pos._x, target_pos._y,obj_impassible) ==noone)
+		{	
+			var preview = instance_create_layer(target_pos._x, target_pos._y, "UI", obj_attack_preview)
+			with(preview){
+				linked_attack_profile = attack_profile
+				linked_attacker = origin_unit
+			}
 		}
 	}
 	ds_list_destroy(targets)

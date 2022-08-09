@@ -64,7 +64,7 @@ function create_defender_taskforce(garrison_objective_tracker,  taskforce_player
 #region recruitment
 function get_defender_taskforce_recruitment_request(ds_request_queue, taskforce, taskforce_player){
 	if ds_list_size(taskforce.ds_list_taskforce_units) < taskforce.taskforce_max_size{
-		var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_captain_knight, obj_unit_groundsplitter)
+		var choice = choose(obj_unit_groundpounder, obj_unit_waveaxe, obj_unit_captain_knight, obj_unit_groundsplitter, obj_unit_pyroarcher, obj_unit_shardslinger)
 		var placeholder_request = {
 			verbose_name: "Defender Req: " + string(choice),
 			template: choice,

@@ -94,6 +94,7 @@ function clear_current_tab()
 function construct_tab_options(key, recruitment_building)
 {
 	var options = ds_map_find_value(ds_recruitment_options, key)
+	var priority_queue = ds_priority_create();
 	for(var i=0;i<ds_list_size(options);i++)
 	{
 		var option = options[|i];
@@ -105,11 +106,23 @@ function construct_tab_options(key, recruitment_building)
 			self.recruitment_building = recruitment_building
 			self.recruiting_player = recruitment_building.controlling_player
 			self.initialized = true
-			self.dialog_index = i;
+
 			self.dialog = other;
 		}
-		ds_list_add(ds_current_active_options, recruit_option)
+		ds_priority_add(priority_queue, recruit_option, recruit_option.recruitment_option_detail.cost)
 	}
+	i=0;
+	repeat(ds_priority_size(priority_queue))
+	{
+		var recruit_option = ds_priority_delete_min(priority_queue)
+		recruit_option.dialog_index =i
+		ds_list_add(ds_current_active_options,recruit_option)
+		i++;
+	}
+	ds_priority_clear(priority_queue)
+	ds_priority_destroy(priority_queue)
+	
+	
 }
 
 function select_for_recruitment(index)

@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_terrain_forest",
   "spriteId": {
     "name": "spr_terrain_placeholder_spikes",
     "path": "sprites/spr_terrain_placeholder_spikes/spr_terrain_placeholder_spikes.yy",
@@ -27,17 +30,13 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"contact_hp_change","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"0","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"avoid_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"20","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"armour_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"1","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Forest","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"contact_hp_change","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"0",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"avoid_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"20",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"armour_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"1",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Forest",},
   ],
   "parent": {
     "name": "terrain",
     "path": "folders/Objects/terrain.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_terrain_forest",
-  "tags": [],
-  "resourceType": "GMObject",
 }

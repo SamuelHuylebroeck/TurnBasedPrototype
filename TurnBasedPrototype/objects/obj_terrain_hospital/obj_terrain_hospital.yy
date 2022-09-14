@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_terrain_hospital",
   "spriteId": {
     "name": "spr_hospital",
     "path": "sprites/spr_hospital/spr_hospital.yy",
@@ -25,24 +28,20 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [
-    {"varType":0,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"lingering_heal_amount","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":0,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"lingering_heal_duration","tags":[],"resourceType":"GMObjectProperty",},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"lingering_heal_amount","varType":0,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"lingering_heal_duration","varType":0,"value":"3","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
   ],
   "overriddenProperties": [
-    {"propertyId":{"name":"armour_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"-5","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"avoid_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"-10","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"start_of_turn_hp_change","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"0.2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Hospital","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"armour_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"-5",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"avoid_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"-10",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"start_of_turn_hp_change","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"0.2",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Hospital",},
   ],
   "parent": {
     "name": "terrain",
     "path": "folders/Objects/terrain.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_terrain_hospital",
-  "tags": [],
-  "resourceType": "GMObject",
 }

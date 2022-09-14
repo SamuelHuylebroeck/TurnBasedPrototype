@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_recruiting_tower",
   "spriteId": {
     "name": "spr_recruiting_tower",
     "path": "sprites/spr_recruiting_tower/spr_recruiting_tower.yy",
@@ -25,18 +28,14 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Recruiting Tower","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Recruiting Tower",},
   ],
   "parent": {
     "name": "buildings",
     "path": "folders/Objects/terrain/buildings.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_recruiting_tower",
-  "tags": [],
-  "resourceType": "GMObject",
 }

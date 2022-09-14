@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_village",
   "spriteId": {
     "name": "spr_village",
     "path": "sprites/spr_village/spr_village.yy",
@@ -27,14 +30,10 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Village","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Village",},
   ],
   "parent": {
     "name": "buildings",
     "path": "folders/Objects/terrain/buildings.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_village",
-  "tags": [],
-  "resourceType": "GMObject",
 }

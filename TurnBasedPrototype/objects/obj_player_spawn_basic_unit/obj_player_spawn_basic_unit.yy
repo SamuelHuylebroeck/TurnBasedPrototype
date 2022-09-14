@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_player_spawn_basic_unit",
   "spriteId": {
     "name": "spr_player_spawn_unit",
     "path": "sprites/spr_player_spawn_unit/spr_player_spawn_unit.yy",
@@ -27,14 +30,10 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"spawn_template","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"objectId":{"name":"par_player_spawn_object","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"value":"obj_unit_flamesword","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"spawn_template","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"objectId":{"name":"par_player_spawn_object","path":"objects/par_player_spawn_object/par_player_spawn_object.yy",},"value":"obj_unit_flamesword",},
   ],
   "parent": {
     "name": "setup",
     "path": "folders/Objects/terrain/setup.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_player_spawn_basic_unit",
-  "tags": [],
-  "resourceType": "GMObject",
 }

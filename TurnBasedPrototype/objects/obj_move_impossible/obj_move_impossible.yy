@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_move_impossible",
   "spriteId": {
     "name": "spr_move_impossible",
     "path": "sprites/spr_move_impossible/spr_move_impossible.yy",
@@ -31,8 +34,4 @@
     "name": "pathing",
     "path": "folders/Objects/control/pathing.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_move_impossible",
-  "tags": [],
-  "resourceType": "GMObject",
 }

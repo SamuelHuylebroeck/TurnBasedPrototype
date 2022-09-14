@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_dd_picker_player_type",
   "spriteId": {
     "name": "spr_drop_down_icons",
     "path": "sprites/spr_drop_down_icons/spr_drop_down_icons.yy",
@@ -25,22 +28,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [
-    {"varType":7,"value":"$FF000000","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"bg_colour","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":5,"value":"font_menu_big","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_font","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":4,"value":"c_soft_yellow","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"text_colour","tags":[],"resourceType":"GMObjectProperty",},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"bg_colour","varType":7,"value":"$FF000000","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_font","varType":5,"value":"font_menu_big","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"text_colour","varType":4,"value":"c_soft_yellow","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
   ],
   "overriddenProperties": [
-    {"propertyId":{"name":"option_draw_function","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"objectId":{"name":"par_drop_down_picker","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"value":"draw_dd_option_string","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"option_draw_function","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"objectId":{"name":"par_drop_down_picker","path":"objects/par_drop_down_picker/par_drop_down_picker.yy",},"value":"draw_dd_option_string",},
   ],
   "parent": {
     "name": "drop_down_picker",
     "path": "folders/Objects/ui/title_menus/game_setup/drop_down_picker.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_dd_picker_player_type",
-  "tags": [],
-  "resourceType": "GMObject",
 }

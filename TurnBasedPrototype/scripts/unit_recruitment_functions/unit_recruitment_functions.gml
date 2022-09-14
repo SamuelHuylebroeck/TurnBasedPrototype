@@ -132,7 +132,7 @@ function select_for_recruitment(index)
 		ds_current_active_options[|current_active_option].selected = false;
 	}
 	current_active_option = index
-	create_preview(current_active_option)
+	create_preview()
 	ds_current_active_options[|current_active_option].selected = true;
 }
 

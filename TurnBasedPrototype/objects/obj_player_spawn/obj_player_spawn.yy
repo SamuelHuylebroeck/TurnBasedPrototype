@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_player_spawn",
   "spriteId": {
     "name": "spr_player_spawn",
     "path": "sprites/spr_player_spawn/spr_player_spawn.yy",
@@ -23,16 +26,12 @@
   "physicsShapePoints": [],
   "eventList": [],
   "properties": [
-    {"varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"player","tags":[],"resourceType":"GMObjectProperty",},
-    {"varType":4,"value":"[]","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],"resourceVersion":"1.0","name":"linked_spawns","tags":[],"resourceType":"GMObjectProperty",},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"player","varType":4,"value":"noone","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"linked_spawns","varType":4,"value":"[]","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
   ],
   "overriddenProperties": [],
   "parent": {
     "name": "setup",
     "path": "folders/Objects/terrain/setup.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_player_spawn",
-  "tags": [],
-  "resourceType": "GMObject",
 }

@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_impassible",
   "spriteId": {
     "name": "spr_move_impossible",
     "path": "sprites/spr_move_impossible/spr_move_impossible.yy",
@@ -27,14 +30,10 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Impassable","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Impassable",},
   ],
   "parent": {
     "name": "terrain",
     "path": "folders/Objects/terrain.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_impassible",
-  "tags": [],
-  "resourceType": "GMObject",
 }

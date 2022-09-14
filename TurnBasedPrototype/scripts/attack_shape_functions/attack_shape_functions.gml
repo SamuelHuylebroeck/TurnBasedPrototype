@@ -66,10 +66,10 @@ function get_attack_wall_target_positions(origin_x, origin_y, target_x, target_y
 			}
 			
 			
-			var grid_x = lengthdir_x(i,dir+180)
-			var grid_y = lengthdir_y(i, dir+180)
+			grid_x = lengthdir_x(i,dir+180)
+			grid_y = lengthdir_y(i, dir+180)
 			
-			var prospective_distance = point_distance(0,0,grid_x, grid_y)
+			prospective_distance = point_distance(0,0,grid_x, grid_y)
 			if prospective_distance < attack_profile.base_size
 			{
 				
@@ -106,12 +106,12 @@ function get_attack_cone_target_positions(origin_x, origin_y, target_x, target_y
 			repeat(i){
 			
 				//Add left
-				var grid_x = lengthdir_x(counter, perpendicular_direction)
-				var grid_y = lengthdir_y(counter, perpendicular_direction)
+				grid_x = lengthdir_x(counter, perpendicular_direction)
+				grid_y = lengthdir_y(counter, perpendicular_direction)
 				ds_list_add(targets, {_x: middle._x+grid_x*global.grid_cell_width, _y: middle._y+ grid_y*global.grid_cell_height})
 				//Add right
-				var grid_x = lengthdir_x(-counter, perpendicular_direction)
-				var grid_y = lengthdir_y(-counter, perpendicular_direction)
+				grid_x = lengthdir_x(-counter, perpendicular_direction)
+				grid_y = lengthdir_y(-counter, perpendicular_direction)
 				ds_list_add(targets, {_x: middle._x+grid_x*global.grid_cell_width, _y: middle._y+ grid_y*global.grid_cell_height})
 
 				counter++

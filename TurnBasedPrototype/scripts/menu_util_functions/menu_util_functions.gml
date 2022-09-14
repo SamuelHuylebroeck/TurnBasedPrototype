@@ -1,6 +1,6 @@
 //@description ??
 function script_execute_array(scr, args){
-	switch(array_length_1d(args))
+	switch(array_length(args))
 	{
 		case 0: return script_execute(scr)
 		case 1: return script_execute(scr, args[0]);

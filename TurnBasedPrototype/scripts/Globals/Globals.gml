@@ -44,7 +44,7 @@ function init_globals(){
 	#endregion
 
 	//animation globals
-	global.unit_fade_step = 1/(room_speed);
+	global.unit_fade_step = 1/ (game_get_speed(gamespeed_fps));
 
 	//Control
 	global.map_running = false;

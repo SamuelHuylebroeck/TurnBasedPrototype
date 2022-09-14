@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_unit_captainknight_idle",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -24,21 +27,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":{"name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":{"name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":{"name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"LayerId":{"name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_unit_captainknight_idle",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 2.0,
@@ -46,15 +43,15 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 4.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
-    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"66f0b2d5-289e-41b8-87d9-e39538619071","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"15896396-2c03-4c89-9484-544956bc4134","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"5cc7e8ea-1bd3-4347-afbb-da8fee5bc553","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"4dbde9bb-2fbf-4677-a33e-574b6e848061","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"66f0b2d5-289e-41b8-87d9-e39538619071","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"76ad835f-0a09-4bb7-b90a-e5473cc9cf17","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"15896396-2c03-4c89-9484-544956bc4134","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"9a9bdad0-3203-40ec-bbea-2e2b521dd666","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"5cc7e8ea-1bd3-4347-afbb-da8fee5bc553","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"2858d673-0bd8-4f01-b2d6-a9c2c54c7e6e","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"4dbde9bb-2fbf-4677-a33e-574b6e848061","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"a36aaa58-8d3f-4112-8b35-9f387a4fbcef","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -70,22 +67,13 @@
     "yorigin": 35,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_unit_captainknight_idle","path":"sprites/spr_unit_captainknight_idle/spr_unit_captainknight_idle.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_unit_captainknight_idle",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"3b241926-f18e-4352-8f74-dcc3fd940f0f","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "captainknight",
     "path": "folders/Sprites/units/heavy/captainknight.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_unit_captainknight_idle",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

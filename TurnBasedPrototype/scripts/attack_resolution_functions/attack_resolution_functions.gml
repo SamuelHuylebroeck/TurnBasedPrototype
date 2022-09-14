@@ -2,8 +2,7 @@ function create_attack_effect_objects(ds_attack_effect_objects, origin_unit, att
 	var targets = get_attack_target_tiles(origin_unit.x, origin_unit.y,x,y,origin_unit, attack_profile)
 	for(var i=0; i< ds_list_size(targets);i++){
 		var target_pos = targets[| i]
-		create_attack_effect_object_at_location(i, target_pos._x, target_pos._y,  origin_unit, attack_profile);
-		
+		create_attack_effect_object_at_location(i, target_pos._x, target_pos._y,  origin_unit, attack_profile);	
 	}
 	ds_list_destroy(targets)
 }
@@ -122,11 +121,11 @@ function get_refined_stats(attack_profile, attacker, defender){
 	//Incorporate boon and bane information of defender
 	
 	//Clamp to min and maxes and resolve piercing
-	var hit_rate = max(hit_rate , 0)
+	hit_rate = max(hit_rate , 0)
 	if (armour > 0)  {
 		armour = max(armour - piercing ,0)
 	}
-	var damage = max(damage - armour, 0)
+	damage = max(damage - armour, 0)
 	return {
 		hr: hit_rate,
 		d: damage

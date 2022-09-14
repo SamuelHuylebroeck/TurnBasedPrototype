@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_setting_slide_knob",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -24,15 +27,13 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"e3ada635-6941-45a2-967b-527011c9f7cf","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e3ada635-6941-45a2-967b-527011c9f7cf","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"LayerId":{"name":"3fe1faa1-4d1f-480c-ba4e-d8677361b70e","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_setting_slide_knob","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","name":"e3ada635-6941-45a2-967b-527011c9f7cf","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"LayerId":{"name":"3fe1faa1-4d1f-480c-ba4e-d8677361b70e","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_setting_slide_knob","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e3ada635-6941-45a2-967b-527011c9f7cf",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_setting_slide_knob","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_setting_slide_knob",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,13 +41,13 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 2.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
-    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"85af1591-9980-4d2d-8a39-79ab1032fca9","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e3ada635-6941-45a2-967b-527011c9f7cf","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"e59d816e-fde7-4a75-97fa-3f0121c2185c","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"85af1591-9980-4d2d-8a39-79ab1032fca9","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e3ada635-6941-45a2-967b-527011c9f7cf","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"e59d816e-fde7-4a75-97fa-3f0121c2185c","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e07c46ea-c496-4aba-a0e0-6a77f4e1e1ad","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -62,22 +63,13 @@
     "yorigin": 16,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_setting_slide_knob","path":"sprites/spr_setting_slide_knob/spr_setting_slide_knob.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_setting_slide_knob",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"3fe1faa1-4d1f-480c-ba4e-d8677361b70e","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"3fe1faa1-4d1f-480c-ba4e-d8677361b70e","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "menu_screens",
     "path": "folders/Sprites/UI/menu_screens.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_setting_slide_knob",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

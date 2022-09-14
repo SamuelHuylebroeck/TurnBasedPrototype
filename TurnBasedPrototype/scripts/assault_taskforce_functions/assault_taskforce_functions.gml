@@ -269,7 +269,7 @@ function assault_taskforce_score_advancing(action_type, unit, tile, taskforce, t
 		euclidean_distance_component = clamp(floor(euclidean_distance_component*power(10,euclidean_distance_digits)),0, power(10, euclidean_distance_digits)-1)
 		if unit.x ==tile._x and unit.y == tile._y{
 			euclidean_distance_component += 1
-			clamp(euclidean_distance_component,0, power(10, euclidean_distance_digits)-1)
+			euclidean_distance_component = clamp(euclidean_distance_component,0, power(10, euclidean_distance_digits)-1)
 		}
 		final_score = euclidean_distance_component
 		final_score += power(10, euclidean_distance_digits)*defense_component 

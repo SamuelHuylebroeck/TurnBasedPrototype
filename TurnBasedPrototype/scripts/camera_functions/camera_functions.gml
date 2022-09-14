@@ -1,5 +1,4 @@
 //@description ??
-
 function player_zoom(){
 	if (mouse_wheel_down() || keyboard_check_pressed(vk_add))
 		{

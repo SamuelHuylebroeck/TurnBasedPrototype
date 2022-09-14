@@ -26,7 +26,7 @@ function remove_player(player_setup, single_player_config){
 		ds_list_delete(ds_active_players, i)
 		var current_nr_of_players = ds_list_size(player_setup.ds_active_players)
 		//Reset the player positions
-		for(var i= 0; i<ds_list_size(ds_active_players);i++){
+		for(i= 0; i<ds_list_size(ds_active_players);i++){
 			var p = ds_active_players[|i]
 			move_single_player_config(p,x+frame_inner_margin,y+frame_inner_margin+(i)*player_config_height) 	
 		}

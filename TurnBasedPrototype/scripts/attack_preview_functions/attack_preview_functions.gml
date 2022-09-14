@@ -56,7 +56,7 @@ function simulate_attack(attack_profile, target_unit, origin_unit){
 	var relation = WEATHER_RELATIONS.overpower
 	var weather_on_tile = instance_position(target_unit.x, target_unit.y, par_weather)
 	if weather_on_tile != noone {
-		var relation = global.weather_relations[attack_profile.weather_profile.weather_element][weather_on_tile.weather_element]
+		relation = global.weather_relations[attack_profile.weather_profile.weather_element][weather_on_tile.weather_element]
 	}
 	if relation == WEATHER_RELATIONS.fizzle 
 	{

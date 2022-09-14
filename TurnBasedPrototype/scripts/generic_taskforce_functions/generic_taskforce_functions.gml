@@ -337,10 +337,10 @@ function generic_taskforce_score_tile_defense(unit, tile, nr_digits)
 	if terrain_on_tile != noone 
 	{
 		var total_armour = terrain_on_tile.armour_modifier
-		var rel_armour  = armour_contribution * clamp(total_armour/global.max_tile_armour,-1,1)
+		rel_armour  = armour_contribution * clamp(total_armour/global.max_tile_armour,-1,1)
 		
 		var total_avoid = terrain_on_tile.avoid_modifier
-		var rel_avoid  = avoid_contribution * clamp(total_avoid/global.max_tile_avoid,-1,1)
+		rel_avoid  = avoid_contribution * clamp(total_avoid/global.max_tile_avoid,-1,1)
 		
 		if terrain_on_tile.contact_hp_change != 0 
 		{

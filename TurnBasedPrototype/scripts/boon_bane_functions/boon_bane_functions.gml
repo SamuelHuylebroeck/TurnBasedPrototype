@@ -1,11 +1,12 @@
 //@description ??
 function duplicate_boon_bane(boon_bane){
+	var copy;
 	switch(boon_bane.bb_type){
 		case BOON_BANE_TYPES.heal_damage:
-		    var copy = new HealingBoonDamageBaneCopy(boon_bane)
+		    copy = new HealingBoonDamageBaneCopy(boon_bane)
 			return copy;
 		case BOON_BANE_TYPES.speed_slow:
-		    var copy = new SpeedBoonSlowBaneCopy(boon_bane)
+		    copy = new SpeedBoonSlowBaneCopy(boon_bane)
 			return copy;
 		default:
 			return noone

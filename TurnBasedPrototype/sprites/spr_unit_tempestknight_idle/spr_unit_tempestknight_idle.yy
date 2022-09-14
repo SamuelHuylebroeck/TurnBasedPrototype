@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "spr_unit_tempestknight_idle",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -24,21 +27,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":{"name":"63010908-b406-4de9-9977-e109e378d6ae","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":{"name":"63010908-b406-4de9-9977-e109e378d6ae","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"ce006e23-35e3-465d-bdcb-254388d8447f","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"ce006e23-35e3-465d-bdcb-254388d8447f","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":{"name":"63010908-b406-4de9-9977-e109e378d6ae","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"ce006e23-35e3-465d-bdcb-254388d8447f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"36753d47-15b7-4d14-910c-add2a8c98974","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"36753d47-15b7-4d14-910c-add2a8c98974","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"LayerId":{"name":"63010908-b406-4de9-9977-e109e378d6ae","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","name":"36753d47-15b7-4d14-910c-add2a8c98974","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ce006e23-35e3-465d-bdcb-254388d8447f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"36753d47-15b7-4d14-910c-add2a8c98974",},
   ],
   "sequence": {
-    "spriteId": {"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "spr_unit_tempestknight_idle",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 2.0,
@@ -46,15 +43,15 @@
     "autoRecord": true,
     "volume": 1.0,
     "length": 4.0,
-    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MessageEventKeyframe",},
-    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"MomentsEventKeyframe",},
+    "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
+    "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"b94f31c2-5dfe-43dd-9653-b642c13219e4","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"0a07e974-27b5-4564-b454-3394f8c14e7f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"fccb390b-3ced-47ab-9422-e06c48bcfff9","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ce006e23-35e3-465d-bdcb-254388d8447f","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-            {"id":"caf072a4-f2db-473e-a523-7adc67b34be4","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"36753d47-15b7-4d14-910c-add2a8c98974","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe`1","elementType":"SpriteFrameKeyframe",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore`1","elementType":"SpriteFrameKeyframe",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+            {"id":"b94f31c2-5dfe-43dd-9653-b642c13219e4","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4a0c54b1-ae1d-4311-9fa2-29ba6eb62524","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"0a07e974-27b5-4564-b454-3394f8c14e7f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"aa3d90f1-2b86-494d-91e2-2f68a922daa5","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"fccb390b-3ced-47ab-9422-e06c48bcfff9","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ce006e23-35e3-465d-bdcb-254388d8447f","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"caf072a4-f2db-473e-a523-7adc67b34be4","Key":3.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"36753d47-15b7-4d14-910c-add2a8c98974","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -70,22 +67,13 @@
     "yorigin": 32,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"spr_unit_tempestknight_idle","path":"sprites/spr_unit_tempestknight_idle/spr_unit_tempestknight_idle.yy",},
-    "resourceVersion": "1.4",
-    "name": "spr_unit_tempestknight_idle",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"63010908-b406-4de9-9977-e109e378d6ae","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"63010908-b406-4de9-9977-e109e378d6ae","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "tempestknight",
     "path": "folders/Sprites/units/heavy/tempestknight.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "spr_unit_tempestknight_idle",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

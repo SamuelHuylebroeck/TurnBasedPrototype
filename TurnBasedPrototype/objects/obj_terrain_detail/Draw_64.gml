@@ -20,7 +20,8 @@ if(global.map_running)
 	
 	var arm_text = "ARM: "+ string(terrain_armour_modifier)
 	var avoid_text = "AVO: " + string(terrain_avoid_modifier)
-	var position_text=string(floor(mouse_x/global.grid_cell_width))+","+string(floor(mouse_y/global.grid_cell_height))
+	var tile_position = get_tile_position(mouse_x, mouse_y)
+	var position_text=string(tile_position[0])+","+string(tile_position[1])
 	var text_lines = [terrain_name_text, arm_text, avoid_text, position_text]
 	
 	#endregion

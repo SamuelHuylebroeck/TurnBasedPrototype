@@ -18,13 +18,48 @@ function draw_possible_moves_selected(){
 				if (path_get_length(global.navigate) <= global.selected.move_points_pixels_curr)
 				{
 					//Check if this space is occupied
-					if(!position_meeting(i_x,i_y, par_abstract_unit)){
+					if(!position_meeting(i_x,i_y, par_abstract_unit))
+					{
 						move_possible = instance_create_layer(i_x - w/2,i_y - h/2 ,"Pathing", obj_move_possible);
 						with(move_possible){
 							linked_attack_profile = global.selected.attack_profile;
 							linked_player = global.selected.controlling_player;
 							alarm[0]=1
 						}
+						
+						
+						//AStar debugging
+						if(global.pathfinder != noone)
+						{
+							//Find path
+							var astar_path_result;
+							with(global.pathfinder)
+							{
+								var start_tile = instance_position(center_x, center_y, par_pathfinding_tile);
+								var destination_tile = instance_position(i_x, i_y, par_pathfinding_tile);
+								astar_path_result = get_astar_path(start_tile, destination_tile, MOVEMENT_TYPES.foot)
+							}
+							//Create path object
+							if(astar_path_result.path_found)
+							{
+								var path = instance_create_layer(0,0, "UI", obj_astarpath)
+								with(path)
+								{
+									cost = astar_path_result.cost;
+									for(var k=0; k<array_length(astar_path_result.path);k++)
+									{
+										ds_list_add(ds_path_tiles, astar_path_result.path[k]);
+									}
+								}
+								//Link to movement object
+								with(move_possible)
+								{
+									astar_path = path;
+								}
+							}
+
+						}
+
 					}
 				}else{
 					instance_create_layer(i_x - w/2,i_y-h/2,"Pathing", obj_move_impossible);
@@ -113,6 +148,14 @@ function get_center_of_tile_for_pixel_position(pixel_x, pixel_y){
 	var cell_x = floor(pixel_x/global.grid_cell_width)
 	var cell_y  =floor(pixel_y/global.grid_cell_height)
 	return get_center_of_cell(cell_x,cell_y);
+}
+
+function get_tile_position(pixel_x, pixel_y)
+{
+	var result;
+	result[0] = floor(pixel_x/global.grid_cell_width);
+	result[1] = floor(pixel_y/global.grid_cell_height);
+	return result;
 }
 	
 	

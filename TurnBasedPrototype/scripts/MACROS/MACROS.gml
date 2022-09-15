@@ -25,7 +25,12 @@ enum UNIT_STATES {
 	hurt,
 	dodging,
 	dying
+}
 
+enum MOVEMENT_TYPES {
+	foot,
+	flying,
+	heavy
 }
 
 enum WEATHER_STATES {

@@ -83,7 +83,7 @@ function create_weather_at_empty_space(pos_x, pos_y, weather_profile){
 	var weather_instance = instance_create_layer(pos_x,pos_y,"Weather", weather_profile.weather_type)
 	with(weather_instance){
 		// Scale duration to number of players
-		var nr_players
+		var nr_players=0;
 		with(obj_control){
 			nr_players= ds_list_size(ds_turn_order)
 		}

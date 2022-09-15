@@ -8,6 +8,7 @@ with(obj_control){
 	init_victory_conditions(self)
 	init_garrison_objective_tracking(self)
 	init_raid_opportunity_tracking(self)
+	create_astar_pathfinder()
 	
 	instance_create_layer(0,0,"UI", obj_pause_menu)
 	

@@ -82,15 +82,15 @@ function init_globals(){
 	
 	global.debug_gui = false;
 	
-	global.debug_ai = false;
+	global.debug_ai = true;
 	
-	global.debug_ai_scoring = false;
+	global.debug_ai_scoring = true;
 	global.debug_ai_recruitment = false;
-	global.debug_ai_execution = false;
+	global.debug_ai_execution = true;
 	global.debug_ai_objective_update = false;
 	
 	global.debug_ai_raider_taskforces = false;
-	global.debug_ai_raider_taskforces_scoring = false;
+	global.debug_ai_raider_taskforces_scoring = true;
 	global.debug_ai_raider_taskforces_execution = false;
 	
 	global.debug_ai_assault_taskforces = false;
@@ -273,22 +273,23 @@ function define_weather_relations(){
 }
 	
 function define_ai_globals(){
-	global.ai_turn_in_progress = false
-	global.ai_turn_completed = false
+	global.ai_turn_in_progress = false;
+	global.ai_turn_completed = false;
 	
 	#region Taskforce AI configuration
-	global.taskforce_ai_garrison_grouping_tile_distance = 2
-	global.taskforce_ai_raid_opportunity_grouping_tile_distance = 3
+	global.taskforce_ai_garrison_grouping_tile_distance = 2;
+	global.taskforce_ai_raid_opportunity_grouping_tile_distance = 3;
+	global.taskforce_ai_pathfinding_max_tile_cost = 4;
 	#endregion
 
 }
 	
 function define_combat_balance_globals(){
-	global.max_tile_armour = 20
-	global.max_tile_avoid = 50
-	global.max_avoid = 150
-	global.max_armour = 50
-	global.explosion_damage_fraction = 0.2
+	global.max_tile_armour = 20;
+	global.max_tile_avoid = 50;
+	global.max_avoid = 150;
+	global.max_armour = 50;
+	global.explosion_damage_fraction = 0.2;
 }
 
 

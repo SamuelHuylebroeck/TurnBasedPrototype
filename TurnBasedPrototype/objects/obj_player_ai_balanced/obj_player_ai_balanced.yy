@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_player_ai_balanced",
   "spriteId": null,
   "solid": false,
   "visible": true,
@@ -22,18 +25,14 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
   ],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"assault_cooldown","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"objectId":{"name":"par_player_taskforce_ai","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"value":"2","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"assault_cooldown","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"objectId":{"name":"par_player_taskforce_ai","path":"objects/par_player_taskforce_ai/par_player_taskforce_ai.yy",},"value":"2",},
   ],
   "parent": {
     "name": "taskforce_ai",
     "path": "folders/Objects/control/taskforce_ai.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_player_ai_balanced",
-  "tags": [],
-  "resourceType": "GMObject",
 }

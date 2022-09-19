@@ -6,7 +6,7 @@ function draw_possible_moves_selected(){
 	var center = get_center_of_occupied_tile(global.selected);
 	var center_x = center[0];
 	var center_y = center[1];
-	var range = global.selected.move_points_total_current;
+	var range = global.selected.move_points_current_total;
 	var w = global.grid_cell_width;
 	var h = global.grid_cell_height
 	for(var i=-range; i<=range; i+=1){
@@ -74,6 +74,65 @@ function draw_possible_moves_selected(){
 	move_grid_drawn = true;	
 }
 
+function draw_possible_moves_selected_astar(){
+	var center = get_tile_position(global.selected.x, global.selected.y);
+	var origin_x = center[0];
+	var origin_y = center[1];
+	var range = global.selected.move_points_curr;
+	var w = global.grid_cell_width;
+	var h = global.grid_cell_height
+	if(range > 0)
+	{
+		for(var i=-range; i<=range; i++){
+			for(var j=-range;j<=range;j++){
+				if(global.pathfinder != noone and not(i==0 and j==0))
+				{
+					show_debug_message("Pathfinding from ("+string(origin_x) +","+string(origin_y) +") to ("+string(origin_x+i) +","+string(origin_y+j) +")" )
+					//Find path
+					var astar_path_result;
+					with(global.pathfinder)
+					{
+						var start_tile = instance_position(origin_x*w, origin_y*h, par_pathfinding_tile);
+						var destination_tile = instance_position((origin_x+i)*w,(origin_y+j)*h, par_pathfinding_tile);
+						//show_debug_message(string(start_tile)+"->"+string(destination_tile));
+						astar_path_result = get_astar_path(start_tile, destination_tile, global.selected.unit_profile.movement_type)
+					}
+					//show_debug_message("Path found: " + string(astar_path_result.path_found))
+					//Create path object
+					if(astar_path_result.path_found)
+					{
+						//show_debug_message("Path Cost: " + string(astar_path_result.cost) +"/" + string(range))
+						//Check if the path cost is in movement range and it is not occupied
+						var occupied = instance_position((origin_x+i+1/2)*w,(origin_y+j+1/2)*h, par_abstract_unit) != noone
+						if(astar_path_result.cost <= range and not occupied)
+						{
+							//Create move possible
+							var move_possible = instance_create_layer((origin_x+i)*w,(origin_y+j)*h ,"Pathing", obj_move_possible);
+							with(move_possible){
+								linked_attack_profile = global.selected.attack_profile;
+								linked_player = global.selected.controlling_player;
+								alarm[0]=1
+							}
+							//Create path object
+							var path = build_astar_path_object(astar_path_result.path, astar_path_result.cost)
+							//Link to movement object
+							with(move_possible)
+							{
+								astar_path = path;
+							}
+						}
+					}
+				}
+			}
+		}
+		//Add possible attacks from current position
+		create_attack_targets(global.selected.x, global.selected.y, global.selected.attack_profile, global.selected.controlling_player)
+		draw_create_weather(global.selected.x, global.selected.y, global.selected, global.selected.weather_profile )
+		move_grid_drawn = true;
+	}
+}
+
+
 function clean_possible_moves() {
 	with(obj_move_possible)
 	{
@@ -112,14 +171,14 @@ function clean_possible_moves() {
 function add_impassible_tiles_to_grid(this_unit, include_units, include_allied_units){
 	with(obj_impassible)
 	{
-		mp_grid_add_instances(global.map_grid,self,false);
+		mp_grid_add_instances(global.map_grid,self.id,false);
 	}
 	if include_units {
 		with(par_abstract_unit){
 			if self.id != this_unit.id{
 				var allied = self.controlling_player == this_unit.controlling_player
 				if(include_allied_units or not allied){
-					mp_grid_add_instances(global.map_grid,self,false);
+					mp_grid_add_instances(global.map_grid,self.id,false);
 				}
 			}
 		}
@@ -172,6 +231,25 @@ function navigate(unit, start_x, start_y, end_x, end_y){
 			path_start(global.navigate, global.path_move_speed,path_action_stop ,false);
 			return true;
 		}
+	}
+}
+
+function navigate_astar(unit, astar_path)
+{
+	with(unit)
+	{
+		var w = global.grid_cell_width;
+		var h = global.grid_cell_height
+		//Clear path
+		path_clear_points(global.navigate)
+		for(var i=0; i<ds_list_size(astar_path.ds_path_tiles);i++)
+		{
+			var tile = astar_path.ds_path_tiles[|i]
+			path_add_point(global.navigate, tile.x + w/2, tile.y+h/2,100)
+		}
+		path_set_closed(global.navigate, false)
+		path_start(global.navigate, global.path_move_speed,path_action_stop ,false);
+		return true;
 	}
 }
 

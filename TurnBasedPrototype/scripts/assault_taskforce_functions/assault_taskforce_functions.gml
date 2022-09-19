@@ -59,7 +59,7 @@ function get_assault_taskforce_recruitment_request(ds_request_queue, taskforce, 
 #endregion
 #region management
 function update_objectives_all_assault_taskforces(ds_list_taskforces, ai_player){
-	show_debug_message("Updating Assault taskforces")
+	if global.debug_ai_assault_taskforces show_debug_message("Updating Assault taskforces")
 	//Gather all contested flags
 	var flag_list = get_all_contested_flags_list(ai_player)
 	// Remove already claimed flags

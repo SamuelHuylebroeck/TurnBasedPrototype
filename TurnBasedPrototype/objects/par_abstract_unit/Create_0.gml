@@ -19,7 +19,7 @@ if(ds_map_exists(global.unit_stat_map, stats_name))
 weather_profile = new WeatherProfile(global_profile.weather_profile.verbose_name, global_profile.weather_profile.weather_type, global_profile.weather_profile.weather_duration,global_profile.weather_profile.weather_burst_size, global_profile.weather_profile.weather_element, global_profile.weather_profile.benign,global_profile.weather_profile.weather_sfx)
 var attack_animation_profile = new AttackAnimationProfile(stats_animation_hit_frame, sprite_get_speed(animation_attack_sprite), stats_animation_hit_sprite, stats_animation_hit_sprite_hit_frame,stats_attack_sfx, stats_attack_hit_sfx)
 attack_profile = new AttackProfile(global_profile.attack_stats_profile.base_damage,global_profile.attack_stats_profile.base_piercing,global_profile.attack_stats_profile.base_accuracy,global_profile.attack_stats_profile.base_shape, global_profile.attack_stats_profile.base_size,global_profile.attack_stats_profile.min_range,global_profile.attack_stats_profile.max_range,attack_animation_profile, weather_profile)
-unit_profile = new UnitProfile(global_profile.unit_profile.verbose_name, global_profile.unit_profile.max_hp, global_profile.unit_profile.base_movement,global_profile.unit_profile.base_avoid,global_profile.unit_profile.base_armour)
+unit_profile = new UnitProfile(global_profile.unit_profile.verbose_name, global_profile.unit_profile.max_hp, global_profile.unit_profile.base_movement,global_profile.unit_profile.base_avoid,global_profile.unit_profile.base_armour, global_profile.unit_profile.movement_type)
 unit_sound_map = get_unit_sound_map(stats_sound_map_key)
 #endregion
 

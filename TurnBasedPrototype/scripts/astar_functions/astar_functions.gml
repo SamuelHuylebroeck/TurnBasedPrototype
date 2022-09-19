@@ -1,28 +1,42 @@
 function get_astar_path(start_tile, destination_tile, movement_type)
 {
-	
 	//Early exits
+	//If destination is not walkable, exit with no path found
+	if(destination_tile == noone)
+	{
+			return {
+				path_found: false,
+				movement_type: movement_type,
+				path: [],
+				cost: -1
+			}
+	}
+	var grid_max_w = array_length(grid);
+	var grid_max_h = array_length(grid[0]);
+	var destination_tile_pos = get_tile_position(destination_tile.x, destination_tile.y);
+	if(destination_tile_pos[0] <0 ||  destination_tile_pos[0] >= grid_max_w || destination_tile_pos[1] <0 ||  destination_tile_pos[1] >= grid_max_w
+		|| not is_tile_walkable(destination_tile, movement_type))
+	{
+			return {
+				path_found: false,
+				movement_type: movement_type,
+				path: [],
+				cost: -1
+			}
+	}
+	
+
+
 	 if(start_tile == destination_tile)
 	 {
 		//If start and destination are the same, exit with simple path
 		return {
-			path_found: false,
+			path_found: true,
 			movement_type: movement_type,
 			path: [destination_tile],
 			cost: destination_tile.tile_costs[movement_type]
 		}
 	 }
-	//If destination is not walkable, exit with no path found
-	if(not is_tile_walkable(destination_tile, movement_type))
-	{
-		return {
-			path_found: false,
-			movement_type: movement_type,
-			path: [],
-			cost: -1
-		}
-	}
-	
 	
 	//Initialize data structures
 	ds_priority_clear(open_list);
@@ -30,8 +44,6 @@ function get_astar_path(start_tile, destination_tile, movement_type)
 
 	//Reset grid_state
 	reset_grid()
-	var grid_max_w = array_length(grid);
-	var grid_max_h = array_length(grid[0]);
 
 	//Add the initial tile
 	ds_priority_add(open_list, start_tile.id , 0);
@@ -57,7 +69,6 @@ function get_astar_path(start_tile, destination_tile, movement_type)
 			{
 				if(not(abs(i) == abs(j)))
 				{
-					
 					//Call up neightbour candidate
 					var candidate_x = tile_position[0] + i;
 					var candidate_y = tile_position[1] + j;
@@ -132,10 +143,10 @@ function get_astar_path(start_tile, destination_tile, movement_type)
 }
 
 function is_tile_walkable(tile, movement_type)
-{
-	var is_occupied = instance_position(tile.x, tile.y, par_abstract_unit) != noone;
-	var is_walkable = tile.tile_costs[movement_type] > 0;
-	return is_walkable and not is_occupied;
+{	
+	var walkable = tile.tile_costs[movement_type] > 0;
+	var occupied = position_meeting(tile.x + global.grid_cell_width/2, tile.y + global.grid_cell_height/2, par_abstract_unit)
+	return walkable and not occupied
 }
 
 function reset_grid()
@@ -187,4 +198,19 @@ function build_astar_path(destination_tile)
 		i++;
 	}
 	return path_array;
+}
+
+function build_astar_path_object(path_tile_array, path_cost)
+{
+	//Create path object
+	var path = instance_create_layer(0,0, "UI", obj_astarpath)
+	with(path)
+	{
+		cost = path_cost;
+		for(var i=0; i<array_length(path_tile_array);i++)
+		{
+			ds_list_add(ds_path_tiles, path_tile_array[i]);
+		}
+	}
+	return path
 }

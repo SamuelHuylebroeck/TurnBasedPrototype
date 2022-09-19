@@ -159,11 +159,12 @@ function count_flags(player){
 		
 		}
 	}
-	player.player_current_flag_total = nr_controlled_flags
+	player.player_current_flag_total = nr_controlled_flags;
 
 }
 function refresh_movement(unit){
-	unit.move_points_pixels_curr = unit.move_points_total_current*global.grid_cell_width
+	unit.move_points_curr = unit.move_points_total_current;
+	unit.move_points_pixels_curr = unit.move_points_total_current*global.grid_cell_width;
 }
 
 function resolve_round_end(){

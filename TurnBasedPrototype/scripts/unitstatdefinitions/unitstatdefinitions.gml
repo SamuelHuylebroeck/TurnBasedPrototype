@@ -20,7 +20,7 @@ function add_infantry_stats(ds_stat_map)
 	#region flamesword
 	var flameswordWeatherProfile = new WeatherProfile("Fire", obj_weather_fire, 4,1.5,WEATHER_ELEMENTS.fire, false, snd_unit_generic_action01)
 	var flameswordAttackProfile = new AttackStatsProfile(23,0,100,ATTACK_SHAPES.as_cone,2,1,1,flameswordWeatherProfile)
-	var flameswordUnitProfile= new UnitProfile("Flamesword", 65,4,15,5, MOVEMENT_TYPES.foot)
+	var flameswordUnitProfile= new UnitProfile("Flamesword", 65,1,15,5, MOVEMENT_TYPES.foot)
 	var flameswordCompleteProfile = new CompleteUnitStatProfile(flameswordUnitProfile, flameswordAttackProfile, flameswordWeatherProfile)
 	ds_map_add(global.unit_stat_map,"Flamesword", flameswordCompleteProfile)
 	#endregion
@@ -36,7 +36,7 @@ function add_infantry_stats(ds_stat_map)
 	#region groundpounder
 	var groundpounderWeatherProfile = new WeatherProfile("Cover", obj_weather_cover, 2,1,WEATHER_ELEMENTS.earth, true, snd_unit_generic_action01)
 	var groundpounderAttackProfile = new AttackStatsProfile(22,5,90,ATTACK_SHAPES.as_blast,1,2,2,groundpounderWeatherProfile)
-	var groundpounderUnitProfile= new UnitProfile("Groundpounder", 75,3,15,10, MOVEMENT_TYPES.heavy)
+	var groundpounderUnitProfile= new UnitProfile("Groundpounder", 75,4,15,10, MOVEMENT_TYPES.heavy)
 	var groundpounderCompleteProfile = new CompleteUnitStatProfile(groundpounderUnitProfile, groundpounderAttackProfile, groundpounderWeatherProfile)
 	ds_map_add(global.unit_stat_map,"Groundpounder", groundpounderCompleteProfile)
 	#endregion

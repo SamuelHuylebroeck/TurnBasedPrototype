@@ -82,7 +82,7 @@ function update_taskforce_position(tf, ai_player)
 #region scoring
 function generic_taskforce_score_retreating(action_type, unit, tile,taskforce,target){
 	#region Score explanation
-	//ABBBBCC
+	//ABBBBCCDD
 	//A is 6 if the move target of the tile is in the home area zone of the taskforce, 5 otherwise
 	//BBB is the remaining path distance towards the home area center, from the target tile, ignoring all units
 	//The distance score is maxed when the target tile is in the home zone
@@ -148,10 +148,34 @@ function generic_taskforce_score_distance_to_zone(unit,tile,taskforce, zone_cent
 	}
 	
 	//Calculate length of path from tile to home zone center, ignoring all units
-	mp_grid_clear_all(global.map_grid)
-	add_impassible_tiles_to_grid(unit,false, false)
-	var path_length = get_path_length(global.map_grid,global.navigate, tile._x,tile._y, zone_center_x, zone_center_y)
-	var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.grid_cell_width
+	//mp_grid_clear_all(global.map_grid)
+	//add_impassible_tiles_to_grid(unit,false, false)
+	//var path_length = get_path_length(global.map_grid,global.navigate, tile._x,tile._y, zone_center_x, zone_center_y)
+	//var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.grid_cell_width
+	
+	#region AStar
+	//Find path
+	var astar_path_result;
+	with(global.pathfinder)
+	{
+		var start_tile = instance_position(tile._x, tile._y, par_pathfinding_tile);
+		var destination_tile = instance_position(zone_center_x,zone_center_y, par_pathfinding_tile);
+		//show_debug_message(string(start_tile)+"->"+string(destination_tile));
+		astar_path_result = get_astar_path(start_tile, destination_tile, unit.unit_profile.movement_type)
+	}
+	
+	if(not astar_path_result.path_found)
+	{
+		return 0;
+	}
+	
+	var path_length = astar_path_result.cost
+	var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.taskforce_ai_pathfinding_max_tile_cost
+
+	
+	#endregion
+	
+	
 	var rel_objective_distance_score = (max_distance-(path_length))/max_distance 
 	rel_objective_distance_score = clamp(floor(rel_objective_distance_score* power(10,nr_digits)),0,power(10,nr_digits)-1) 
 	

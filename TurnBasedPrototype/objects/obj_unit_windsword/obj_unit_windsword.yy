@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_unit_windsword",
   "spriteId": {
     "name": "spr_unit_windsword_idle",
     "path": "sprites/spr_unit_windsword_idle/spr_unit_windsword_idle.yy",
@@ -27,17 +30,13 @@
   "eventList": [],
   "properties": [],
   "overriddenProperties": [
-    {"propertyId":{"name":"animation_movement_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_idle","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"animation_idle_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_idle","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"stats_name","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"Windsword","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"animation_attack_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_attack","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"animation_movement_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_idle",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"animation_idle_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_idle",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"stats_name","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"Windsword",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"animation_attack_sprite","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"objectId":{"name":"par_abstract_unit","path":"objects/par_abstract_unit/par_abstract_unit.yy",},"value":"spr_unit_windsword_attack",},
   ],
   "parent": {
     "name": "medium",
     "path": "folders/Objects/units/medium.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "obj_unit_windsword",
-  "tags": [],
-  "resourceType": "GMObject",
 }

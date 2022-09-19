@@ -14,7 +14,8 @@ function take_player_turn(){
 	if(global.selected != noone and mouse_check_button_pressed(mb_right))
 	{
 		//Move
-		if(instance_position(mouse_x,mouse_y,obj_move_possible) and global.player_permission_execute_orders)
+		var move_tile = instance_position(mouse_x,mouse_y,obj_move_possible)
+		if( move_tile and global.player_permission_execute_orders)
 		{
 			global.moving = true;
 			revoke_player_control()
@@ -22,10 +23,12 @@ function take_player_turn(){
 				var w = global.grid_cell_width;
 				var h = global.grid_cell_height;
 				var center_start = get_center_of_occupied_tile(global.selected);
-				var is_moving = navigate(global.selected, center_start[0],center_start[1],(floor(mouse_x/w))*w + w/2,floor(mouse_y/h)*h + h/2);
+				//var is_moving = navigate(global.selected, center_start[0],center_start[1],(floor(mouse_x/w))*w + w/2,floor(mouse_y/h)*h + h/2);
+				var is_moving = navigate_astar(global.selected, move_tile.astar_path)
 				if(is_moving)
 				{
 					move_points_pixels_curr -= path_get_length(global.navigate);
+					move_points_curr -= ceil(move_tile.astar_path.cost)
 				}
 				current_state = UNIT_STATES.moving
 			}
@@ -51,8 +54,9 @@ function take_player_turn(){
 				restore_player_control()
 				is_moving = false;
 				current_state = UNIT_STATES.idle
-				if(move_points_pixels_curr >= global.grid_cell_width && !has_acted_this_round){
-					draw_possible_moves_selected();
+				if(move_points_curr >= 1 and !has_acted_this_round){
+					//draw_possible_moves_selected();
+					draw_possible_moves_selected_astar();
 				}
 			}
 		
@@ -93,7 +97,8 @@ function select(selection_candidate, active_player){
 			}
 		}	
 		if(!move_grid_drawn && global.selected != noone && !global.selected.has_acted_this_round and global.player_permission_execute_orders){ 
-			draw_possible_moves_selected();
+			//draw_possible_moves_selected();
+			draw_possible_moves_selected_astar();
 		}
 		
 		//Select enemy unit

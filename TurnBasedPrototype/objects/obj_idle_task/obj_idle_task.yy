@@ -1,14 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "par_task",
+  "name": "obj_idle_task",
   "spriteId": null,
   "solid": false,
   "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "par_task",
+    "path": "objects/par_task/par_task.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -22,11 +25,9 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":2,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
   ],
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"current_state","varType":4,"value":"TASK_STATES.waiting","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[],},
-  ],
+  "properties": [],
   "overriddenProperties": [],
   "parent": {
     "name": "tasks",

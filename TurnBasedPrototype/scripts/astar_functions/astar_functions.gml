@@ -145,8 +145,13 @@ function get_astar_path(start_tile, destination_tile, movement_type)
 function is_tile_walkable(tile, movement_type)
 {	
 	var walkable = tile.tile_costs[movement_type] > 0;
-	var occupied = position_meeting(tile.x + global.grid_cell_width/2, tile.y + global.grid_cell_height/2, par_abstract_unit)
+	var occupied = is_tile_occupied(tile)
 	return walkable and not occupied
+}
+
+function is_tile_occupied(tile)
+{
+	return position_meeting(tile.x + global.grid_cell_width/2, tile.y + global.grid_cell_height/2, par_abstract_unit)
 }
 
 function reset_grid()

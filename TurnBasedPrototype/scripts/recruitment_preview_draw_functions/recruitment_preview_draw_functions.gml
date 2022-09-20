@@ -17,7 +17,7 @@ function preview_draw_unit_stats_block(tl_x, tl_y, width, height, fonts, unit_pr
 	draw_set_valign(fa_middle)
 	draw_set_font(fonts[0])
 	running_y+=draw_single_stat_line(tl_x+separator, running_y,spr_stats_icon_hp, ": " + string(unit_profile.max_hp), separator);
-	running_y+=draw_single_stat_line(tl_x+separator, running_y,spr_stats_icon_movement, ": " + string(unit_profile.base_movement), separator);
+	running_y+=draw_single_stat_line(tl_x+separator, running_y,get_movement_icon(unit_profile.movement_type), ": " + string(unit_profile.base_movement), separator);
 	running_y+=draw_single_stat_line(tl_x+separator, running_y,spr_stats_icon_armour, ": " + string(unit_profile.base_armour), separator);
 	running_y+=draw_single_stat_line(tl_x+separator, running_y,spr_stats_icon_avoid, ": " + string(unit_profile.base_avoid), separator);
 
@@ -87,6 +87,26 @@ function get_shape_icon(shape)
 				break;
 			case ATTACK_SHAPES.as_burst:
 				icon_sprite = spr_stats_icon_shape_burst;
+				break;
+			default:
+				icon_sprite = spr_stats_icon_placeholder;
+		}
+		
+		return icon_sprite
+}
+
+function get_movement_icon(movement_type)
+{
+		var icon_sprite;
+		switch(movement_type){
+			case MOVEMENT_TYPES.flying:
+				icon_sprite = spr_stats_icon_movement_flying;
+				break;
+			case MOVEMENT_TYPES.heavy:
+				icon_sprite = spr_stats_icon_movement_heavy;
+				break;
+			case MOVEMENT_TYPES.foot:
+				icon_sprite = spr_stats_icon_movement_foot;
 				break;
 			default:
 				icon_sprite = spr_stats_icon_placeholder;

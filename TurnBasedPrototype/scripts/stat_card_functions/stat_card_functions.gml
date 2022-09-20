@@ -98,7 +98,7 @@ function draw_unit_stats(_x, _y,width, height, unit, scale, fonts,padding_x,padd
 	current_pos_x += icon_width
 	draw_text(current_pos_x,current_pos_y,hp_line);
 	current_pos_x =_x+width/2
-	draw_sprite(spr_stats_icon_movement,0, current_pos_x, current_pos_y)
+	draw_sprite(get_movement_icon(unit.unit_profile.movement_type),0, current_pos_x, current_pos_y)
 	current_pos_x += icon_width
 	var mov_line = ": "+string(floor(unit.move_points_curr))+"/"+string(unit.unit_profile.base_movement)
 	draw_text(current_pos_x,current_pos_y,mov_line);

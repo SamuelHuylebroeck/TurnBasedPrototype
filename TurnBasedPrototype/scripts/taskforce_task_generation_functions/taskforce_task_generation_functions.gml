@@ -65,6 +65,10 @@ function get_unit_tile_context(unit){
 
 function generate_tasks_based_on_tile_context(unit,taskforce,player, context_queue, task_priority_queue){
 	if global.debug_ai_scoring show_debug_message("---Unit:"+string(unit)+"("+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_height))+")---")
+	var current_tile = ds_queue_dequeue(context_queue)
+	if global.debug_ai_scoring show_debug_message("generating tasks for ["+string(floor(current_tile._x/global.grid_cell_width))+","+string(floor(current_tile._y/global.grid_cell_width))+"]")
+	generate_idle_action_for_tile(current_tile, unit, taskforce, player, task_priority_queue)
+	generate_attack_actions_for_tile(current_tile, unit, taskforce, player, task_priority_queue)
 	while(not ds_queue_empty(context_queue)){
 		var next_tile = ds_queue_dequeue(context_queue)
 		if global.debug_ai_scoring show_debug_message("generating tasks for ["+string(floor(next_tile._x/global.grid_cell_width))+","+string(floor(next_tile._y/global.grid_cell_width))+"]")
@@ -74,11 +78,26 @@ function generate_tasks_based_on_tile_context(unit,taskforce,player, context_que
 		generate_movement_and_skill_action_for_tile(next_tile, unit, taskforce, player, task_priority_queue)
 		//Potential attacks
 		generate_move_and_attack_actions_for_tile(next_tile, unit, taskforce, player, task_priority_queue)
-
-	
 	}
-	if global.debug_ai_scoring show_debug_message("---Unit:"+string(unit)+"---")
+	if global.debug_ai_scoring show_debug_message("---/Unit:"+string(unit)+"---")
 }
+function generate_idle_action_for_tile(tile, unit, taskforce, player, task_priority_queue){
+	if global.debug_ai_scoring show_debug_message("----Idle----")
+	
+	var idle_score = script_execute(taskforce.taskforce_action_scoring_function,ACTION_TYPES.move, unit,tile, taskforce, noone)
+	var idle_task = instance_create_layer(0,0,"Logic", obj_idle_task)
+	
+	with(idle_task){
+		self.unit = unit
+		self.target_x = tile._x
+		self.target_y = tile._y
+	}
+		
+	ds_priority_add(task_priority_queue,idle_task,idle_score)
+	if global.debug_ai_scoring show_debug_message("["+string(floor(unit.x/global.grid_cell_width))+","+string(floor(unit.y/global.grid_cell_width))+"]->["+string(floor(tile._x/global.grid_cell_width))+","+string(floor(tile._y/global.grid_cell_width))+"]")
+	if global.debug_ai_scoring show_debug_message("----/Idle----")
+}
+
 
 function generate_movement_action_for_tile(tile, unit, taskforce, player, task_priority_queue){
 	if global.debug_ai_scoring show_debug_message("----Move----")
@@ -149,7 +168,6 @@ function generate_movement_and_skill_action_for_tile(tile, unit, taskforce, play
 	if global.debug_ai_scoring show_debug_message("----/Skill Move----")
 }
 
-
 function generate_move_and_attack_actions_for_tile(tile,unit,taskforce,player, task_priority_queue){
 	if global.debug_ai_scoring show_debug_message("----Attack Moves----")
 		var astar_path_result;
@@ -193,11 +211,45 @@ function generate_move_and_attack_actions_for_tile(tile,unit,taskforce,player, t
 	if global.debug_ai_scoring show_debug_message("----/Attack Moves----")
 }
 
+function generate_attack_actions_for_tile(tile,unit,taskforce,player, task_priority_queue){
+	if global.debug_ai_scoring show_debug_message("----Attack----")
+	var astar_path_result;
+
+	var targets_in_range_of_tile = attack_get_allowed_enemy_targets(tile._x,tile._y, unit, unit.attack_profile)
+	while not ds_queue_empty(targets_in_range_of_tile){
+		var target = ds_queue_dequeue(targets_in_range_of_tile)
+		var center_of_target=get_center_of_occupied_tile(target)
+		var target_pos = {
+			_x: center_of_target[0],
+			_y: center_of_target[1]
+		}
+		if global.debug_ai_scoring show_debug_message("---Target:("+string(floor(target_pos._x/global.grid_cell_width))+","+string(floor(target_pos._y/global.grid_cell_height))+")---")
+		var attack_score = script_execute(taskforce.taskforce_action_scoring_function,ACTION_TYPES.move_and_attack, unit,tile, taskforce,target_pos)
+		//Create an attack move task
+		if global.debug_ai_scoring show_debug_message("Score: "+string(attack_score))
+		var attack_task= instance_create_layer(0,0,"Logic", obj_attack_task)
+		with(attack_task){
+			self.unit = unit
+			self.target_unit = target
+			self.linked_attack_profile = unit.attack_profile
+		}
+		ds_priority_add(task_priority_queue,attack_task,attack_score)
+
+	}
+	ds_queue_destroy(targets_in_range_of_tile)
+	if global.debug_ai_scoring show_debug_message("----/Attack Moves----")
+}
+
 function empty_task_priority_queue(task_priority_queue)
 {
+	if global.debug_ai_scoring show_debug_message("---Emptying Queue---")
+	var i=0;
 	while(ds_priority_size(task_priority_queue)>0)
 	{
 		var next_task_to_delete = ds_priority_delete_max(task_priority_queue)
 		instance_destroy(next_task_to_delete)
+		i++;
+		//if global.debug_ai_scoring show_debug_message("deleted: " + string(i)+", Remaining: " + string(ds_priority_size(task_priority_queue)))
 	}
+	if global.debug_ai_scoring show_debug_message("---/Emptying Queue---")
 }

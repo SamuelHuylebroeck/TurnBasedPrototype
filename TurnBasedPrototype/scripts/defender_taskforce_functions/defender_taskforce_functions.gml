@@ -103,7 +103,7 @@ function update_objectives_defender_taskforce(taskforce, ai_player){
 function defender_taskforce_action_scoring_function(action_type, unit, tile, taskforce, target){
 	switch(taskforce.taskforce_stance){
 		case TASKFORCE_STANCES.mustering:
-			return generic_taskforce_score_mustering(action_type, unit, tile,taskforce,target)
+			return defender_taskforce_score_advancing(action_type, unit, tile,taskforce,target)
 		case TASKFORCE_STANCES.retreating:
 			return generic_taskforce_score_retreating(action_type, unit, tile,taskforce,target)
 		case TASKFORCE_STANCES.advancing:

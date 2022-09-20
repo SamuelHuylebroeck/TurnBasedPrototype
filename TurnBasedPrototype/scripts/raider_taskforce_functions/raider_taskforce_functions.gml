@@ -272,37 +272,40 @@ function raider_taskforce_score_advancing(action_type, unit, tile, taskforce, ta
 function raider_taskforce_score_distance_to_objective(unit, tile, taskforce, nr_digits){
 	var objective_x = taskforce.current_objective.target.x
 	var objective_y = taskforce.current_objective.target.y
-	////Calculate length of path from tile to objective, ignoring all units
-	//mp_grid_clear_all(global.map_grid)
-	//add_impassible_tiles_to_grid(unit,false, false)
-	//var path_length = get_path_length(global.map_grid,global.navigate, tile._x,tile._y, objective_x, objective_y)
-	//var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.grid_cell_width
 	
 	#region AStar
-	//Find path
-	var astar_path_result;
-	with(global.pathfinder)
+	var start_tile = instance_position(tile._x, tile._y, par_pathfinding_tile);
+	var destination_tile = instance_position(objective_x,objective_y, par_pathfinding_tile);
+	var path_length;
+	if(not is_tile_occupied(destination_tile))
 	{
-		var start_tile = instance_position(tile._x, tile._y, par_pathfinding_tile);
-		var destination_tile = instance_position(objective_x,objective_y, par_pathfinding_tile);
-		//show_debug_message(string(start_tile)+"->"+string(destination_tile));
-		astar_path_result = get_astar_path(start_tile, destination_tile, unit.unit_profile.movement_type)
-	}
-	
-	if(not astar_path_result.path_found)
-	{
-		return 0;
-	}
-	
-	var path_length = astar_path_result.cost
-	var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.taskforce_ai_pathfinding_max_tile_cost
+		//Find path
+		var astar_path_result;
+		with(global.pathfinder)
+		{
 
+			astar_path_result = get_astar_path(start_tile, destination_tile, unit.unit_profile.movement_type)
+		}
+	
+		if(not astar_path_result.path_found)
+		{
+			if global.debug_ai_scoring show_debug_message("No A* path found")
+			return 0;
+		}
+	
+		var path_length = astar_path_result.cost
+	}else{
+		//Objective tile is occupied, so score based on manhattan distance * max tile costs
+		var manhattan_distance = (abs(objective_x-tile._x) + abs(objective_y-tile._y))/global.grid_cell_width
+		path_length = manhattan_distance * global.taskforce_ai_pathfinding_max_tile_cost
+	}
+	var max_distance = global.grid_nr_h_cells*global.grid_nr_v_cells*global.taskforce_ai_pathfinding_max_tile_cost
 	#endregion
 	
-	
 	var rel_objective_distance_score = (max_distance-(path_length))/max_distance 
+	if(global.debug_ai_raider_taskforces_scoring) show_debug_message(string(path_length) +"->" + string(max_distance-(path_length)) + "/" + string(max_distance))
 	rel_objective_distance_score = clamp(floor(rel_objective_distance_score* power(10,nr_digits)),0,power(10,nr_digits)-1) 
-	
+	if(global.debug_ai_raider_taskforces_scoring) show_debug_message(string(rel_objective_distance_score))
 	return rel_objective_distance_score
 }
 

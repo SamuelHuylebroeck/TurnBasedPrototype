@@ -153,17 +153,22 @@ function create_player_type_picker_options(){
 
 function create_map_picker_options(){
 	var type = DD_PICKER_TYPES.map_picker
+	//global.all_map_options = [
+	//	{ text: "Riverland Duel", rm: rm_riverland_duel ,
+	//	  dd_type: type, minimap: spr_minimap_riverland_duel,
+	//	  dim: 23, grid_offset:0, max_players:2},
+	//	{ text: "Four Corners", rm: rm_four_corners_experimental ,
+	//	  dd_type: type, minimap: spr_minimap_four_corners,
+	//	  dim: 25, grid_offset:1, max_players:4},
+	//	{ text: "Forest Showdown", rm: rm_forest_showdown ,
+	//	  dd_type: type, minimap: spr_minimap_forest_showdown,
+	//	  dim: 25, grid_offset:0, max_players:2}
+
+	//]
 	global.all_map_options = [
 		{ text: "Riverland Duel", rm: rm_riverland_duel ,
 		  dd_type: type, minimap: spr_minimap_riverland_duel,
-		  dim: 23, grid_offset:0, max_players:2},
-		{ text: "Four Corners", rm: rm_four_corners_experimental ,
-		  dd_type: type, minimap: spr_minimap_four_corners,
-		  dim: 25, grid_offset:1, max_players:4},
-		{ text: "Forest Showdown", rm: rm_forest_showdown ,
-		  dd_type: type, minimap: spr_minimap_forest_showdown,
-		  dim: 25, grid_offset:0, max_players:2}
-
+		  dim: 23, grid_offset:0, max_players:2}
 	]
 
 }

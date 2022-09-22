@@ -20,7 +20,7 @@ function add_infantry_stats(ds_stat_map)
 	#region flamesword
 	var flameswordWeatherProfile = new WeatherProfile("Fire", obj_weather_fire, 4,1.5,WEATHER_ELEMENTS.fire, false, snd_unit_generic_action01)
 	var flameswordAttackProfile = new AttackStatsProfile(23,0,100,ATTACK_SHAPES.as_cone,2,1,1,flameswordWeatherProfile)
-	var flameswordUnitProfile= new UnitProfile("Flamesword", 65,1,15,5, MOVEMENT_TYPES.foot)
+	var flameswordUnitProfile= new UnitProfile("Flamesword", 65,4,15,5, MOVEMENT_TYPES.foot)
 	var flameswordCompleteProfile = new CompleteUnitStatProfile(flameswordUnitProfile, flameswordAttackProfile, flameswordWeatherProfile)
 	ds_map_add(global.unit_stat_map,"Flamesword", flameswordCompleteProfile)
 	#endregion

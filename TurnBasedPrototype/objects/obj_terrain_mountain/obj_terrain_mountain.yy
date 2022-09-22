@@ -33,7 +33,7 @@
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"contact_hp_change","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"0",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"avoid_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"30",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"armour_modifier","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"2",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Forest",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"terrain_name","path":"objects/par_terrain/par_terrain.yy",},"objectId":{"name":"par_terrain","path":"objects/par_terrain/par_terrain.yy",},"value":"Mountain",},
   ],
   "parent": {
     "name": "terrain",

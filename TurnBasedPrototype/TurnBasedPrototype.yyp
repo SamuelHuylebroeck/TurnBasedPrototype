@@ -341,6 +341,7 @@
     {"id":{"name":"spr_unit_groundpounder_hit_effect","path":"sprites/spr_unit_groundpounder_hit_effect/spr_unit_groundpounder_hit_effect.yy",},"order":2,},
     {"id":{"name":"spr_move_impossible","path":"sprites/spr_move_impossible/spr_move_impossible.yy",},"order":0,},
     {"id":{"name":"obj_move_impossible","path":"objects/obj_move_impossible/obj_move_impossible.yy",},"order":2,},
+    {"id":{"name":"spr_pathfinding_path","path":"sprites/spr_pathfinding_path/spr_pathfinding_path.yy",},"order":9,},
     {"id":{"name":"obj_floating_text","path":"objects/obj_floating_text/obj_floating_text.yy",},"order":0,},
     {"id":{"name":"defender_taskforce_functions","path":"scripts/defender_taskforce_functions/defender_taskforce_functions.yy",},"order":3,},
     {"id":{"name":"msc_battle03","path":"sounds/msc_battle03/msc_battle03.yy",},"order":4,},
@@ -371,6 +372,7 @@
     {"id":{"name":"par_jukebox","path":"objects/par_jukebox/par_jukebox.yy",},"order":0,},
     {"id":{"name":"obj_garrison_objective_tracker","path":"objects/obj_garrison_objective_tracker/obj_garrison_objective_tracker.yy",},"order":5,},
     {"id":{"name":"weather_definiton","path":"scripts/weather_definiton/weather_definiton.yy",},"order":1,},
+    {"id":{"name":"rm_forest_showdown_v2","path":"rooms/rm_forest_showdown_v2/rm_forest_showdown_v2.yy",},"order":7,},
     {"id":{"name":"spr_weather_detonate","path":"sprites/spr_weather_detonate/spr_weather_detonate.yy",},"order":10,},
     {"id":{"name":"font_gui_xsmall","path":"fonts/font_gui_xsmall/font_gui_xsmall.yy",},"order":10,},
     {"id":{"name":"spr_unit_pyroarcher_hurt","path":"sprites/spr_unit_pyroarcher_hurt/spr_unit_pyroarcher_hurt.yy",},"order":3,},
@@ -433,6 +435,7 @@
     {"roomId":{"name":"rm_four_corners_experimental","path":"rooms/rm_four_corners_experimental/rm_four_corners_experimental.yy",},},
     {"roomId":{"name":"rm_forest_showdown","path":"rooms/rm_forest_showdown/rm_forest_showdown.yy",},},
     {"roomId":{"name":"rm_riverland_duel","path":"rooms/rm_riverland_duel/rm_riverland_duel.yy",},},
+    {"roomId":{"name":"rm_forest_showdown_v2","path":"rooms/rm_forest_showdown_v2/rm_forest_showdown_v2.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Animation Curves","folderPath":"folders/Animation Curves.yy","order":12,},

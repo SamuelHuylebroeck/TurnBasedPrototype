@@ -82,15 +82,15 @@ function init_globals(){
 	
 	global.debug_gui = false;
 	
-	global.debug_ai = true;
+	global.debug_ai = false;
 	
-	global.debug_ai_scoring = true;
+	global.debug_ai_scoring = false;
 	global.debug_ai_recruitment = false;
-	global.debug_ai_execution = true;
+	global.debug_ai_execution = false;
 	global.debug_ai_objective_update = false;
 	
 	global.debug_ai_raider_taskforces = false;
-	global.debug_ai_raider_taskforces_scoring = true;
+	global.debug_ai_raider_taskforces_scoring = false;
 	global.debug_ai_raider_taskforces_execution = false;
 	
 	global.debug_ai_assault_taskforces = false;
@@ -101,7 +101,9 @@ function init_globals(){
 	global.debug_ai_defender_taskforces_scoring = false;
 	global.debug_ai_defender_taskforces_execution = false;
 	
-	global.debug_camera = false
+	global.debug_camera = false;
+	
+	global.debug_pathfinding = false;
 	#endregion
 	
 	#region combat balance
@@ -168,7 +170,10 @@ function create_map_picker_options(){
 	global.all_map_options = [
 		{ text: "Riverland Duel", rm: rm_riverland_duel ,
 		  dd_type: type, minimap: spr_minimap_riverland_duel,
-		  dim: 23, grid_offset:0, max_players:2}
+		  dim: 23, grid_offset:0, max_players:2},
+		{ text: "Forest Showdown", rm: rm_forest_showdown_v2 ,
+		  dd_type: type, minimap: spr_minimap_forest_showdown,
+		  dim: 25, grid_offset:0, max_players:2}
 	]
 
 }

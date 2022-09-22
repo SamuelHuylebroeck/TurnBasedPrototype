@@ -87,7 +87,7 @@ function draw_possible_moves_selected_astar(){
 			for(var j=-range;j<=range;j++){
 				if(global.pathfinder != noone and not(i==0 and j==0))
 				{
-					show_debug_message("Pathfinding from ("+string(origin_x) +","+string(origin_y) +") to ("+string(origin_x+i) +","+string(origin_y+j) +")" )
+					if global.debug_pathfinding show_debug_message("Pathfinding from ("+string(origin_x) +","+string(origin_y) +") to ("+string(origin_x+i) +","+string(origin_y+j) +")" )
 					//Find path
 					var astar_path_result;
 					with(global.pathfinder)

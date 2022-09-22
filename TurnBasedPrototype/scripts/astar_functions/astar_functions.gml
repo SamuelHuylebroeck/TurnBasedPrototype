@@ -178,7 +178,7 @@ function build_grid(grid_width, grid_height)
 		var tile_x = floor(x/global.grid_cell_width)
 		var tile_y = floor(y/global.grid_cell_height)
 		
-		other.grid[tile_x][tile_y] = self;
+		other.grid[tile_x][tile_y] = self.id;
 	}
 }
 
@@ -218,4 +218,18 @@ function build_astar_path_object(path_tile_array, path_cost)
 		}
 	}
 	return path
+}
+
+function debug_dump_grid_to_console(grid)
+{
+	for(var i = 0 ; i< array_length(grid); i++)
+	{
+		var line = "";
+		var h = array_length(grid[i])
+		for(var j=0; j<h;j++)
+		{
+			line += string(grid[i][j])
+		}
+		show_debug_message(line)
+	}
 }

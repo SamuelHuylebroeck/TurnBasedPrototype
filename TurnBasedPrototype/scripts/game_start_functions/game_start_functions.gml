@@ -12,6 +12,7 @@ function start_game(setup_multiplayer){
 		//Configure grid
 		destroy_pathfinding_grid()
 		recreate_pathfinding_grid()
+		create_astar_pathfinder()
 		
 		//Set up victory conditions
 		init_victory_conditions(game_control)

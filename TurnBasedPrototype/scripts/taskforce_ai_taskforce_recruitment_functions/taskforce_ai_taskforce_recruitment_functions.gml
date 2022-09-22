@@ -134,7 +134,7 @@ function try_assign_from_reserves(taskforce_player, recruitment_opportunity)
 	for(var i=0; i<ds_list_size(taskforce_player.ds_list_unit_reserves); i++)
 	{
 		var reserve_unit = taskforce_player.ds_list_unit_reserves[|i]
-		if reserve_unit.object_index == recruitment_opportunity.template 
+		if instance_exists(reserve_unit) and reserve_unit.object_index == recruitment_opportunity.template 
 		{
 			var distance = point_distance(reserve_unit.x,reserve_unit.y, position_to_consider._x, position_to_consider._y)
 			ds_priority_add(reserves_priority,reserve_unit,distance)

@@ -72,7 +72,7 @@ function add_heavy_stats(ds_stat_map)
 	#region Groundsplitter
 	var groundsplitterWeatherProfile = new WeatherProfile("Cover", obj_weather_cover, 3,2,WEATHER_ELEMENTS.earth, true, snd_unit_generic_action01)
 	var groundsplitterAttackProfile = new AttackStatsProfile(23,5,90,ATTACK_SHAPES.as_wall,2,1,1,groundsplitterWeatherProfile)
-	var groundsplitterUnitProfile= new UnitProfile("Groundsplitter", 120,2,5,18, MOVEMENT_TYPES.heavy)
+	var groundsplitterUnitProfile= new UnitProfile("Groundsplitter", 120,3,5,18, MOVEMENT_TYPES.heavy)
 	var groundsplitterCompleteProfile = new CompleteUnitStatProfile(groundsplitterUnitProfile, groundsplitterAttackProfile, groundsplitterWeatherProfile)
 	ds_map_add(global.unit_stat_map,"Groundsplitter", groundsplitterCompleteProfile)
 	#endregion

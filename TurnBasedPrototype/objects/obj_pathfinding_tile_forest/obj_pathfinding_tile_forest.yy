@@ -31,7 +31,7 @@
   "properties": [],
   "overriddenProperties": [
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"cost_foot","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"objectId":{"name":"par_pathfinding_tile","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"value":"2",},
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"cost_heavy","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"objectId":{"name":"par_pathfinding_tile","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"value":"3",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","propertyId":{"name":"cost_heavy","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"objectId":{"name":"par_pathfinding_tile","path":"objects/par_pathfinding_tile/par_pathfinding_tile.yy",},"value":"4",},
   ],
   "parent": {
     "name": "tiles",

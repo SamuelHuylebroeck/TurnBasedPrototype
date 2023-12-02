@@ -173,7 +173,10 @@ function create_map_picker_options(){
 		  dim: 23, grid_offset:0, max_players:2},
 		{ text: "Forest Showdown", rm: rm_forest_showdown_v2 ,
 		  dd_type: type, minimap: spr_minimap_forest_showdown,
-		  dim: 25, grid_offset:0, max_players:2}
+		  dim: 25, grid_offset:0, max_players:2},
+		{ text: "Four Corners", rm: rm_four_corners_v3 ,
+		  dd_type: type, minimap: spr_minimap_four_corners,
+		  dim: 25, grid_offset:1, max_players:4},	  
 	]
 
 }
